@@ -5,6 +5,7 @@ import DisciplineCard from "../components/DisciplineCard.astro";
 import NewsCard from "../components/NewsCard.astro";
 import SectionHeading from "../components/SectionHeading.astro";
 import { url } from "../lib/url";
+import { fetchNews } from "../lib/strapi";
 
 const disciplines = [
   {
@@ -37,28 +38,7 @@ const disciplines = [
   },
 ];
 
-const latestNews = [
-  {
-    title: "Årsmøtet må utsettes!",
-    excerpt:
-      "Valgkomiteen har fått en ekstra utfordring med ledervervet i klubben. Det betyr at vi må gi valgkomiteen ekstra tid til å løse denne utfordringen.",
-    date: "2026-03-10",
-    slug: "arsmotet-ma-utsettes",
-  },
-  {
-    title: "Årsmøte for sesong 2024 avviklet",
-    excerpt: "Referat fra årsmøtet finner du under Om klubben.",
-    date: "2025-04-27",
-    slug: "arsmote-sesong-2024",
-  },
-  {
-    title: "Terrengsykkelgruppe etablert",
-    excerpt:
-      "26. juni ble det vedtatt at klubben skal opprette en egen gruppe for terreng- og stisykling.",
-    date: "2024-06-29",
-    slug: "terrengsykkelgruppe-etablert",
-  },
-];
+const latestNews = (await fetchNews()).slice(0, 3);
 ---
 
 <Layout title="Forside">
@@ -148,16 +128,21 @@ const latestNews = [
         title="Siste nyheter"
         subtitle="Hold deg oppdatert på hva som skjer i klubben."
       />
-      <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-        {latestNews.map((news) => (
-          <NewsCard
-            title={news.title}
-            excerpt={news.excerpt}
-            date={news.date}
-            slug={news.slug}
-          />
-        ))}
-      </div>
+      {latestNews.length > 0 ? (
+        <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {latestNews.map((news) => (
+            <NewsCard
+              title={news.title}
+              excerpt={news.excerpt}
+              date={news.date}
+              slug={news.slug}
+              image={news.image}
+            />
+          ))}
+        </div>
+      ) : (
+        <p class="text-center text-gray-500">Ingen nyheter for øyeblikket.</p>
+      )}
       <div class="mt-12 text-center">
         <a
           href={url("/nyheter")}

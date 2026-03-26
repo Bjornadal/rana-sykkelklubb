@@ -90,18 +90,19 @@ Opprett følgende innholdstyper i Strapi admin-panelet:
 | location   | Text          | Sted for arrangementet         |
 | image      | Media (single)| Forsidebilde                   |
 
-### API-token
+### Strapi-URL og tilgang
 
-1. Gå til Strapi admin > Settings > API Tokens
-2. Opprett et nytt token med "Read-only" tilgang
-3. Legg tokenet i `.env`-filen som `STRAPI_TOKEN`
+Strapi-URL er satt i `src/lib/strapi.ts`. Frontend bruker **kun offentlig lesing** (ingen API-token).
 
-### Miljøvariabler
+I Strapi Admin: **Settings** → **Users & Permissions** → **Roles** → **Public** → **Permissions**. For hver innholdstype som brukes på nettsiden, slå på **find** og **findOne**:
 
-```env
-STRAPI_URL=https://din-strapi-instans.strapiapp.com
-STRAPI_TOKEN=ditt-api-token
-```
+| Type (i admin) | Brukes til        |
+|----------------|-------------------|
+| **Article**    | Nyheter           |
+| **Event**      | Arrangement       |
+| **Activity**   | Treningstider / Aktiviteter |
+
+Hvis nyheter og arrangement fungerer men ikke treningstider, mangler nesten alltid **Activity** → `find` / `findOne` for Public (API-et svarer da med 403).
 
 ## Kommandoer
 

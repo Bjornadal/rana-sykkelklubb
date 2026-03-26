@@ -1,159 +1,21 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-import PageHeader from "../../components/PageHeader.astro";
-import { fetchEvents } from "../../lib/strapi";
 import { url } from "../../lib/url";
 
-const events = await fetchEvents();
-
-const staticEvents = [
-  {
-    title: "Polarsirkelrittet",
-    description:
-      "Et av Helgelands mest populære sykkelritt, med ruter gjennom spektakulært landskap rundt polarsirkelen.",
-    type: "Landevei",
-    color: "bg-blue-100 text-blue-700",
-    icon: "🚴",
-  },
-  {
-    title: "Arctic Circle Raceway – Bike Weekend",
-    description:
-      "Sykkel på en av Nord-Europas beste motorsportbaner i fullt Formel 1-format. Rittcamp med overnatting, kiosk og leirbål.",
-    type: "Arrangement",
-    color: "bg-green-100 text-green-700",
-    icon: "🏁",
-  },
-];
+/** Liste over arrangement ligger nå under Aktiviteter (#arrangement). */
+const target = `${url("/aktiviteter")}#arrangement`;
 ---
-
-<Layout title="Arrangement" description="Arrangementer og ritt fra Rana Sykkelklubb.">
-  <PageHeader
-    title="Arrangement"
-    description="Sykkelritt, helgesamlinger og arrangement i regi av Rana Sykkelklubb."
-  />
-
-  <!-- Faste arrangement -->
-  <section class="py-16 sm:py-24">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-dark">Faste arrangement</h2>
-      <p class="mt-2 text-gray-600">Arrangementer som klubben er kjent for.</p>
-
-      <div class="mt-8 grid gap-8 lg:grid-cols-2">
-        {staticEvents.map((event) => (
-          <div class="overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-gray-100">
-            <div class="flex aspect-[2/1] items-center justify-center bg-gradient-to-br from-primary-100 to-primary-200">
-              <span class="text-6xl">{event.icon}</span>
-            </div>
-            <div class="p-8">
-              <span class:list={["inline-block rounded-full px-3 py-1 text-xs font-semibold", event.color]}>
-                {event.type}
-              </span>
-              <h3 class="mt-3 text-xl font-bold text-dark">{event.title}</h3>
-              <p class="mt-2 text-gray-600">{event.description}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- CMS arrangement -->
-  {events.length > 0 && (
-    <section class="bg-gray-50 py-16 sm:py-24">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <h2 class="text-2xl font-bold text-dark">Kommende arrangement</h2>
-        <p class="mt-2 text-gray-600">Nye arrangement og ritt som er planlagt.</p>
-
-        <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {events.map((event) => (
-            <a
-              href={url(`/arrangement/${event.slug}`)}
-              class="group overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-gray-100 transition-all hover:-translate-y-1 hover:shadow-lg"
-            >
-              {event.image ? (
-                <div class="aspect-[16/9] overflow-hidden">
-                  <img
-                    src={event.image}
-                    alt={event.title}
-                    class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                    loading="lazy"
-                  />
-                </div>
-              ) : (
-                <div class="flex aspect-[16/9] items-center justify-center bg-gradient-to-br from-accent-100 to-accent-200">
-                  <svg class="h-12 w-12 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
-                  </svg>
-                </div>
-              )}
-              <div class="p-6">
-                {event.date && (
-                  <time class="text-xs font-medium text-primary-600 uppercase tracking-wide">
-                    {new Date(event.date).toLocaleDateString("nb-NO", {
-                      day: "numeric",
-                      month: "long",
-                      year: "numeric",
-                    })}
-                  </time>
-                )}
-                <h3 class="mt-2 text-lg font-bold text-dark group-hover:text-primary-700 transition-colors">
-                  {event.title}
-                </h3>
-                {event.excerpt && (
-                  <p class="mt-2 text-sm text-gray-600 line-clamp-2">{event.excerpt}</p>
-                )}
-              </div>
-            </a>
-          ))}
-        </div>
-      </div>
-    </section>
-  )}
-
-  <!-- Lenker og regler -->
-  <section class="py-16 sm:py-24">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="rounded-2xl bg-dark p-8 sm:p-12">
-        <h2 class="text-2xl font-bold text-white">Lenker og regler</h2>
-        <p class="mt-4 text-gray-300">
-          Nyttige lenker for syklister som skal delta på ritt og arrangement.
-        </p>
-        <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          <a
-            href="https://sykling.no"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="flex items-center gap-3 rounded-xl bg-white/10 p-4 text-white transition-colors hover:bg-white/20"
-          >
-            <svg class="h-5 w-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
-            </svg>
-            <span class="text-sm font-medium">Norges Cykleforbund</span>
-          </a>
-          <a
-            href="https://sykling.no/lisens/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="flex items-center gap-3 rounded-xl bg-white/10 p-4 text-white transition-colors hover:bg-white/20"
-          >
-            <svg class="h-5 w-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
-            </svg>
-            <span class="text-sm font-medium">Lisensinfo</span>
-          </a>
-          <a
-            href="https://signup.eqtiming.com/?Event=SykkelLisens"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="flex items-center gap-3 rounded-xl bg-white/10 p-4 text-white transition-colors hover:bg-white/20"
-          >
-            <svg class="h-5 w-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
-            </svg>
-            <span class="text-sm font-medium">Registrer lisens</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-</Layout>
+<!doctype html>
+<html lang="nb">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="refresh" content={`0;url=${target}`} />
+    <title>Omdirigerer …</title>
+  </head>
+  <body>
+    <p><a href={target}>Gå til aktiviteter og arrangement</a></p>
+    <script is:inline define:vars={{ target }}>
+      location.replace(target);
+    </script>
+  </body>
+</html>
