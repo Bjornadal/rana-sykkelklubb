@@ -1,4 +1,6 @@
 ---
+import { url } from "../lib/url";
+
 const currentYear = new Date().getFullYear();
 ---
 
@@ -8,7 +10,7 @@ const currentYear = new Date().getFullYear();
       <div>
         <div class="flex items-center">
           <img
-            src="/logo.png"
+            src={url("/logo.png")}
             alt="Rana Sykkelklubb"
             class="h-14 w-auto brightness-0 invert"
           />
@@ -22,12 +24,12 @@ const currentYear = new Date().getFullYear();
       <div>
         <h3 class="mb-4 text-sm font-semibold tracking-wider text-white uppercase">Sider</h3>
         <ul class="space-y-2 text-sm">
-          <li><a href="/om-klubben" class="transition-colors hover:text-primary-400">Om klubben</a></li>
-          <li><a href="/aktiviteter" class="transition-colors hover:text-primary-400">Aktiviteter</a></li>
-          <li><a href="/sykkelpark" class="transition-colors hover:text-primary-400">Rana Bike Park</a></li>
-          <li><a href="/medlemskap" class="transition-colors hover:text-primary-400">Medlemskap</a></li>
-          <li><a href="/nyheter" class="transition-colors hover:text-primary-400">Nyheter</a></li>
-          <li><a href="/arrangement" class="transition-colors hover:text-primary-400">Arrangement</a></li>
+          <li><a href={url("/om-klubben")} class="transition-colors hover:text-primary-400">Om klubben</a></li>
+          <li><a href={url("/aktiviteter")} class="transition-colors hover:text-primary-400">Aktiviteter</a></li>
+          <li><a href={url("/sykkelpark")} class="transition-colors hover:text-primary-400">Rana Bike Park</a></li>
+          <li><a href={url("/medlemskap")} class="transition-colors hover:text-primary-400">Medlemskap</a></li>
+          <li><a href={url("/nyheter")} class="transition-colors hover:text-primary-400">Nyheter</a></li>
+          <li><a href={url("/arrangement")} class="transition-colors hover:text-primary-400">Arrangement</a></li>
         </ul>
       </div>
 
@@ -59,7 +61,7 @@ const currentYear = new Date().getFullYear();
             </a>
           </li>
           <li>
-            <a href="/kontakt" class="transition-colors hover:text-primary-400">
+            <a href={url("/kontakt")} class="transition-colors hover:text-primary-400">
               Kontakt oss
             </a>
           </li>

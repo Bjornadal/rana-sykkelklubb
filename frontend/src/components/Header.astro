@@ -1,4 +1,6 @@
 ---
+import { url } from "../lib/url";
+
 const currentPath = Astro.url.pathname;
 
 const navLinks = [
@@ -11,16 +13,15 @@ const navLinks = [
 ];
 
 function isActive(href: string): boolean {
-  if (href === "/") return currentPath === "/";
-  return currentPath.startsWith(href);
+  return currentPath.includes(href);
 }
 ---
 
 <header class="sticky top-0 z-50 border-b border-gray-100 bg-white/95 backdrop-blur-sm">
   <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
-    <a href="/" class="flex items-center">
+    <a href={url("/")} class="flex items-center">
       <img
-        src="/logo.png"
+        src={url("/logo.png")}
         alt="Rana Sykkelklubb"
         class="h-12 w-auto sm:h-14"
       />
@@ -29,7 +30,7 @@ function isActive(href: string): boolean {
     <nav class="hidden items-center gap-1 lg:flex">
       {navLinks.map((link) => (
         <a
-          href={link.href}
+          href={url(link.href)}
           class:list={[
             "rounded-lg px-3 py-2 text-sm font-medium transition-colors",
             isActive(link.href)
@@ -43,7 +44,7 @@ function isActive(href: string): boolean {
     </nav>
 
     <a
-      href="/medlemskap"
+      href={url("/medlemskap")}
       class="hidden rounded-lg bg-primary-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-primary-700 lg:inline-flex"
     >
       Bli medlem
@@ -68,7 +69,7 @@ function isActive(href: string): boolean {
     <div class="space-y-1 px-4 py-3">
       {navLinks.map((link) => (
         <a
-          href={link.href}
+          href={url(link.href)}
           class:list={[
             "block rounded-lg px-3 py-2 text-base font-medium transition-colors",
             isActive(link.href)
@@ -80,7 +81,7 @@ function isActive(href: string): boolean {
         </a>
       ))}
       <a
-        href="/medlemskap"
+        href={url("/medlemskap")}
         class="mt-2 block rounded-lg bg-primary-600 px-3 py-2 text-center text-base font-semibold text-white hover:bg-primary-700"
       >
         Bli medlem

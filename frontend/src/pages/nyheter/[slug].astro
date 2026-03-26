@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { fetchNews, fetchNewsBySlug } from "../../lib/strapi";
+import { url } from "../../lib/url";
 
 export async function getStaticPaths() {
   const news = await fetchNews();
@@ -13,7 +14,7 @@ const { slug } = Astro.params;
 const article = await fetchNewsBySlug(slug!);
 
 if (!article) {
-  return Astro.redirect("/nyheter");
+  return Astro.redirect(url("/nyheter"));
 }
 
 const formattedDate = new Date(article.date).toLocaleDateString("nb-NO", {
@@ -28,7 +29,7 @@ const formattedDate = new Date(article.date).toLocaleDateString("nb-NO", {
     <header class="bg-gradient-to-br from-dark via-dark-light to-primary-900 py-20 sm:py-28">
       <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <a
-          href="/nyheter"
+          href={url("/nyheter")}
           class="inline-flex items-center gap-1 text-sm text-gray-400 transition-colors hover:text-white"
         >
           <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">

@@ -1,4 +1,6 @@
 ---
+import { url } from "../lib/url";
+
 interface Props {
   title: string;
   excerpt: string;
@@ -14,6 +16,8 @@ const formattedDate = new Date(date).toLocaleDateString("nb-NO", {
   month: "long",
   year: "numeric",
 });
+
+const articleUrl = url(`/nyheter/${slug}`);
 ---
 
 <article class="group overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-gray-100 transition-all hover:-translate-y-1 hover:shadow-lg">
@@ -38,11 +42,11 @@ const formattedDate = new Date(date).toLocaleDateString("nb-NO", {
       {formattedDate}
     </time>
     <h3 class="mt-2 text-lg font-bold text-dark group-hover:text-primary-700 transition-colors">
-      <a href={`/nyheter/${slug}`}>{title}</a>
+      <a href={articleUrl}>{title}</a>
     </h3>
     <p class="mt-2 text-sm leading-relaxed text-gray-600 line-clamp-3">{excerpt}</p>
     <a
-      href={`/nyheter/${slug}`}
+      href={articleUrl}
       class="mt-4 inline-flex items-center text-sm font-semibold text-primary-600 transition-colors hover:text-primary-700"
     >
       Les mer

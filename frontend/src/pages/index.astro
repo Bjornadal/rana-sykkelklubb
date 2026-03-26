@@ -4,6 +4,7 @@ import Hero from "../components/Hero.astro";
 import DisciplineCard from "../components/DisciplineCard.astro";
 import NewsCard from "../components/NewsCard.astro";
 import SectionHeading from "../components/SectionHeading.astro";
+import { url } from "../lib/url";
 
 const disciplines = [
   {
@@ -114,7 +115,7 @@ const latestNews = [
             ))}
           </ul>
           <a
-            href="/sykkelpark"
+            href={url("/sykkelpark")}
             class="mt-8 inline-flex items-center rounded-lg bg-primary-600 px-6 py-3 text-base font-semibold text-white shadow transition-all hover:bg-primary-500"
           >
             Les mer om Rana Bike Park
@@ -156,7 +157,7 @@ const latestNews = [
       </div>
       <div class="mt-12 text-center">
         <a
-          href="/nyheter"
+          href={url("/nyheter")}
           class="inline-flex items-center rounded-lg border border-gray-300 px-6 py-3 text-base font-semibold text-dark transition-all hover:border-primary-300 hover:bg-primary-50 hover:text-primary-700"
         >
           Se alle nyheter
@@ -181,13 +182,13 @@ const latestNews = [
         </p>
         <div class="mt-8 flex flex-wrap justify-center gap-4">
           <a
-            href="/medlemskap"
+            href={url("/medlemskap")}
             class="inline-flex items-center rounded-lg bg-white px-6 py-3 text-base font-semibold text-primary-700 shadow transition-all hover:bg-gray-50"
           >
             Meld deg inn i dag
           </a>
           <a
-            href="/kontakt"
+            href={url("/kontakt")}
             class="inline-flex items-center rounded-lg border border-primary-300 px-6 py-3 text-base font-semibold text-white transition-all hover:bg-primary-500"
           >
             Ta kontakt

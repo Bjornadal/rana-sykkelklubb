@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import PageHeader from "../components/PageHeader.astro";
+import { url } from "../lib/url";
 
 const features = [
   {
@@ -75,13 +76,13 @@ const phases = [
         </p>
         <div class="mt-10 flex flex-wrap gap-4">
           <a
-            href="/kontakt"
+            href={url("/kontakt")}
             class="inline-flex items-center rounded-lg bg-primary-500 px-6 py-3 text-base font-semibold text-white shadow-lg transition-all hover:bg-primary-400 hover:shadow-xl"
           >
             Ta kontakt
           </a>
           <a
-            href="/medlemskap"
+            href={url("/medlemskap")}
             class="inline-flex items-center rounded-lg border border-gray-500 px-6 py-3 text-base font-semibold text-white transition-all hover:border-white hover:bg-white/10"
           >
             Støtt prosjektet – bli medlem
@@ -216,13 +217,13 @@ const phases = [
         </p>
         <div class="mt-8 flex flex-wrap justify-center gap-4">
           <a
-            href="/medlemskap"
+            href={url("/medlemskap")}
             class="inline-flex items-center rounded-lg bg-white px-6 py-3 text-base font-semibold text-primary-700 shadow transition-all hover:bg-gray-50"
           >
             Bli medlem
           </a>
           <a
-            href="/kontakt"
+            href={url("/kontakt")}
             class="inline-flex items-center rounded-lg border border-primary-300 px-6 py-3 text-base font-semibold text-white transition-all hover:bg-primary-500"
           >
             Kontakt oss

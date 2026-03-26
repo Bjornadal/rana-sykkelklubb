@@ -1,4 +1,6 @@
 ---
+import { url } from "../lib/url";
+
 interface Props {
   title: string;
   subtitle?: string;
@@ -13,7 +15,7 @@ const { title, subtitle, cta, ctaSecondary, backgroundImage } = Astro.props;
 <section class="relative overflow-hidden bg-dark">
   {backgroundImage && (
     <img
-      src={backgroundImage}
+      src={url(backgroundImage)}
       alt=""
       class="absolute inset-0 h-full w-full object-cover opacity-30"
       loading="eager"
@@ -35,7 +37,7 @@ const { title, subtitle, cta, ctaSecondary, backgroundImage } = Astro.props;
         <div class="mt-10 flex flex-wrap gap-4">
           {cta && (
             <a
-              href={cta.href}
+              href={url(cta.href)}
               class="inline-flex items-center rounded-lg bg-primary-600 px-6 py-3 text-base font-semibold text-white shadow-lg transition-all hover:bg-primary-500 hover:shadow-xl"
             >
               {cta.label}
@@ -46,7 +48,7 @@ const { title, subtitle, cta, ctaSecondary, backgroundImage } = Astro.props;
           )}
           {ctaSecondary && (
             <a
-              href={ctaSecondary.href}
+              href={url(ctaSecondary.href)}
               class="inline-flex items-center rounded-lg border border-gray-500 px-6 py-3 text-base font-semibold text-white transition-all hover:border-white hover:bg-white/10"
             >
               {ctaSecondary.label}
