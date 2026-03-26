@@ -1,0 +1,234 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageHeader from "../components/PageHeader.astro";
+
+const features = [
+  {
+    title: "Pumptrack",
+    description:
+      "En sammenhengende løype med kuler og svinger der du driver deg fremover uten å trå. Moro for alle aldre og nivåer – fra balansesykkel til erfarne syklister.",
+    icon: `<svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" /></svg>`,
+  },
+  {
+    title: "Hoppanlegg",
+    description:
+      "Hopplinjer med ulike vanskelighetsgrader – fra nybegynnervennlige tabletops til mer avanserte gap-hopp for de som vil utfordre seg selv.",
+    icon: `<svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.306a11.95 11.95 0 015.814-5.518l2.74-1.22m0 0l-5.94-2.281m5.94 2.28l-2.28 5.941" /></svg>`,
+  },
+  {
+    title: "Flytstier",
+    description:
+      "Naturlige stier i terrenget, tilrettelagt med doserte svinger og naturlig flyt. Perfekt for å utvikle teknikk og nyte naturen.",
+    icon: `<svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z" /></svg>`,
+  },
+  {
+    title: "For alle aldre",
+    description:
+      "Parken er designet for å være inkluderende – med egne områder og tilpasninger for barn, ungdom og voksne, uansett ferdighetsnivå.",
+    icon: `<svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" /></svg>`,
+  },
+];
+
+const phases = [
+  {
+    phase: "Fase 1",
+    title: "Pumptrack og grunnlag",
+    description: "Etablering av pumptrack-anlegg med asfalt-dekke og grunnleggende infrastruktur.",
+    status: "planlagt",
+  },
+  {
+    phase: "Fase 2",
+    title: "Hopplinjer",
+    description: "Bygging av hopplinjer med ulike vanskelighetsgrader for nybegynnere og viderekomne.",
+    status: "planlagt",
+  },
+  {
+    phase: "Fase 3",
+    title: "Flytstier i terrenget",
+    description: "Utvikling av naturlige stier med doserte svinger og god flyt gjennom skogen.",
+    status: "planlagt",
+  },
+  {
+    phase: "Fase 4",
+    title: "Fasiliteter og utvidelse",
+    description: "Servicebygg, rasteplasser, belysning og videre utvidelse av stinettverket.",
+    status: "planlagt",
+  },
+];
+---
+
+<Layout title="Rana Sykkelpark" description="Rana Bike Park – en inkluderende sykkelpark med pumptrack, hoppanlegg og flytstier for alle aldre.">
+  <!-- Hero -->
+  <section class="relative overflow-hidden bg-dark">
+    <div class="absolute inset-0 bg-gradient-to-br from-dark via-dark/80 to-primary-900/50"></div>
+    <div class="relative mx-auto max-w-7xl px-4 py-28 sm:px-6 sm:py-36 lg:px-8">
+      <div class="max-w-3xl">
+        <span class="inline-block rounded-full bg-primary-500/20 px-4 py-1 text-sm font-semibold text-primary-400 ring-1 ring-primary-500/30">
+          Nytt prosjekt
+        </span>
+        <h1 class="mt-6 text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
+          Rana Bike Park
+        </h1>
+        <p class="mt-6 max-w-2xl text-lg leading-relaxed text-gray-300 sm:text-xl">
+          Fremtidens møteplass for sykkelglede i Mo i Rana. En inkluderende sykkelpark med
+          pumptrack, hoppanlegg og flytstier – for barn, ungdom og voksne.
+        </p>
+        <div class="mt-10 flex flex-wrap gap-4">
+          <a
+            href="/kontakt"
+            class="inline-flex items-center rounded-lg bg-primary-500 px-6 py-3 text-base font-semibold text-white shadow-lg transition-all hover:bg-primary-400 hover:shadow-xl"
+          >
+            Ta kontakt
+          </a>
+          <a
+            href="/medlemskap"
+            class="inline-flex items-center rounded-lg border border-gray-500 px-6 py-3 text-base font-semibold text-white transition-all hover:border-white hover:bg-white/10"
+          >
+            Støtt prosjektet – bli medlem
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0">
+      <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full">
+        <path d="M0 60V30C360 0 720 0 1080 30C1260 45 1350 52.5 1440 60H0Z" fill="white" />
+      </svg>
+    </div>
+  </section>
+
+  <!-- Visjonen -->
+  <section class="py-20 sm:py-28">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid items-center gap-16 lg:grid-cols-2">
+        <div>
+          <h2 class="text-3xl font-extrabold tracking-tight text-dark sm:text-4xl">
+            Vår visjon
+          </h2>
+          <p class="mt-6 text-lg leading-relaxed text-gray-600">
+            Vi jobber for å skape en inkluderende sykkelpark som gir glede, mestring og aktivitet
+            for alle aldersgrupper. Rana Bike Park skal bli et naturlig samlingspunkt for
+            sykkelmiljøet i regionen.
+          </p>
+          <p class="mt-4 text-lg leading-relaxed text-gray-600">
+            Parken bygges trinnvis etter hvert som finansiering kommer på plass, og vil bestå av
+            pumptrack, hoppanlegg med ulike nivåer, og flytstier i naturskjønne omgivelser.
+          </p>
+          <div class="mt-8 grid grid-cols-3 gap-6">
+            <div class="text-center">
+              <span class="text-3xl font-extrabold text-primary-600">4</span>
+              <p class="mt-1 text-sm text-gray-500">Utbyggingsfaser</p>
+            </div>
+            <div class="text-center">
+              <span class="text-3xl font-extrabold text-primary-600">Alle</span>
+              <p class="mt-1 text-sm text-gray-500">Aldersgrupper</p>
+            </div>
+            <div class="text-center">
+              <span class="text-3xl font-extrabold text-primary-600">3+</span>
+              <p class="mt-1 text-sm text-gray-500">Aktivitetsområder</p>
+            </div>
+          </div>
+        </div>
+        <div class="relative">
+          <div class="aspect-[4/3] overflow-hidden rounded-2xl bg-gradient-to-br from-primary-100 via-primary-200 to-primary-300">
+            <div class="flex h-full w-full items-center justify-center">
+              <div class="text-center text-primary-700">
+                <svg class="mx-auto h-20 w-20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3.75 21h16.5A2.25 2.25 0 0022.5 18.75V5.25A2.25 2.25 0 0020.25 3H3.75A2.25 2.25 0 001.5 5.25v13.5A2.25 2.25 0 003.75 21z" />
+                </svg>
+                <p class="mt-4 text-lg font-semibold">Illustrasjon kommer</p>
+                <p class="text-sm opacity-75">Rana Bike Park</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Anlegg -->
+  <section class="bg-gray-50 py-20 sm:py-28">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <h2 class="text-3xl font-extrabold tracking-tight text-dark sm:text-4xl">Hva kommer i parken?</h2>
+        <p class="mx-auto mt-4 max-w-2xl text-lg text-gray-600">
+          Sykkelparken planlegges med flere aktivitetsområder for ulike disipliner og nivåer.
+        </p>
+      </div>
+      <div class="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        {features.map((feature) => (
+          <div class="rounded-2xl bg-white p-8 shadow-sm ring-1 ring-gray-100 transition-all hover:-translate-y-1 hover:shadow-lg">
+            <div class="inline-flex h-14 w-14 items-center justify-center rounded-xl bg-primary-100 text-primary-600">
+              <Fragment set:html={feature.icon} />
+            </div>
+            <h3 class="mt-5 text-lg font-bold text-dark">{feature.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-gray-600">{feature.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Faser -->
+  <section class="py-20 sm:py-28">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-extrabold tracking-tight text-dark sm:text-4xl">Utbyggingsplan</h2>
+      <p class="mt-4 max-w-2xl text-lg text-gray-600">
+        Parken bygges trinnvis etter hvert som finansiering og godkjenninger er på plass.
+      </p>
+
+      <div class="relative mt-12">
+        <div class="absolute left-6 top-0 hidden h-full w-0.5 bg-gray-200 sm:block" aria-hidden="true"></div>
+        <div class="space-y-8">
+          {phases.map((item, i) => (
+            <div class="relative flex gap-6">
+              <div class="hidden shrink-0 sm:flex">
+                <div class="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-primary-100 text-sm font-bold text-primary-700 ring-4 ring-white">
+                  {i + 1}
+                </div>
+              </div>
+              <div class="flex-1 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-gray-100 sm:p-8">
+                <div class="flex flex-wrap items-center gap-3">
+                  <span class="text-sm font-bold text-primary-600 uppercase tracking-wide">{item.phase}</span>
+                  <span class="rounded-full bg-gray-100 px-3 py-0.5 text-xs font-medium text-gray-600 capitalize">
+                    {item.status}
+                  </span>
+                </div>
+                <h3 class="mt-2 text-lg font-bold text-dark">{item.title}</h3>
+                <p class="mt-2 text-gray-600">{item.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Støtt prosjektet -->
+  <section class="bg-primary-600">
+    <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+      <div class="text-center">
+        <h2 class="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+          Støtt Rana Bike Park
+        </h2>
+        <p class="mx-auto mt-4 max-w-2xl text-lg text-primary-100">
+          Ved å bli medlem i Rana Sykkelklubb støtter du arbeidet med å realisere sykkelparken.
+          Sammen bygger vi fremtidens møteplass for sykkelglede.
+        </p>
+        <div class="mt-8 flex flex-wrap justify-center gap-4">
+          <a
+            href="/medlemskap"
+            class="inline-flex items-center rounded-lg bg-white px-6 py-3 text-base font-semibold text-primary-700 shadow transition-all hover:bg-gray-50"
+          >
+            Bli medlem
+          </a>
+          <a
+            href="/kontakt"
+            class="inline-flex items-center rounded-lg border border-primary-300 px-6 py-3 text-base font-semibold text-white transition-all hover:bg-primary-500"
+          >
+            Kontakt oss
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

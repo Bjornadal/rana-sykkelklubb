@@ -1,0 +1,18 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  icon: string;
+  color: string;
+}
+
+const { title, description, icon, color } = Astro.props;
+---
+
+<div class="group relative overflow-hidden rounded-2xl bg-white p-8 shadow-sm ring-1 ring-gray-100 transition-all hover:-translate-y-1 hover:shadow-lg">
+  <div class:list={["mb-5 inline-flex h-14 w-14 items-center justify-center rounded-xl text-2xl", color]}>
+    <Fragment set:html={icon} />
+  </div>
+  <h3 class="mb-2 text-lg font-bold text-dark">{title}</h3>
+  <p class="text-sm leading-relaxed text-gray-600">{description}</p>
+</div>

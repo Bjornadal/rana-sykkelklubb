@@ -1,0 +1,74 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-dark text-gray-300">
+  <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+    <div class="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
+      <div>
+        <div class="flex items-center">
+          <img
+            src="/logo.png"
+            alt="Rana Sykkelklubb"
+            class="h-14 w-auto brightness-0 invert"
+          />
+        </div>
+        <p class="mt-4 text-sm leading-relaxed text-gray-400">
+          Sykkelglede for alle på Helgeland siden 1983. Vi fremmer sykkelsporten
+          for barn, ungdom og voksne – både på landevei og terreng.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="mb-4 text-sm font-semibold tracking-wider text-white uppercase">Sider</h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/om-klubben" class="transition-colors hover:text-primary-400">Om klubben</a></li>
+          <li><a href="/aktiviteter" class="transition-colors hover:text-primary-400">Aktiviteter</a></li>
+          <li><a href="/sykkelpark" class="transition-colors hover:text-primary-400">Rana Bike Park</a></li>
+          <li><a href="/medlemskap" class="transition-colors hover:text-primary-400">Medlemskap</a></li>
+          <li><a href="/nyheter" class="transition-colors hover:text-primary-400">Nyheter</a></li>
+          <li><a href="/arrangement" class="transition-colors hover:text-primary-400">Arrangement</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="mb-4 text-sm font-semibold tracking-wider text-white uppercase">Kontakt</h3>
+        <ul class="space-y-2 text-sm">
+          <li>
+            <a href="mailto:post@ranasykkelklubb.no" class="transition-colors hover:text-primary-400">
+              post@ranasykkelklubb.no
+            </a>
+          </li>
+          <li>Hammerveien 75B</li>
+          <li>8626 Mo i Rana</li>
+          <li class="pt-2">Org.nr: 986 842 306</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="mb-4 text-sm font-semibold tracking-wider text-white uppercase">Lenker</h3>
+        <ul class="space-y-2 text-sm">
+          <li>
+            <a href="https://sykling.no" target="_blank" rel="noopener noreferrer" class="transition-colors hover:text-primary-400">
+              Norges Cykleforbund
+            </a>
+          </li>
+          <li>
+            <a href="https://sykling.no/lisens/" target="_blank" rel="noopener noreferrer" class="transition-colors hover:text-primary-400">
+              Lisensinfo
+            </a>
+          </li>
+          <li>
+            <a href="/kontakt" class="transition-colors hover:text-primary-400">
+              Kontakt oss
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-12 border-t border-gray-700 pt-8 text-center text-sm text-gray-500">
+      <p>&copy; {currentYear} Rana Sykkelklubb. Alle rettigheter forbeholdt.</p>
+    </div>
+  </div>
+</footer>

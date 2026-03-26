@@ -1,0 +1,212 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageHeader from "../components/PageHeader.astro";
+
+const schedule = [
+  {
+    day: "Tirsdag",
+    time: "18:30",
+    activity: "Klubbspinning",
+    location: "Family Sports Club",
+    type: "Inne",
+    color: "bg-blue-100 text-blue-700",
+  },
+  {
+    day: "Lørdag",
+    time: "10:00",
+    activity: "Rolig langtur",
+    location: "Oppmøte ved Family Sports Club, Midtre gate",
+    type: "Ute",
+    color: "bg-green-100 text-green-700",
+  },
+];
+
+const trainingZones = [
+  { zone: "1", name: "Aktiv restitusjon", intensity: "Svært lett", color: "bg-gray-200" },
+  { zone: "2", name: "Utholdenhet", intensity: "Lett", color: "bg-blue-200" },
+  { zone: "3", name: "Tempo", intensity: "Moderat", color: "bg-green-200" },
+  { zone: "4", name: "Terskel", intensity: "Hard", color: "bg-yellow-200" },
+  { zone: "5", name: "VO2 maks", intensity: "Svært hard", color: "bg-red-200" },
+];
+---
+
+<Layout title="Aktiviteter" description="Se treningstider og aktiviteter i Rana Sykkelklubb.">
+  <PageHeader
+    title="Aktiviteter"
+    description="Treninger, turer og arrangement for alle nivåer."
+  />
+
+  <!-- Treningstider -->
+  <section class="py-16 sm:py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-dark">Treningstider</h2>
+      <p class="mt-2 text-gray-600">
+        Rutevalg for utetreninger annonseres vanligvis på Facebook i forkant.
+      </p>
+
+      <div class="mt-8 grid gap-6 sm:grid-cols-2">
+        {schedule.map((item) => (
+          <div class="overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-gray-100">
+            <div class="border-b border-gray-100 bg-gray-50 px-6 py-4">
+              <div class="flex items-center justify-between">
+                <h3 class="text-lg font-bold text-dark">{item.day}</h3>
+                <span class:list={["rounded-full px-3 py-1 text-xs font-semibold", item.color]}>
+                  {item.type}
+                </span>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-baseline gap-2">
+                <span class="text-3xl font-extrabold text-primary-600">{item.time}</span>
+              </div>
+              <p class="mt-3 text-lg font-medium text-dark">{item.activity}</p>
+              <div class="mt-3 flex items-center gap-2 text-sm text-gray-500">
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                {item.location}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Disipliner -->
+  <section class="bg-gray-50 py-16 sm:py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-dark">Våre disipliner</h2>
+      <p class="mt-2 text-gray-600">Klubben tilbyr aktiviteter for alle typer sykling.</p>
+
+      <div class="mt-8 grid gap-8 lg:grid-cols-2">
+        <div class="rounded-2xl bg-white p-8 shadow-sm ring-1 ring-gray-100">
+          <div class="flex items-center gap-4">
+            <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-blue-100 text-2xl">
+              🚴
+            </div>
+            <h3 class="text-xl font-bold text-dark">Landevei</h3>
+          </div>
+          <p class="mt-4 text-gray-600">
+            Fellestreninger på landevei med rolige og raske grupper. Fokus på
+            turritt, satsing mot mesterskap og sosialt samhold på asfalten. Ruter
+            i det fantastiske landskapet på Helgeland.
+          </p>
+        </div>
+
+        <div class="rounded-2xl bg-white p-8 shadow-sm ring-1 ring-gray-100">
+          <div class="flex items-center gap-4">
+            <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-green-100 text-2xl">
+              🏔️
+            </div>
+            <h3 class="text-xl font-bold text-dark">Terrengsykling (MTB)</h3>
+          </div>
+          <p class="mt-4 text-gray-600">
+            Terrenggruppen ble etablert i 2024 og tilbyr stisykling og terrengritt
+            i naturen. Teknikk, spenning og naturopplevelser for alle nivåer.
+          </p>
+        </div>
+
+        <div class="rounded-2xl bg-white p-8 shadow-sm ring-1 ring-gray-100">
+          <div class="flex items-center gap-4">
+            <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-yellow-100 text-2xl">
+              ⚡
+            </div>
+            <h3 class="text-xl font-bold text-dark">E-MTB</h3>
+          </div>
+          <p class="mt-4 text-gray-600">
+            Elektrisk terrengsykling gjør det mulig for enda flere å oppleve
+            naturen på to hjul. Perfekt for de som vil utforske lengre turer eller
+            trenger litt ekstra hjelp i bakkene.
+          </p>
+        </div>
+
+        <div class="rounded-2xl bg-white p-8 shadow-sm ring-1 ring-gray-100">
+          <div class="flex items-center gap-4">
+            <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-red-100 text-2xl">
+              🔥
+            </div>
+            <h3 class="text-xl font-bold text-dark">Enduro</h3>
+          </div>
+          <p class="mt-4 text-gray-600">
+            Tekniske stier, fartsfylte utforkjøringer og adrenalinkick. Enduro
+            kombinerer det beste fra downhill og terrengsykling – med fokus på de
+            spennende utfordelene.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Treningssoner -->
+  <section class="py-16 sm:py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-dark">Treningssoner</h2>
+      <p class="mt-2 text-gray-600">
+        For å få optimal effekt av treningen kan det være nyttig å forholde seg til ulike
+        intensitetssoner.
+      </p>
+
+      <div class="mt-8 overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-gray-100">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left">
+            <thead>
+              <tr class="border-b border-gray-100 bg-gray-50">
+                <th class="px-6 py-4 text-sm font-semibold text-gray-600">Sone</th>
+                <th class="px-6 py-4 text-sm font-semibold text-gray-600">Navn</th>
+                <th class="px-6 py-4 text-sm font-semibold text-gray-600">Intensitet</th>
+              </tr>
+            </thead>
+            <tbody>
+              {trainingZones.map((zone, i) => (
+                <tr class:list={["border-b border-gray-50", i % 2 === 1 && "bg-gray-50/50"]}>
+                  <td class="px-6 py-4">
+                    <span class:list={["inline-flex h-8 w-8 items-center justify-center rounded-full text-sm font-bold", zone.color]}>
+                      {zone.zone}
+                    </span>
+                  </td>
+                  <td class="px-6 py-4 font-medium text-dark">{zone.name}</td>
+                  <td class="px-6 py-4 text-gray-600">{zone.intensity}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Styrketrening -->
+  <section class="bg-gray-50 py-16 sm:py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="rounded-2xl bg-dark p-8 sm:p-12">
+        <h2 class="text-2xl font-bold text-white">Styrketrening for syklister</h2>
+        <p class="mt-4 max-w-2xl text-gray-300">
+          Variasjon i treningen er viktig. Styrketrening er en viktig del av å bli en bedre
+          syklist og forebygge skader.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a
+            href="#"
+            class="inline-flex items-center rounded-lg border border-gray-500 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:border-white hover:bg-white/10"
+          >
+            <svg class="mr-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            Artikkel om styrketrening
+          </a>
+          <a
+            href="#"
+            class="inline-flex items-center rounded-lg border border-gray-500 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:border-white hover:bg-white/10"
+          >
+            <svg class="mr-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            Treningsprogram
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

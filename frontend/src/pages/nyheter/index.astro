@@ -1,0 +1,41 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import PageHeader from "../../components/PageHeader.astro";
+import NewsCard from "../../components/NewsCard.astro";
+import { fetchNews } from "../../lib/strapi";
+
+const allNews = await fetchNews();
+---
+
+<Layout title="Nyheter" description="Nyheter og oppdateringer fra Rana Sykkelklubb.">
+  <PageHeader
+    title="Nyheter"
+    description="Hold deg oppdatert med det siste fra Rana Sykkelklubb."
+  />
+
+  <section class="py-16 sm:py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      {allNews.length > 0 ? (
+        <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {allNews.map((news) => (
+            <NewsCard
+              title={news.title}
+              excerpt={news.excerpt}
+              date={news.date}
+              slug={news.slug}
+              image={news.image}
+            />
+          ))}
+        </div>
+      ) : (
+        <div class="rounded-2xl border-2 border-dashed border-gray-200 p-12 text-center">
+          <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25M16.5 7.5V18a2.25 2.25 0 002.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 002.25 2.25h13.5M6 7.5h3v3H6v-3z" />
+          </svg>
+          <h3 class="mt-4 text-lg font-semibold text-gray-900">Ingen nyheter ennå</h3>
+          <p class="mt-2 text-gray-500">Nyheter fra Strapi CMS vil vises her når de er publisert.</p>
+        </div>
+      )}
+    </div>
+  </section>
+</Layout>

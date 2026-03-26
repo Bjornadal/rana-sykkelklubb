@@ -1,0 +1,210 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageHeader from "../components/PageHeader.astro";
+
+const membershipPlans = [
+  {
+    name: "Ordinært medlemskap",
+    price: "500",
+    description: "For voksne syklister som ønsker fulle fordeler.",
+    features: [
+      "Medlemsrabatter hos Sport1",
+      "Delta på fellestreninger",
+      "Klubbdrakt til gunstig pris",
+      "Gruppesatsninger mot turritt",
+      "Refusjon av startkontingent",
+      "Rabatt på Family Sports Club",
+    ],
+    highlighted: true,
+  },
+  {
+    name: "Familiemedlemskap",
+    price: "600",
+    description: "For hele familien – en enkel pris.",
+    features: [
+      "Alle familiemedlemmer inkludert",
+      "Medlemsrabatter hos Sport1",
+      "Delta på fellestreninger",
+      "Klubbdrakt til gunstig pris",
+    ],
+    highlighted: false,
+  },
+  {
+    name: "Junior 17–19 år",
+    price: "200",
+    description: "For unge syklister som vil satse.",
+    features: [
+      "Medlemsrabatter hos Sport1",
+      "Delta på fellestreninger",
+      "Klubbdrakt til gunstig pris",
+    ],
+    highlighted: false,
+  },
+  {
+    name: "Junior 0–16 år",
+    price: "50",
+    description: "En rimelig inngang til sykkelsporten.",
+    features: [
+      "Delta på fellestreninger",
+      "Tilgang til ungdomstilbud",
+      "Bli en del av fellesskapet",
+    ],
+    highlighted: false,
+  },
+];
+
+const benefits = [
+  {
+    title: "Medlemsrabatter",
+    description: "Rabatter på sykler og tilbehør hos Sportshuset Mo Sport 1.",
+    icon: `<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>`,
+  },
+  {
+    title: "Fellestreninger",
+    description: "Delta på organiserte treninger med erfarne syklister.",
+    icon: `<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>`,
+  },
+  {
+    title: "Klubbdrakt",
+    description: "Nye klubbdrakter til gunstige priser gjennom nettbutikken.",
+    icon: `<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" /></svg>`,
+  },
+  {
+    title: "Treningsavtale",
+    description: "Gunstig treningsavtale på Family Sports Club.",
+    icon: `<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" /></svg>`,
+  },
+];
+---
+
+<Layout title="Medlemskap" description="Bli medlem i Rana Sykkelklubb – se priser og fordeler.">
+  <PageHeader
+    title="Medlemskap"
+    description="Vi ønsker gamle og nye medlemmer velkommen til vårt trivelige sykkelmiljø."
+  />
+
+  <!-- Priser -->
+  <section class="py-16 sm:py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {membershipPlans.map((plan) => (
+          <div
+            class:list={[
+              "relative flex flex-col rounded-2xl p-8 shadow-sm ring-1 transition-all hover:shadow-lg",
+              plan.highlighted
+                ? "bg-primary-600 text-white ring-primary-600"
+                : "bg-white ring-gray-100",
+            ]}
+          >
+            {plan.highlighted && (
+              <span class="absolute -top-3 left-6 rounded-full bg-accent-500 px-3 py-1 text-xs font-bold text-white">
+                Mest populær
+              </span>
+            )}
+            <h3 class:list={["text-lg font-bold", plan.highlighted ? "text-white" : "text-dark"]}>
+              {plan.name}
+            </h3>
+            <p class:list={["mt-2 text-sm", plan.highlighted ? "text-primary-100" : "text-gray-500"]}>
+              {plan.description}
+            </p>
+            <div class="mt-6">
+              <span class:list={["text-4xl font-extrabold", plan.highlighted ? "text-white" : "text-dark"]}>
+                {plan.price},-
+              </span>
+              <span class:list={["text-sm", plan.highlighted ? "text-primary-200" : "text-gray-500"]}>
+                {" "}/ år
+              </span>
+            </div>
+            <ul class="mt-6 flex-1 space-y-3">
+              {plan.features.map((feature) => (
+                <li class="flex items-start gap-2">
+                  <svg
+                    class:list={["mt-0.5 h-4 w-4 shrink-0", plan.highlighted ? "text-primary-200" : "text-primary-500"]}
+                    fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
+                  >
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span class:list={["text-sm", plan.highlighted ? "text-primary-50" : "text-gray-600"]}>
+                    {feature}
+                  </span>
+                </li>
+              ))}
+            </ul>
+            <a
+              href="http://rana-sykkelklubb.idrettenonline.no/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class:list={[
+                "mt-8 block rounded-lg px-4 py-3 text-center text-sm font-semibold transition-colors",
+                plan.highlighted
+                  ? "bg-white text-primary-700 hover:bg-gray-50"
+                  : "bg-primary-600 text-white hover:bg-primary-700",
+              ]}
+            >
+              Meld deg inn
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Fordeler -->
+  <section class="bg-gray-50 py-16 sm:py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-dark">Medlemsfordeler</h2>
+      <p class="mt-2 text-gray-600">Ved å fremlegge gyldig medlemskort får du følgende fordeler.</p>
+      <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {benefits.map((benefit) => (
+          <div class="rounded-xl bg-white p-6 shadow-sm ring-1 ring-gray-100">
+            <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-primary-100 text-primary-600">
+              <Fragment set:html={benefit.icon} />
+            </div>
+            <h3 class="mt-4 font-semibold text-dark">{benefit.title}</h3>
+            <p class="mt-2 text-sm text-gray-600">{benefit.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Lisens -->
+  <section class="py-16 sm:py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="rounded-2xl bg-dark p-8 sm:p-12 lg:p-16">
+        <div class="grid gap-8 lg:grid-cols-2 lg:items-center">
+          <div>
+            <h2 class="text-2xl font-bold text-white sm:text-3xl">Lisens for konkurranser</h2>
+            <p class="mt-4 text-gray-300">
+              For å delta i konkurranser må du løse lisens. Du kan velge mellom aktivlisens og
+              engangslisens. Aktivlisens kan bestilles av alle som er medlem i RSK og har betalt
+              medlemskontingent.
+            </p>
+            <p class="mt-4 text-gray-300">
+              Med aktivlisens kan du delta i alle typer sykkelritt. Lisensen inneholder
+              obligatorisk forsikring som også dekker trening.
+            </p>
+          </div>
+          <div class="flex flex-col gap-4 sm:flex-row lg:justify-end">
+            <a
+              href="https://sykling.no/lisens/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center rounded-lg border border-gray-500 px-6 py-3 font-semibold text-white transition-colors hover:border-white hover:bg-white/10"
+            >
+              Les om lisens
+            </a>
+            <a
+              href="https://signup.eqtiming.com/?Event=SykkelLisens"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center rounded-lg bg-primary-600 px-6 py-3 font-semibold text-white transition-colors hover:bg-primary-500"
+            >
+              Registrer lisens
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

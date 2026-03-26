@@ -1,0 +1,141 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageHeader from "../components/PageHeader.astro";
+
+const boardMembers = [
+  { role: "Leder", name: "Bjørn Einar Nesengmo" },
+  { role: "Nestleder", name: "Tomek Pietrzykowski" },
+  { role: "Styremedlem", name: "Katrine Stormdalshei" },
+  { role: "Styremedlem", name: "Andreas Bjørnådal" },
+  { role: "Styremedlem", name: "Simon Fossheim" },
+  { role: "Styremedlem", name: "Kjell Martinsen" },
+  { role: "Varamedlem", name: "Ketil Hauknes" },
+  { role: "Varamedlem", name: "Jan Erik Hansen" },
+];
+
+const annualMeetings = [
+  { label: "Årsmøte sesong 2024", year: "2025" },
+  { label: "Årsmøte sesong 2022-2023", year: "2024" },
+  { label: "Årsmøte sesong 2021", year: "2022" },
+  { label: "Årsmøte sesong 2020", year: "2021" },
+  { label: "Årsmøte sesong 2019", year: "2020" },
+  { label: "Årsmøte sesong 2018", year: "2019" },
+];
+---
+
+<Layout title="Om klubben" description="Les om Rana Sykkelklubbs historie, organisasjon og styre.">
+  <PageHeader
+    title="Om Rana Sykkelklubb"
+    description="Siden 1983 har vi fremmet sykkelsporten på Helgeland."
+  />
+
+  <section class="py-16 sm:py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid gap-16 lg:grid-cols-3">
+        <div class="lg:col-span-2">
+          <div class="prose prose-lg max-w-none">
+            <p class="text-lg leading-relaxed text-gray-700">
+              Rana Sykkelklubb ble opprettet i 1983. Klubben arbeider for å fremme sykkelsporten
+              på Helgeland og ønsker å være en bidragsyter til fritidsaktivitet, naturopplevelser
+              og sykkelglede i Rana.
+            </p>
+            <p class="mt-4 text-lg leading-relaxed text-gray-700">
+              Klubben har ambisjoner om å etablere et bredt og aktivt sykkelmiljø for barn, ungdom
+              og voksne. Vi har i dag 95 aktive medlemmer både innen terreng- og landeveissykling.
+            </p>
+
+            <h2 class="mt-12 text-2xl font-bold text-dark">Organisasjon</h2>
+            <p class="mt-4 text-gray-700">
+              Rana Sykkelklubb er organisert ut fra de hovedaktivitetene vi ønsker å ivareta – å
+              skape et miljø for sykkelsporten, vedlikeholde og gi et tilbud til de som ønsker å
+              delta på lokale sykkelritt og på nasjonalt/internasjonalt nivå.
+            </p>
+            <p class="mt-4 text-gray-700">
+              Vi utdanner personell innenfor tidtaking og rittorganisering for å styrke miljøet på
+              Helgeland. Vi samarbeider med andre klubber i forbindelse med lån av utstyr og
+              personell ved ulike arrangementer.
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <div class="rounded-2xl bg-gray-50 p-8">
+            <h3 class="text-lg font-bold text-dark">Informasjon</h3>
+            <dl class="mt-4 space-y-4 text-sm">
+              <div>
+                <dt class="font-medium text-gray-500">Stiftet</dt>
+                <dd class="mt-1 text-dark">1983</dd>
+              </div>
+              <div>
+                <dt class="font-medium text-gray-500">Medlemmer</dt>
+                <dd class="mt-1 text-dark">95 aktive</dd>
+              </div>
+              <div>
+                <dt class="font-medium text-gray-500">Organisasjonsnummer</dt>
+                <dd class="mt-1 text-dark">986 842 306</dd>
+              </div>
+              <div>
+                <dt class="font-medium text-gray-500">Postadresse</dt>
+                <dd class="mt-1 text-dark">Hammerveien 75B, 8626 Mo i Rana</dd>
+              </div>
+              <div>
+                <dt class="font-medium text-gray-500">E-post</dt>
+                <dd class="mt-1">
+                  <a href="mailto:post@ranasykkelklubb.no" class="text-primary-600 hover:text-primary-700">
+                    post@ranasykkelklubb.no
+                  </a>
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Styret -->
+  <section class="bg-gray-50 py-16 sm:py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-dark">Styret</h2>
+      <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {boardMembers.map((member) => (
+          <div class="rounded-xl bg-white p-6 shadow-sm ring-1 ring-gray-100">
+            <div class="flex h-12 w-12 items-center justify-center rounded-full bg-primary-100 text-primary-700">
+              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+              </svg>
+            </div>
+            <p class="mt-4 font-semibold text-dark">{member.name}</p>
+            <p class="text-sm text-gray-500">{member.role}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Årsmøter -->
+  <section class="py-16 sm:py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-dark">Referat fra årsmøter</h2>
+      <p class="mt-2 text-gray-600">Referater og dokumenter fra årsmøtene i klubben.</p>
+      <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {annualMeetings.map((meeting) => (
+          <a
+            href="#"
+            class="flex items-center gap-4 rounded-xl bg-white p-5 shadow-sm ring-1 ring-gray-100 transition-all hover:bg-primary-50 hover:ring-primary-200"
+          >
+            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-gray-100 text-gray-600">
+              <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+            </div>
+            <div>
+              <p class="font-medium text-dark">{meeting.label}</p>
+              <p class="text-xs text-gray-500">{meeting.year}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
