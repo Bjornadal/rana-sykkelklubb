@@ -2,6 +2,8 @@ backend:
   name: github
   repo: Bjornadal/rana-sykkelklubb
   branch: main
+  base_url: https://rsk-cms-auth.bjornadal.workers.dev
+  auth_endpoint: auth
 
 # Where uploaded images will be saved and referenced
 media_folder: "frontend/public/images/uploads"
