@@ -18,13 +18,14 @@ const formattedDate = new Date(date).toLocaleDateString("nb-NO", {
 });
 
 const articleUrl = url(`/nyheter/${slug}`);
+const imageUrl = image ? (image.startsWith("http") ? image : url(image)) : undefined;
 ---
 
 <article class="group overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-gray-100 transition-all hover:-translate-y-1 hover:shadow-lg">
-  {image ? (
+  {imageUrl ? (
     <div class="aspect-[16/9] overflow-hidden bg-gray-100">
       <img
-        src={image}
+        src={imageUrl}
         alt={title}
         class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
         loading="lazy"

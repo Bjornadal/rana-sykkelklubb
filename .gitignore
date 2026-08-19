@@ -14,4 +14,8 @@
 # Editor-based HTTP Client requests
 /httpRequests/
 .idea
+.vscode
 Komprimert-presentasjon-Rana-Bike-Park.pdf
+*.csv
+Sponsorer*
+tools/

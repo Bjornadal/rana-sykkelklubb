@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import PageHeader from "../components/PageHeader.astro";
-import { fetchActivities, fetchEvents } from "../lib/strapi";
+import { fetchActivities, fetchEvents } from "../lib/content";
 import { url } from "../lib/url";
 
 const schedule = await fetchActivities();
@@ -68,7 +68,7 @@ const trainingZones = [
       ) : (
         <div class="mt-8 rounded-2xl border-2 border-dashed border-gray-200 p-12 text-center">
           <h3 class="text-lg font-semibold text-gray-900">Ingen treningstider ennå</h3>
-          <p class="mt-2 text-gray-500">Treningstider fra Strapi CMS vil vises her når de er publisert.</p>
+          <p class="mt-2 text-gray-500">Treningstider vil vises her når de er lagt inn.</p>
         </div>
       )}
     </div>
@@ -92,7 +92,7 @@ const trainingZones = [
               {event.image ? (
                 <div class="aspect-[16/9] overflow-hidden">
                   <img
-                    src={event.image}
+                    src={event.image.startsWith("http") ? event.image : url(event.image)}
                     alt={event.title}
                     class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                     loading="lazy"
@@ -140,7 +140,7 @@ const trainingZones = [
             <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
           </svg>
           <h3 class="mt-4 text-lg font-semibold text-gray-900">Ingen arrangement publisert</h3>
-          <p class="mt-2 text-gray-500">Arrangement fra Strapi vises her når de er lagt inn.</p>
+          <p class="mt-2 text-gray-500">Arrangement vises her når de er lagt inn.</p>
         </div>
       )}
     </div>

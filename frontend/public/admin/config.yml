@@ -1,0 +1,62 @@
+backend:
+  name: github
+  repo: Bjornadal/rana-sykkelklubb
+  branch: main
+
+# Where uploaded images will be saved and referenced
+media_folder: "frontend/public/images/uploads"
+public_folder: "/images/uploads"
+
+# Display settings
+locale: "nb"
+site_url: "https://bjornadal.github.io/rana-sykkelklubb"
+display_url: "https://bjornadal.github.io/rana-sykkelklubb"
+
+collections:
+  - name: "nyheter"
+    label: "Nyheter"
+    label_singular: "Nyhetsartikkel"
+    folder: "frontend/src/content/nyheter"
+    create: true
+    slug: "{{slug}}"
+    format: "frontmatter"
+    extension: "md"
+    fields:
+      - { label: "Tittel", name: "title", widget: "string" }
+      - { label: "Publisert dato", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "DD.MM.YYYY", time_format: false }
+      - { label: "Ingress / Kort sammendrag", name: "excerpt", widget: "text" }
+      - { label: "Hovedbilde", name: "image", widget: "image", required: false }
+      - { label: "Innhold", name: "body", widget: "markdown" }
+
+  - name: "arrangement"
+    label: "Arrangement og ritt"
+    label_singular: "Arrangement"
+    folder: "frontend/src/content/arrangement"
+    create: true
+    slug: "{{slug}}"
+    format: "frontmatter"
+    extension: "md"
+    fields:
+      - { label: "Tittel", name: "title", widget: "string" }
+      - { label: "Dato for arrangement", name: "date", widget: "datetime", required: false, format: "YYYY-MM-DD", date_format: "DD.MM.YYYY", time_format: false }
+      - { label: "Sted", name: "location", widget: "string", required: false }
+      - { label: "Kort beskrivelse", name: "excerpt", widget: "text", required: false }
+      - { label: "Bilde", name: "image", widget: "image", required: false }
+      - { label: "Innhold", name: "body", widget: "markdown" }
+
+  - name: "aktiviteter"
+    label: "Faste treningstider"
+    label_singular: "Treningstid"
+    folder: "frontend/src/content/aktiviteter"
+    create: true
+    slug: "{{fields.activity | slugify}}"
+    format: "json"
+    extension: "json"
+    fields:
+      - { label: "Aktivitet", name: "activity", widget: "string" }
+      - { label: "Ukedag", name: "day", widget: "select", options: ["Mandag", "Tirsdag", "Onsdag", "Torsdag", "Fredag", "Lørdag", "Søndag"] }
+      - { label: "Tidspunkt (f.eks. 18:30)", name: "time", widget: "string" }
+      - { label: "Oppmøtested / Lokasjon", name: "location", widget: "string", required: false }
+      - { label: "Type", name: "type", widget: "select", options: ["Inne", "Ute"] }
+      - { label: "Beskrivelse", name: "description", widget: "text", required: false }
+      - { label: "Sorteringsrekkefølge", name: "order", widget: "number", required: false, default: 0, value_type: "int" }

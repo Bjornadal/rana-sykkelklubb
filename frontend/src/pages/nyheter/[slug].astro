@@ -1,30 +1,27 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import { fetchNews, fetchNewsBySlug } from "../../lib/strapi";
+import { getCollection, render } from "astro:content";
 import { url } from "../../lib/url";
 
 export async function getStaticPaths() {
-  const news = await fetchNews();
+  const news = await getCollection("nyheter");
   return news.map((article) => ({
-    params: { slug: article.slug },
+    params: { slug: article.id.replace(/\.[^/.]+$/, "") },
+    props: { article },
   }));
 }
 
-const { slug } = Astro.params;
-const article = await fetchNewsBySlug(slug!);
+const { article } = Astro.props;
+const { Content } = await render(article);
 
-if (!article) {
-  return Astro.redirect(url("/nyheter"));
-}
-
-const formattedDate = new Date(article.date).toLocaleDateString("nb-NO", {
+const formattedDate = new Date(article.data.date).toLocaleDateString("nb-NO", {
   day: "numeric",
   month: "long",
   year: "numeric",
 });
 ---
 
-<Layout title={article.title} description={article.excerpt}>
+<Layout title={article.data.title} description={article.data.excerpt}>
   <article>
     <header class="bg-gradient-to-br from-dark via-dark-light to-primary-900 py-20 sm:py-28">
       <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
@@ -37,20 +34,20 @@ const formattedDate = new Date(article.date).toLocaleDateString("nb-NO", {
           </svg>
           Tilbake til nyheter
         </a>
-        <time datetime={article.date} class="mt-6 block text-sm font-medium text-primary-400 uppercase tracking-wide">
+        <time datetime={article.data.date.toISOString()} class="mt-6 block text-sm font-medium text-primary-400 uppercase tracking-wide">
           {formattedDate}
         </time>
         <h1 class="mt-2 text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl">
-          {article.title}
+          {article.data.title}
         </h1>
       </div>
     </header>
 
-    {article.image && (
+    {article.data.image && (
       <div class="mx-auto -mt-8 max-w-4xl px-4 sm:px-6 lg:px-8">
         <img
-          src={article.image}
-          alt={article.title}
+          src={url(article.data.image)}
+          alt={article.data.title}
           class="w-full rounded-2xl shadow-xl"
           loading="eager"
         />
@@ -58,7 +55,9 @@ const formattedDate = new Date(article.date).toLocaleDateString("nb-NO", {
     )}
 
     <div class="py-12 sm:py-16">
-      <div class="prose prose-lg mx-auto max-w-4xl px-4 sm:px-6 lg:px-8" set:html={article.content} />
+      <div class="prose prose-lg mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <Content />
+      </div>
     </div>
   </article>
 </Layout>
