@@ -225,28 +225,24 @@ const teamMembers = [
   description="Rana Bike Park – En ny arena for mestring, bevegelsesglede og fellesskap på Skillevollen i Mo i Rana."
 >
   <!-- Sub Navigation Bar -->
-  <div class="sticky top-16 z-40 border-b border-gray-200 bg-white/95 backdrop-blur-md shadow-xs">
-    <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-2.5 sm:px-6 lg:px-8">
-      <a href="#topp" class="flex items-center gap-2 text-base font-bold uppercase tracking-wide text-dark hover:text-primary-600">
-        <span class="h-4 w-1.5 rounded-full bg-primary-500"></span>
+  <div class="sticky top-[73px] sm:top-[80px] z-40 border-b border-gray-200 bg-white/95 backdrop-blur-md shadow-xs transition-all">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 sm:px-6 lg:px-8">
+      <a href="#topp" class="hidden sm:flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-dark hover:text-primary-600 shrink-0 mr-4">
+        <span class="h-3.5 w-1.5 rounded-full bg-primary-500"></span>
         <span>Rana Bike Park</span>
       </a>
 
-      <!-- Quick-jump links -->
-      <nav class="hidden md:flex items-center gap-1 sm:gap-2 text-xs font-bold uppercase tracking-wider text-gray-600">
-        <a href="#hvorfor" class="rounded-lg px-2.5 py-1.5 hover:bg-gray-100 hover:text-primary-600 transition-colors">Hvorfor</a>
-        <a href="#kart" class="rounded-lg px-2.5 py-1.5 hover:bg-gray-100 hover:text-primary-600 transition-colors">Areal</a>
-        <a href="#konsept" class="rounded-lg px-2.5 py-1.5 hover:bg-gray-100 hover:text-primary-600 transition-colors">Parken</a>
-        <a href="#faser" class="rounded-lg px-2.5 py-1.5 hover:bg-gray-100 hover:text-primary-600 transition-colors">Faser</a>
-        <a href="#finansiering" class="rounded-lg px-2.5 py-1.5 hover:bg-gray-100 hover:text-primary-600 transition-colors">Finansiering</a>
-        <a href="#prosjektgruppe" class="rounded-lg px-2.5 py-1.5 hover:bg-gray-100 hover:text-primary-600 transition-colors">Team</a>
-        <a href="#sponsing" class="rounded-lg bg-primary-500 px-3 py-1.5 text-white shadow-xs hover:bg-primary-600 transition-colors">Bli sponsor</a>
+      <!-- Horizontal scrollable pill navigation on all screen sizes -->
+      <nav class="flex items-center gap-1 sm:gap-2 overflow-x-auto py-1 w-full sm:w-auto justify-start sm:justify-end text-xs font-bold uppercase tracking-wider text-gray-600 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden" aria-label="Rana Bike Park hurtignavigasjon">
+        <a href="#hvorfor" class="subnav-link whitespace-nowrap rounded-lg px-2.5 py-1.5 hover:bg-gray-100 hover:text-primary-600 transition-colors">Hvorfor</a>
+        <a href="#kart" class="subnav-link whitespace-nowrap rounded-lg px-2.5 py-1.5 hover:bg-gray-100 hover:text-primary-600 transition-colors">Areal</a>
+        <a href="#konsept" class="subnav-link whitespace-nowrap rounded-lg px-2.5 py-1.5 hover:bg-gray-100 hover:text-primary-600 transition-colors">Parken</a>
+        <a href="#faser" class="subnav-link whitespace-nowrap rounded-lg px-2.5 py-1.5 hover:bg-gray-100 hover:text-primary-600 transition-colors">Faser</a>
+        <a href="#tidslinje" class="subnav-link whitespace-nowrap rounded-lg px-2.5 py-1.5 hover:bg-gray-100 hover:text-primary-600 transition-colors">Tidslinje</a>
+        <a href="#finansiering" class="subnav-link whitespace-nowrap rounded-lg px-2.5 py-1.5 hover:bg-gray-100 hover:text-primary-600 transition-colors">Finansiering</a>
+        <a href="#prosjektgruppe" class="subnav-link whitespace-nowrap rounded-lg px-2.5 py-1.5 hover:bg-gray-100 hover:text-primary-600 transition-colors">Team</a>
+        <a href="#sponsing" class="whitespace-nowrap rounded-lg bg-primary-500 px-3 py-1.5 text-white shadow-xs hover:bg-primary-600 transition-colors">Bli sponsor</a>
       </nav>
-
-      <!-- Mobile dropdown / simple jump -->
-      <div class="flex md:hidden">
-        <a href="#sponsing" class="rounded-lg bg-primary-500 px-3 py-1 text-xs font-bold text-white uppercase tracking-wider">Bli sponsor</a>
-      </div>
     </div>
   </div>
 
@@ -922,10 +918,57 @@ const teamMembers = [
     });
   }
 
-  // Initialize on load and on Astro page transitions
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initConceptFilter);
-  } else {
+  // ScrollSpy for highlighting active subnav section
+  function initScrollSpy() {
+    const navLinks = document.querySelectorAll(".subnav-link");
+    const sections = Array.from(navLinks)
+      .map((link) => {
+        const href = link.getAttribute("href");
+        if (href && href.startsWith("#")) {
+          return document.querySelector(href);
+        }
+        return null;
+      })
+      .filter(Boolean) as HTMLElement[];
+
+    if (!("IntersectionObserver" in window)) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute("id");
+            navLinks.forEach((link) => {
+              const isMatch = link.getAttribute("href") === `#${id}`;
+              if (isMatch) {
+                link.classList.add("bg-primary-50", "text-primary-700", "font-extrabold");
+                link.classList.remove("text-gray-600");
+              } else {
+                link.classList.remove("bg-primary-50", "text-primary-700", "font-extrabold");
+                link.classList.add("text-gray-600");
+              }
+            });
+          }
+        });
+      },
+      {
+        rootMargin: "-15% 0px -70% 0px",
+        threshold: 0,
+      }
+    );
+
+    sections.forEach((sec) => observer.observe(sec));
+  }
+
+  // Initialize on load
+  function init() {
     initConceptFilter();
+    initScrollSpy();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
   }
 </script>
