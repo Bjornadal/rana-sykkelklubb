@@ -3,8 +3,8 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  site: 'https://bjornadal.github.io',
-  base: '/rana-sykkelklubb',
+  site: 'https://ranasykkelklubb.no',
+  base: '/',
   vite: {
     plugins: [tailwindcss()],
   },

@@ -11,8 +11,8 @@ public_folder: "/images/uploads"
 
 # Display settings
 locale: "nb"
-site_url: "https://bjornadal.github.io/rana-sykkelklubb"
-display_url: "https://bjornadal.github.io/rana-sykkelklubb"
+site_url: "https://ranasykkelklubb.no"
+display_url: "https://ranasykkelklubb.no"
 
 collections:
   - name: "nyheter"
