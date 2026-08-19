@@ -224,25 +224,34 @@ const teamMembers = [
   title="Rana Bike Park"
   description="Rana Bike Park – En ny arena for mestring, bevegelsesglede og fellesskap på Skillevollen i Mo i Rana."
 >
-  <!-- Sub Navigation Bar -->
-  <div class="sticky top-[73px] sm:top-[80px] z-40 border-b border-gray-200 bg-white/95 backdrop-blur-md shadow-xs transition-all">
+  <!-- Sub Navigation Bar (Dark Glassmorphism Dock) -->
+  <div class="sticky top-[73px] sm:top-[80px] z-40 border-b border-slate-800/80 bg-slate-950/90 backdrop-blur-md text-white shadow-lg transition-all">
     <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 sm:px-6 lg:px-8">
-      <a href="#topp" class="hidden sm:flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-dark hover:text-primary-600 shrink-0 mr-4">
-        <span class="h-3.5 w-1.5 rounded-full bg-primary-500"></span>
-        <span>Rana Bike Park</span>
+      <!-- Left Brand / Title -->
+      <a href="#topp" class="hidden lg:flex items-center gap-2.5 text-sm font-bold uppercase tracking-wider text-white hover:text-primary-400 shrink-0 w-44 group transition-colors">
+        <span class="relative flex h-2.5 w-2.5">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary-500"></span>
+        </span>
+        <span class="group-hover:text-primary-400">Rana Bike Park</span>
       </a>
 
-      <!-- Horizontal scrollable pill navigation on all screen sizes -->
-      <nav class="flex items-center gap-1 sm:gap-2 overflow-x-auto py-1 w-full sm:w-auto justify-start sm:justify-end text-xs font-bold uppercase tracking-wider text-gray-600 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden" aria-label="Rana Bike Park hurtignavigasjon">
-        <a href="#hvorfor" class="subnav-link whitespace-nowrap rounded-lg px-2.5 py-1.5 hover:bg-gray-100 hover:text-primary-600 transition-colors">Hvorfor</a>
-        <a href="#kart" class="subnav-link whitespace-nowrap rounded-lg px-2.5 py-1.5 hover:bg-gray-100 hover:text-primary-600 transition-colors">Areal</a>
-        <a href="#konsept" class="subnav-link whitespace-nowrap rounded-lg px-2.5 py-1.5 hover:bg-gray-100 hover:text-primary-600 transition-colors">Parken</a>
-        <a href="#faser" class="subnav-link whitespace-nowrap rounded-lg px-2.5 py-1.5 hover:bg-gray-100 hover:text-primary-600 transition-colors">Faser</a>
-        <a href="#tidslinje" class="subnav-link whitespace-nowrap rounded-lg px-2.5 py-1.5 hover:bg-gray-100 hover:text-primary-600 transition-colors">Tidslinje</a>
-        <a href="#finansiering" class="subnav-link whitespace-nowrap rounded-lg px-2.5 py-1.5 hover:bg-gray-100 hover:text-primary-600 transition-colors">Finansiering</a>
-        <a href="#prosjektgruppe" class="subnav-link whitespace-nowrap rounded-lg px-2.5 py-1.5 hover:bg-gray-100 hover:text-primary-600 transition-colors">Prosjektgruppe</a>
-        <a href="#sponsing" class="whitespace-nowrap rounded-lg bg-primary-500 px-3 py-1.5 text-white shadow-xs hover:bg-primary-600 transition-colors">Bli sponsor</a>
+      <!-- Center: Centered navigation links -->
+      <nav class="flex flex-1 items-center gap-1 sm:gap-1.5 overflow-x-auto py-1 w-full justify-start sm:justify-center text-xs font-semibold uppercase tracking-wider text-slate-300 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden" aria-label="Rana Bike Park hurtignavigasjon">
+        <a href="#hvorfor" class="subnav-link whitespace-nowrap rounded-lg px-3 py-1.5 hover:bg-white/10 hover:text-white transition-all">Hvorfor</a>
+        <a href="#kart" class="subnav-link whitespace-nowrap rounded-lg px-3 py-1.5 hover:bg-white/10 hover:text-white transition-all">Areal</a>
+        <a href="#konsept" class="subnav-link whitespace-nowrap rounded-lg px-3 py-1.5 hover:bg-white/10 hover:text-white transition-all">Parken</a>
+        <a href="#faser" class="subnav-link whitespace-nowrap rounded-lg px-3 py-1.5 hover:bg-white/10 hover:text-white transition-all">Faser</a>
+        <a href="#tidslinje" class="subnav-link whitespace-nowrap rounded-lg px-3 py-1.5 hover:bg-white/10 hover:text-white transition-all">Tidslinje</a>
+        <a href="#finansiering" class="subnav-link whitespace-nowrap rounded-lg px-3 py-1.5 hover:bg-white/10 hover:text-white transition-all">Finansiering</a>
+        <a href="#prosjektgruppe" class="subnav-link whitespace-nowrap rounded-lg px-3 py-1.5 hover:bg-white/10 hover:text-white transition-all">Prosjektgruppe</a>
+        <a href="#sponsing" class="lg:hidden whitespace-nowrap rounded-lg bg-primary-500 px-3.5 py-1.5 text-xs font-bold text-white shadow-sm hover:bg-primary-600 transition-all ml-1">Bli sponsor</a>
       </nav>
+
+      <!-- Right Sponsor CTA (balances the left brand on desktop) -->
+      <div class="hidden lg:flex items-center justify-end shrink-0 w-44">
+        <a href="#sponsing" class="whitespace-nowrap rounded-lg bg-primary-500 px-3.5 py-1.5 text-xs font-bold text-white shadow-sm hover:bg-primary-600 transition-all hover:scale-105">Bli sponsor</a>
+      </div>
     </div>
   </div>
 
@@ -954,11 +963,11 @@ const teamMembers = [
             navLinks.forEach((link) => {
               const isMatch = link.getAttribute("href") === `#${id}`;
               if (isMatch) {
-                link.classList.add("bg-primary-50", "text-primary-700", "font-extrabold");
-                link.classList.remove("text-gray-600");
+                link.classList.add("bg-white/20", "text-white", "font-extrabold", "ring-1", "ring-white/25");
+                link.classList.remove("text-slate-300");
               } else {
-                link.classList.remove("bg-primary-50", "text-primary-700", "font-extrabold");
-                link.classList.add("text-gray-600");
+                link.classList.remove("bg-white/20", "text-white", "font-extrabold", "ring-1", "ring-white/25");
+                link.classList.add("text-slate-300");
               }
             });
           }
