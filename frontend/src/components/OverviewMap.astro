@@ -1,0 +1,266 @@
+---
+import { routeTracks } from "../lib/routeTracks";
+import { url } from "../lib/url";
+
+const allTracks = Object.values(routeTracks)
+  .filter((t) => t.discipline === "Terreng / Sti")
+  .map((t) => ({
+    ...t,
+    routeUrl: url(`/ruter/${t.slug}`),
+  }));
+---
+
+<div class="relative w-full overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-xl">
+  <!-- Map Header Bar -->
+  <div class="flex flex-wrap items-center justify-between gap-3 border-b border-gray-100 bg-gray-50/80 px-6 py-4">
+    <div class="flex items-center gap-3">
+      <span class="flex h-3 w-3 relative">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+      </span>
+      <h3 class="text-sm font-extrabold uppercase tracking-wider text-dark">
+        Interaktivt Stikart – Mo i Rana &amp; Omegn
+      </h3>
+    </div>
+
+    <!-- Map Controls -->
+    <div class="flex flex-wrap items-center gap-2">
+      <button
+        type="button"
+        id="overview-topo-btn"
+        class="rounded-xl border border-gray-200 bg-white px-3 py-1.5 text-xs font-bold text-gray-700 shadow-2xs hover:bg-gray-50 transition-colors"
+      >
+        Topografisk kart
+      </button>
+      <button
+        type="button"
+        id="overview-osm-btn"
+        class="rounded-xl border border-primary-300 bg-primary-50 px-3 py-1.5 text-xs font-bold text-primary-700 shadow-2xs hover:bg-primary-100 transition-colors"
+      >
+        Standard kart
+      </button>
+      <button
+        type="button"
+        id="overview-reset-bounds"
+        class="rounded-xl border border-gray-200 bg-white px-3 py-1.5 text-xs font-bold text-gray-700 shadow-2xs hover:bg-gray-50 transition-colors"
+      >
+        ⛶ Vis alle stier
+      </button>
+    </div>
+  </div>
+
+  <!-- Leaflet Map Container -->
+  <div
+    id="overview-map"
+    class="h-[420px] sm:h-[500px] w-full z-10"
+    data-tracks={JSON.stringify(allTracks)}
+  ></div>
+
+  <!-- Map Legend -->
+  <div class="flex flex-wrap items-center justify-between gap-4 border-t border-gray-100 bg-white px-6 py-3 text-xs">
+    <div class="flex flex-wrap items-center gap-5">
+      <span class="flex items-center gap-2 font-bold text-gray-700">
+        <span class="inline-block h-3.5 w-6 rounded-full bg-green-600"></span>
+        🏔️ Terreng &amp; Sti ({allTracks.length} stier med GPX)
+      </span>
+    </div>
+    <span class="text-xs text-gray-400">© OpenStreetMap &amp; OpenTopoMap</span>
+  </div>
+</div>
+
+<script>
+  import L from "leaflet";
+  import "leaflet/dist/leaflet.css";
+
+  function initOverviewMap() {
+    const mapElement = document.getElementById("overview-map");
+    if (!mapElement) return;
+
+    const rawTracks = mapElement.getAttribute("data-tracks");
+    if (!rawTracks) return;
+
+    let tracks = [];
+    try {
+      tracks = JSON.parse(rawTracks);
+    } catch (e) {
+      console.error("Could not parse overview map tracks", e);
+      return;
+    }
+
+    // Fix default marker icon issues
+    delete (L.Icon.Default.prototype as any)._getIconUrl;
+    L.Icon.Default.mergeOptions({
+      iconRetinaUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png",
+      iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
+      shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
+    });
+
+    // Center on Mo i Rana
+    const moCenter: [number, number] = [66.3125, 14.1428];
+
+    const map = L.map("overview-map", {
+      center: moCenter,
+      zoom: 10,
+      scrollWheelZoom: false,
+    });
+
+    // Tile Layers
+    const osmLayer = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 18,
+      attribution: "&copy; OpenStreetMap",
+    }).addTo(map);
+
+    const topoLayer = L.tileLayer("https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png", {
+      maxZoom: 17,
+      attribution: "&copy; OpenTopoMap",
+    });
+
+    let currentLayer = osmLayer;
+
+    document.getElementById("overview-topo-btn")?.addEventListener("click", (e) => {
+      if (currentLayer !== topoLayer) {
+        map.removeLayer(osmLayer);
+        topoLayer.addTo(map);
+        currentLayer = topoLayer;
+        (e.target as HTMLElement).classList.add("bg-primary-50", "text-primary-700", "border-primary-300");
+        document.getElementById("overview-osm-btn")?.classList.remove("bg-primary-50", "text-primary-700", "border-primary-300");
+      }
+    });
+
+    document.getElementById("overview-osm-btn")?.addEventListener("click", (e) => {
+      if (currentLayer !== osmLayer) {
+        map.removeLayer(topoLayer);
+        osmLayer.addTo(map);
+        currentLayer = osmLayer;
+        (e.target as HTMLElement).classList.add("bg-primary-50", "text-primary-700", "border-primary-300");
+        document.getElementById("overview-topo-btn")?.classList.remove("bg-primary-50", "text-primary-700", "border-primary-300");
+      }
+    });
+
+    const routePolylines: { [slug: string]: { polyline: L.Polyline; border: L.Polyline; marker: L.Marker; discipline: string } } = {};
+    const allBounds = L.latLngBounds([]);
+
+    // Custom Start Pin
+    function createPin(color: string, label: string) {
+      return L.divIcon({
+        className: "overview-map-pin",
+        html: `<div style="background-color: ${color}; width: 24px; height: 24px; border-radius: 50%; border: 2.5px solid white; box-shadow: 0 2px 6px rgba(0,0,0,0.35); display: flex; align-items: center; justify-content: center; color: white; font-weight: 800; font-size: 10px;">${label}</div>`,
+        iconSize: [24, 24],
+        iconAnchor: [12, 12],
+        popupAnchor: [0, -12],
+      });
+    }
+
+    tracks.forEach((track: any) => {
+      if (!track.coordinates || track.coordinates.length === 0) return;
+
+      const coords = track.coordinates;
+      coords.forEach((pt: [number, number]) => allBounds.extend(pt));
+
+      let trackColor = track.color || "#d97706";
+      if (track.discipline === "Grus / Gravel") trackColor = "#d97706";
+      else if (track.discipline === "Terreng / Sti") trackColor = "#16a34a";
+
+      // Polyline casing
+      const border = L.polyline(coords, {
+        color: "#0f172a",
+        weight: 6,
+        opacity: 0.4,
+        lineCap: "round",
+        lineJoin: "round",
+      }).addTo(map);
+
+      // Polyline main
+      const polyline = L.polyline(coords, {
+        color: trackColor,
+        weight: 4,
+        opacity: 0.9,
+        lineCap: "round",
+        lineJoin: "round",
+      }).addTo(map);
+
+      const popupHtml = `
+        <div style="min-width: 200px; padding: 4px;">
+          <div style="font-size: 10px; font-weight: 800; text-transform: uppercase; color: ${trackColor}; margin-bottom: 2px;">
+            ${track.discipline}
+          </div>
+          <strong style="font-size: 14px; font-weight: 800; color: #0f172a; display: block; line-height: 1.2; margin-bottom: 8px;">
+            ${track.title}
+          </strong>
+          <a href="${track.routeUrl}" style="display: inline-block; background-color: #e6361e; color: white; padding: 6px 12px; border-radius: 8px; font-size: 11px; font-weight: 700; text-transform: uppercase; text-decoration: none;">
+            Se rute &amp; last ned GPX &rarr;
+          </a>
+        </div>
+      `;
+
+      polyline.bindPopup(popupHtml);
+      border.bindPopup(popupHtml);
+
+      // Add Start Marker
+      const marker = L.marker(coords[0], { icon: createPin(trackColor, track.discipline === "Grus / Gravel" ? "🌾" : "🏔️") })
+        .bindPopup(popupHtml)
+        .addTo(map);
+
+      // Hover effects
+      polyline.on("mouseover", () => {
+        polyline.setStyle({ weight: 7, opacity: 1 });
+        border.setStyle({ weight: 9, opacity: 0.8 });
+      });
+
+      polyline.on("mouseout", () => {
+        polyline.setStyle({ weight: 4, opacity: 0.9 });
+        border.setStyle({ weight: 6, opacity: 0.4 });
+      });
+
+      routePolylines[track.slug] = { polyline, border, marker, discipline: track.discipline };
+    });
+
+    function applyMapFilter(filter: string) {
+      const filteredBounds = L.latLngBounds([]);
+
+      tracks.forEach((t: any) => {
+        const item = routePolylines[t.slug];
+        if (!item) return;
+
+        if (item.discipline === filter) {
+          item.polyline.setStyle({ opacity: 0.95, weight: 4.5 });
+          item.border.setStyle({ opacity: 0.4 });
+          item.marker.setOpacity(1);
+          t.coordinates.forEach((pt: [number, number]) => filteredBounds.extend(pt));
+        } else {
+          item.polyline.setStyle({ opacity: 0.05, weight: 2 });
+          item.border.setStyle({ opacity: 0.02 });
+          item.marker.setOpacity(0.1);
+        }
+      });
+
+      if (filteredBounds.isValid()) {
+        map.fitBounds(filteredBounds, { padding: [40, 40] });
+      }
+    }
+
+    // Default to Terreng / Sti
+    let currentMapFilter = "Terreng / Sti";
+    applyMapFilter(currentMapFilter);
+
+    // Reset button
+    document.getElementById("overview-reset-bounds")?.addEventListener("click", () => {
+      applyMapFilter(currentMapFilter);
+    });
+
+    // Listen to discipline toggle buttons from the page
+    const disciplineBtns = document.querySelectorAll(".discipline-btn");
+    disciplineBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        currentMapFilter = btn.getAttribute("data-filter-discipline") || "Terreng / Sti";
+        applyMapFilter(currentMapFilter);
+      });
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initOverviewMap);
+  } else {
+    initOverviewMap();
+  }
+</script>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="Rana Sykkelklubb - https://ranasykkelklubb.no" xmlns="http://www.topografix.com/GPX/1/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+  <metadata>
+    <name>Polarsirkelrunden (Dunderlandsdalen)</name>
+    <desc>Landevei fra Mo i Rana gjennom vakre Dunderlandsdalen mot Krokstrand og foten av Saltfjellet.</desc>
+    <author>
+      <name>Rana Sykkelklubb</name>
+    </author>
+  </metadata>
+  <wpt lat="66.3125" lon="14.1428">
+    <name>Start: Mo i Rana</name>
+    <ele>12</ele>
+  </wpt>
+  <wpt lat="66.5050" lon="14.8950">
+    <name>Vendepunkt: Krokstrand Kafe</name>
+    <ele>385</ele>
+  </wpt>
+  <trk>
+    <name>Polarsirkelrunden Dunderlandsdalen</name>
+    <type>Cycling - Road</type>
+    <trkseg>
+      <trkpt lat="66.3125" lon="14.1428"><ele>12</ele></trkpt>
+      <trkpt lat="66.3520" lon="14.2850"><ele>45</ele></trkpt>
+      <trkpt lat="66.4250" lon="14.4980"><ele>120</ele></trkpt>
+      <trkpt lat="66.4810" lon="14.7120"><ele>240</ele></trkpt>
+      <trkpt lat="66.5050" lon="14.8950"><ele>385</ele></trkpt>
+      <trkpt lat="66.4810" lon="14.7120"><ele>240</ele></trkpt>
+      <trkpt lat="66.4250" lon="14.4980"><ele>120</ele></trkpt>
+      <trkpt lat="66.3520" lon="14.2850"><ele>45</ele></trkpt>
+      <trkpt lat="66.3125" lon="14.1428"><ele>12</ele></trkpt>
+    </trkseg>
+  </trk>
+</gpx>

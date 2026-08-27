@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="Rana Sykkelklubb - https://ranasykkelklubb.no" xmlns="http://www.topografix.com/GPX/1/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+  <metadata>
+    <name>Båsmofjellet &amp; Munklia Stinettverk</name>
+    <desc>Singletrack, flytstier og klatringer i Skillevollen og Båsmofjellet med storslått utsikt.</desc>
+    <author>
+      <name>Rana Sykkelklubb</name>
+    </author>
+  </metadata>
+  <wpt lat="66.3275" lon="14.0720">
+    <name>Start: Skillevollen Idrettspark</name>
+    <ele>95</ele>
+  </wpt>
+  <wpt lat="66.3420" lon="14.0550">
+    <name>Båsmofjellet Utsiktspunkt</name>
+    <ele>465</ele>
+  </wpt>
+  <trk>
+    <name>Båsmofjellet og Munklia Stier</name>
+    <type>Cycling - Mountain</type>
+    <trkseg>
+      <trkpt lat="66.3275" lon="14.0720"><ele>95</ele></trkpt>
+      <trkpt lat="66.3310" lon="14.0680"><ele>160</ele></trkpt>
+      <trkpt lat="66.3360" lon="14.0610"><ele>280</ele></trkpt>
+      <trkpt lat="66.3420" lon="14.0550"><ele>465</ele></trkpt>
+      <trkpt lat="66.3460" lon="14.0480"><ele>510</ele></trkpt>
+      <trkpt lat="66.3410" lon="14.0390"><ele>440</ele></trkpt>
+      <trkpt lat="66.3350" lon="14.0450"><ele>320</ele></trkpt>
+      <trkpt lat="66.3290" lon="14.0580"><ele>190</ele></trkpt>
+      <trkpt lat="66.3275" lon="14.0720"><ele>95</ele></trkpt>
+    </trkseg>
+  </trk>
+</gpx>

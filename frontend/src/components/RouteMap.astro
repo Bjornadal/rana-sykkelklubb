@@ -1,0 +1,236 @@
+---
+import type { RouteTrackData } from "../lib/routeTracks";
+
+interface Props {
+  track: RouteTrackData;
+}
+
+const { track } = Astro.props;
+---
+
+<div class="relative w-full overflow-hidden rounded-2xl border border-gray-200 bg-gray-100 shadow-sm">
+  <!-- Map Header Bar -->
+  <div class="flex flex-wrap items-center justify-between gap-2 border-b border-gray-200 bg-white px-4 py-3 text-xs">
+    <div class="flex items-center gap-2">
+      <span class="inline-flex h-2.5 w-2.5 rounded-full bg-primary-500 animate-pulse"></span>
+      <span class="font-bold text-dark uppercase tracking-wider">Interaktivt GPS-kart</span>
+      <span class="text-gray-400">·</span>
+      <span class="text-gray-500 font-medium">{track.coordinates.length} sporpunkt</span>
+    </div>
+
+    <div class="flex items-center gap-2" id="map-controls">
+      <button
+        type="button"
+        id="btn-layer-topo"
+        class="rounded-lg border border-gray-200 bg-gray-50 px-2.5 py-1 text-[11px] font-bold text-gray-700 hover:bg-gray-100 transition-colors"
+      >
+        Topografisk kart
+      </button>
+      <button
+        type="button"
+        id="btn-layer-osm"
+        class="rounded-lg border border-primary-300 bg-primary-50 px-2.5 py-1 text-[11px] font-bold text-primary-700 hover:bg-primary-100 transition-colors"
+      >
+        Standard kart
+      </button>
+      <button
+        type="button"
+        id="btn-fit-bounds"
+        class="rounded-lg border border-gray-200 bg-gray-50 px-2.5 py-1 text-[11px] font-bold text-gray-700 hover:bg-gray-100 transition-colors"
+        title="Tilpass kartet til ruten"
+      >
+        ⛶ Nullstill visning
+      </button>
+    </div>
+  </div>
+
+  <!-- Map Container -->
+  <div
+    id="route-map"
+    class="h-[360px] sm:h-[440px] w-full z-10"
+    data-track={JSON.stringify(track)}
+  ></div>
+
+  <!-- Map Legend Footer -->
+  <div class="flex flex-wrap items-center justify-between gap-3 border-t border-gray-200 bg-gray-50/90 px-4 py-2.5 text-[11px] text-gray-600">
+    <div class="flex items-center gap-4">
+      <span class="flex items-center gap-1.5 font-medium">
+        <span class="inline-block h-3 w-3 rounded-full bg-emerald-500 border border-white shadow-2xs"></span>
+        Start
+      </span>
+      <span class="flex items-center gap-1.5 font-medium">
+        <span class="inline-block h-3 w-3 rounded-full bg-red-500 border border-white shadow-2xs"></span>
+        Mål / Vendepunkt
+      </span>
+      <span class="flex items-center gap-1.5 font-medium">
+        <span class="inline-block h-3 w-3 rounded-full bg-amber-500 border border-white shadow-2xs"></span>
+        Severdighet / Kafé
+      </span>
+    </div>
+    <span class="text-gray-400">© OpenStreetMap bidragsytere</span>
+  </div>
+</div>
+
+<script>
+  import L from "leaflet";
+  import "leaflet/dist/leaflet.css";
+
+  function initMap() {
+    const mapElement = document.getElementById("route-map");
+    if (!mapElement) return;
+
+    const rawData = mapElement.getAttribute("data-track");
+    if (!rawData) return;
+
+    let track;
+    try {
+      track = JSON.parse(rawData);
+    } catch (e) {
+      console.error("Could not parse route track JSON", e);
+      return;
+    }
+
+    if (!track.coordinates || track.coordinates.length === 0) return;
+
+    // Fix default marker icon issues with Vite / Leaflet
+    delete (L.Icon.Default.prototype as any)._getIconUrl;
+    L.Icon.Default.mergeOptions({
+      iconRetinaUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png",
+      iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
+      shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
+    });
+
+    const coords = track.coordinates;
+    const initialCenter = coords[0];
+
+    const map = L.map("route-map", {
+      center: initialCenter,
+      zoom: 11,
+      scrollWheelZoom: false,
+    });
+
+    // Base layers
+    const osmLayer = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 18,
+      attribution: "&copy; OpenStreetMap",
+    }).addTo(map);
+
+    const topoLayer = L.tileLayer("https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png", {
+      maxZoom: 17,
+      attribution: "&copy; OpenTopoMap",
+    });
+
+    let currentLayer = osmLayer;
+
+    // Layer buttons
+    document.getElementById("btn-layer-topo")?.addEventListener("click", (e) => {
+      if (currentLayer !== topoLayer) {
+        map.removeLayer(osmLayer);
+        topoLayer.addTo(map);
+        currentLayer = topoLayer;
+        (e.target as HTMLElement).classList.add("bg-primary-50", "text-primary-700", "border-primary-300");
+        (e.target as HTMLElement).classList.remove("bg-gray-50", "text-gray-700");
+        document.getElementById("btn-layer-osm")?.classList.remove("bg-primary-50", "text-primary-700", "border-primary-300");
+        document.getElementById("btn-layer-osm")?.classList.add("bg-gray-50", "text-gray-700");
+      }
+    });
+
+    document.getElementById("btn-layer-osm")?.addEventListener("click", (e) => {
+      if (currentLayer !== osmLayer) {
+        map.removeLayer(topoLayer);
+        osmLayer.addTo(map);
+        currentLayer = osmLayer;
+        (e.target as HTMLElement).classList.add("bg-primary-50", "text-primary-700", "border-primary-300");
+        (e.target as HTMLElement).classList.remove("bg-gray-50", "text-gray-700");
+        document.getElementById("btn-layer-topo")?.classList.remove("bg-primary-50", "text-primary-700", "border-primary-300");
+        document.getElementById("btn-layer-topo")?.classList.add("bg-gray-50", "text-gray-700");
+      }
+    });
+
+    // Draw route polyline with outer border for crisp contrast
+    const polylineBorder = L.polyline(coords, {
+      color: "#0f172a",
+      weight: 7,
+      opacity: 0.6,
+      lineCap: "round",
+      lineJoin: "round",
+    }).addTo(map);
+
+    const polyline = L.polyline(coords, {
+      color: track.color || "#e6361e",
+      weight: 5,
+      opacity: 0.95,
+      lineCap: "round",
+      lineJoin: "round",
+    }).addTo(map);
+
+    // Custom Icon Generator
+    function createCircleIcon(color: string, label: string) {
+      return L.divIcon({
+        className: "custom-map-icon",
+        html: `<div style="background-color: ${color}; width: 26px; height: 26px; border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.35); display: flex; align-items: center; justify-content: center; color: white; font-weight: 800; font-size: 11px;">${label}</div>`,
+        iconSize: [26, 26],
+        iconAnchor: [13, 13],
+        popupAnchor: [0, -14],
+      });
+    }
+
+    // Start marker
+    const startPoint = coords[0];
+    L.marker(startPoint, { icon: createCircleIcon("#10b981", "A") })
+      .bindPopup(`<strong class="text-sm font-bold text-gray-900">Start: ${track.title}</strong><br><span class="text-xs text-gray-600">Startposisjon for ruten</span>`)
+      .addTo(map);
+
+    // End / Turnaround marker
+    const endPoint = coords[coords.length - 1];
+    const isLoop = Math.abs(startPoint[0] - endPoint[0]) < 0.001 && Math.abs(startPoint[1] - endPoint[1]) < 0.001;
+
+    if (!isLoop) {
+      L.marker(endPoint, { icon: createCircleIcon("#ef4444", "B") })
+        .bindPopup(`<strong class="text-sm font-bold text-gray-900">Mål / Vendepunkt</strong>`)
+        .addTo(map);
+    }
+
+    // Waypoints
+    if (track.waypoints && track.waypoints.length > 0) {
+      track.waypoints.forEach((wp: any) => {
+        let color = "#f59e0b";
+        let symbol = "📍";
+        if (wp.type === "summit") {
+          color = "#6366f1";
+          symbol = "▲";
+        } else if (wp.type === "cafe") {
+          color = "#ec4899";
+          symbol = "☕";
+        } else if (wp.type === "viewpoint") {
+          color = "#0284c7";
+          symbol = "👁";
+        }
+
+        L.marker([wp.lat, wp.lng], { icon: createCircleIcon(color, symbol) })
+          .bindPopup(`
+            <div class="p-1">
+              <strong class="font-bold text-gray-900 text-sm">${wp.title}</strong>
+              <p class="text-xs text-gray-600 mt-1">${wp.desc}</p>
+            </div>
+          `)
+          .addTo(map);
+      });
+    }
+
+    // Auto-fit bounds
+    const bounds = polyline.getBounds();
+    map.fitBounds(bounds, { padding: [40, 40] });
+
+    // Reset bounds button
+    document.getElementById("btn-fit-bounds")?.addEventListener("click", () => {
+      map.fitBounds(bounds, { padding: [40, 40] });
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initMap);
+  } else {
+    initMap();
+  }
+</script>

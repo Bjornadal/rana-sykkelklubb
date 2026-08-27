@@ -6,6 +6,7 @@ const currentPath = Astro.url.pathname;
 const navLinks = [
   { href: "/om-klubben", label: "Om klubben" },
   { href: "/aktiviteter", label: "Aktiviteter" },
+  { href: "/ruter", label: "Ruter" },
   { href: "/sykkelpark", label: "Rana Bike Park" },
   { href: "/nyheter", label: "Nyheter" },
   { href: "/kontakt", label: "Kontakt" },
@@ -14,6 +15,9 @@ const navLinks = [
 function isActive(href: string): boolean {
   if (href === "/aktiviteter") {
     return currentPath.includes("/aktiviteter") || currentPath.includes("/arrangement");
+  }
+  if (href === "/ruter") {
+    return currentPath.includes("/ruter");
   }
   return currentPath.includes(href);
 }

@@ -1,0 +1,2525 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700;800&family=Roboto:wght@400;500;700&display=swap');
+
+/*
+  RANA BIKE PARK - Beaver Builder HTML module
+  All styling is scoped to .rsp-wrapper to avoid conflicts with WordPress/Beaver Builder.
+  If your site has a sticky header, change --rsp-sticky-top below (for example to 80px).
+*/
+.rsp-wrapper {
+  --rsp-primary-red: #ef432f;
+  --rsp-primary-red-hover: #d93625;
+  --rsp-secondary-blue: #075fb8;
+  --rsp-secondary-blue-dark: #06498d;
+  --rsp-forest: #17803d;
+  --rsp-forest-light: #eefaf2;
+  --rsp-dark: #0f172a;
+  --rsp-dark-soft: #1e293b;
+  --rsp-text: #1f2937;
+  --rsp-muted: #64748b;
+  --rsp-light: #f8fafc;
+  --rsp-white: #ffffff;
+  --rsp-border: #e2e8f0;
+  --rsp-amber: #d97706;
+  --rsp-heading: 'Barlow Semi Condensed', sans-serif;
+  --rsp-body: 'Roboto', sans-serif;
+  --rsp-radius-sm: 6px;
+  --rsp-radius-md: 12px;
+  --rsp-radius-lg: 18px;
+  --rsp-shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.06);
+  --rsp-shadow-md: 0 12px 28px rgba(15, 23, 42, 0.10);
+  --rsp-shadow-lg: 0 20px 45px rgba(15, 23, 42, 0.16);
+  --rsp-transition: 0.25s ease;
+  --rsp-sticky-top: 0px;
+
+  font-family: var(--rsp-body);
+  color: var(--rsp-text);
+  background: var(--rsp-light);
+  line-height: 1.65;
+  font-size: 17px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.rsp-wrapper,
+.rsp-wrapper * {
+  box-sizing: border-box;
+}
+
+.rsp-wrapper h1,
+.rsp-wrapper h2,
+.rsp-wrapper h3,
+.rsp-wrapper h4,
+.rsp-wrapper p,
+.rsp-wrapper ul {
+  margin-top: 0;
+}
+
+.rsp-wrapper h1,
+.rsp-wrapper h2,
+.rsp-wrapper h3,
+.rsp-wrapper h4 {
+  font-family: var(--rsp-heading) !important;
+  font-weight: 700 !important;
+  line-height: 1.12 !important;
+  letter-spacing: 0.3px !important;
+}
+
+.rsp-wrapper a {
+  text-decoration: none;
+}
+
+.rsp-wrapper img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.rsp-container {
+  width: min(1200px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+.rsp-section {
+  padding: 82px 0;
+  scroll-margin-top: 95px;
+}
+
+.rsp-section-white {
+  background: var(--rsp-white);
+}
+
+.rsp-section-dark {
+  background: var(--rsp-dark);
+  color: var(--rsp-white);
+}
+
+.rsp-section-head {
+  max-width: 780px;
+  margin: 0 auto 44px;
+  text-align: center;
+}
+
+.rsp-eyebrow {
+  display: inline-block;
+  margin-bottom: 10px;
+  color: var(--rsp-primary-red);
+  font-family: var(--rsp-heading);
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+}
+
+.rsp-section-title {
+  margin-bottom: 14px !important;
+  color: var(--rsp-dark);
+  font-size: clamp(2rem, 4vw, 2.7rem);
+  text-transform: uppercase;
+}
+
+.rsp-section-title::after {
+  content: '';
+  display: block;
+  width: 64px;
+  height: 4px;
+  margin: 16px auto 0;
+  border-radius: 99px;
+  background: var(--rsp-primary-red);
+}
+
+.rsp-section-subtitle {
+  margin-bottom: 0;
+  color: var(--rsp-muted);
+  font-size: 1.05rem;
+}
+
+/* Internal sticky navigation */
+.rsp-nav {
+  position: sticky;
+  top: var(--rsp-sticky-top);
+  z-index: 40;
+  background: rgba(255, 255, 255, 0.97);
+  border-bottom: 1px solid var(--rsp-border);
+  box-shadow: 0 5px 16px rgba(15, 23, 42, 0.06);
+  backdrop-filter: blur(10px);
+}
+
+.rsp-nav-inner {
+  min-height: 66px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.rsp-brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  min-width: max-content;
+  color: var(--rsp-dark) !important;
+}
+
+.rsp-brand-mark {
+  width: 11px;
+  height: 34px;
+  border-radius: 3px;
+  background: var(--rsp-primary-red);
+}
+
+.rsp-brand-text {
+  font-family: var(--rsp-heading);
+  font-size: 1.35rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+}
+
+.rsp-nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 22px;
+}
+
+.rsp-nav-links a {
+  color: #475569;
+  font-family: var(--rsp-heading);
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.35px;
+  transition: color var(--rsp-transition);
+}
+
+.rsp-nav-links a:hover,
+.rsp-nav-links a:focus-visible {
+  color: var(--rsp-primary-red);
+}
+
+.rsp-nav-sponsor {
+  padding: 9px 14px;
+  border-radius: var(--rsp-radius-sm);
+  color: var(--rsp-white) !important;
+  background: var(--rsp-primary-red);
+}
+
+.rsp-nav-sponsor:hover,
+.rsp-nav-sponsor:focus-visible {
+  color: var(--rsp-white) !important;
+  background: var(--rsp-primary-red-hover);
+}
+
+.rsp-nav-toggle {
+  display: none;
+  width: 44px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--rsp-border);
+  border-radius: var(--rsp-radius-sm);
+  background: var(--rsp-white);
+  color: var(--rsp-dark);
+  cursor: pointer;
+  font-size: 1.35rem;
+}
+
+/* Hero */
+.rsp-hero {
+  position: relative;
+  isolation: isolate;
+  min-height: 610px;
+  display: flex;
+  align-items: center;
+  color: var(--rsp-white);
+  background:
+    linear-gradient(105deg, rgba(15, 23, 42, 0.96) 0%, rgba(15, 23, 42, 0.88) 45%, rgba(7, 95, 184, 0.72) 100%),
+    url('https://ranasykkelklubb.no/wp-content/uploads/2025/07/IMG_4079-1-1030x1030.jpg') center 43% / cover no-repeat;
+}
+
+.rsp-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, transparent 65%, rgba(15, 23, 42, 0.55));
+}
+
+.rsp-hero-content {
+  max-width: 790px;
+  padding: 92px 0 115px;
+}
+
+.rsp-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: var(--rsp-primary-red);
+  color: var(--rsp-white);
+  font-family: var(--rsp-heading);
+  font-size: 0.9rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  box-shadow: var(--rsp-shadow-sm);
+}
+
+.rsp-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(255,255,255,.15);
+}
+
+.rsp-hero h1 {
+  margin-bottom: 22px !important;
+  color: var(--rsp-white) !important;
+  font-size: clamp(3rem, 7vw, 5.2rem);
+  font-weight: 800 !important;
+  text-transform: uppercase;
+  text-shadow: 0 3px 14px rgba(0,0,0,.28);
+}
+
+.rsp-hero-lead {
+  max-width: 760px;
+  margin-bottom: 0;
+  color: rgba(255,255,255,.9);
+  font-size: clamp(1.08rem, 2vw, 1.34rem);
+}
+
+.rsp-btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.rsp-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 12px 22px;
+  border: 0;
+  border-radius: var(--rsp-radius-sm);
+  font-family: var(--rsp-heading);
+  font-size: 1rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.45px;
+  cursor: pointer;
+  transition: transform var(--rsp-transition), background var(--rsp-transition), color var(--rsp-transition), box-shadow var(--rsp-transition);
+}
+
+.rsp-btn:hover,
+.rsp-btn:focus-visible {
+  transform: translateY(-2px);
+}
+
+.rsp-btn-primary {
+  color: var(--rsp-white) !important;
+  background: var(--rsp-primary-red);
+  box-shadow: 0 10px 24px rgba(239, 67, 47, .25);
+}
+
+.rsp-btn-primary:hover,
+.rsp-btn-primary:focus-visible {
+  color: var(--rsp-white) !important;
+  background: var(--rsp-primary-red-hover);
+}
+
+.rsp-btn-light {
+  color: var(--rsp-white) !important;
+  background: rgba(255,255,255,.10);
+  border: 1px solid rgba(255,255,255,.52);
+}
+
+.rsp-btn-light:hover,
+.rsp-btn-light:focus-visible {
+  color: var(--rsp-dark) !important;
+  background: var(--rsp-white);
+}
+
+/* Key metrics */
+.rsp-metrics-wrap {
+  position: relative;
+  z-index: 3;
+  margin-top: -62px;
+}
+
+.rsp-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  overflow: hidden;
+  border: 1px solid var(--rsp-border);
+  border-radius: var(--rsp-radius-lg);
+  background: var(--rsp-white);
+  box-shadow: var(--rsp-shadow-lg);
+}
+
+.rsp-metric {
+  position: relative;
+  padding: 28px 25px 25px;
+}
+
+.rsp-metric + .rsp-metric {
+  border-left: 1px solid var(--rsp-border);
+}
+
+.rsp-metric::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 24px;
+  width: 54px;
+  height: 4px;
+  border-radius: 0 0 99px 99px;
+  background: var(--rsp-secondary-blue);
+}
+
+.rsp-metric:nth-child(1)::before { background: var(--rsp-forest); }
+.rsp-metric:nth-child(2)::before { background: var(--rsp-primary-red); }
+.rsp-metric:nth-child(3)::before { background: var(--rsp-secondary-blue); }
+.rsp-metric:nth-child(4)::before { background: var(--rsp-amber); }
+
+.rsp-metric-label {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--rsp-muted);
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.65px;
+}
+
+.rsp-metric-value {
+  display: block;
+  color: var(--rsp-dark);
+  font-family: var(--rsp-heading);
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+  font-weight: 800;
+  line-height: 1.08;
+}
+
+.rsp-metric-note {
+  display: block;
+  margin-top: 5px;
+  color: var(--rsp-muted);
+  font-size: 0.78rem;
+}
+
+/* Value cards */
+.rsp-value-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.rsp-value-card {
+  padding: 30px 28px;
+  border: 1px solid var(--rsp-border);
+  border-top: 4px solid var(--rsp-secondary-blue);
+  border-radius: var(--rsp-radius-md);
+  background: var(--rsp-white);
+  box-shadow: var(--rsp-shadow-sm);
+  transition: transform var(--rsp-transition), box-shadow var(--rsp-transition);
+}
+
+.rsp-value-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--rsp-shadow-md);
+}
+
+.rsp-value-icon {
+  width: 54px;
+  height: 54px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 18px;
+  border-radius: 50%;
+  background: #edf6ff;
+  font-size: 1.5rem;
+}
+
+.rsp-value-card h3 {
+  margin-bottom: 10px !important;
+  color: var(--rsp-dark);
+  font-size: 1.35rem;
+  text-transform: uppercase;
+}
+
+.rsp-value-card p {
+  margin-bottom: 0;
+  color: var(--rsp-muted);
+  font-size: 0.95rem;
+}
+
+/* Map */
+.rsp-map-card {
+  max-width: 980px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: var(--rsp-radius-lg);
+  background: var(--rsp-white);
+  border: 1px solid var(--rsp-border);
+  box-shadow: var(--rsp-shadow-md);
+}
+
+.rsp-map-link {
+  display: block;
+  overflow: hidden;
+}
+
+.rsp-map-link img {
+  width: 100%;
+  transition: transform 0.4s ease;
+}
+
+.rsp-map-link:hover img,
+.rsp-map-link:focus-visible img {
+  transform: scale(1.012);
+}
+
+.rsp-map-caption {
+  padding: 16px 22px;
+  margin: 0;
+  color: var(--rsp-muted);
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+
+/* Areal- og bruksrettsstatus */
+.rsp-land-status {
+  max-width: 980px;
+  margin: 24px auto 0;
+  padding: 25px 27px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 18px;
+  align-items: start;
+  border: 1px solid #bbf7d0;
+  border-left: 5px solid var(--rsp-forest);
+  border-radius: var(--rsp-radius-md);
+  background: linear-gradient(145deg, #f0fdf4 0%, #ffffff 100%);
+  box-shadow: var(--rsp-shadow-sm);
+}
+
+.rsp-land-status-icon {
+  width: 50px;
+  height: 50px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #dcfce7;
+  color: var(--rsp-forest);
+  font-family: var(--rsp-heading);
+  font-size: 1.55rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.rsp-land-status-kicker {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--rsp-forest);
+  font-family: var(--rsp-heading);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.9px;
+  text-transform: uppercase;
+}
+
+.rsp-land-status h3 {
+  margin-bottom: 9px !important;
+  color: var(--rsp-dark);
+  font-size: 1.45rem;
+  text-transform: uppercase;
+}
+
+.rsp-land-status p {
+  margin-bottom: 9px;
+  color: #475569;
+  font-size: 0.94rem;
+}
+
+.rsp-land-status p:last-of-type {
+  margin-bottom: 0;
+}
+
+.rsp-land-status-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.rsp-land-status-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 5px 10px;
+  border: 1px solid #bbf7d0;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #166534;
+  font-size: 0.77rem;
+  font-weight: 700;
+}
+
+/* Concept filters */
+.rsp-filter-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-bottom: 30px;
+}
+
+.rsp-filter-btn {
+  padding: 9px 16px;
+  border: 1px solid var(--rsp-border);
+  border-radius: 999px;
+  background: var(--rsp-white);
+  color: #475569;
+  font-family: var(--rsp-heading);
+  font-size: 0.87rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all var(--rsp-transition);
+}
+
+.rsp-filter-btn:hover,
+.rsp-filter-btn:focus-visible,
+.rsp-filter-btn.is-active {
+  border-color: var(--rsp-dark);
+  background: var(--rsp-dark);
+  color: var(--rsp-white);
+}
+
+.rsp-concept-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+
+.rsp-concept-card {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  border: 1px solid var(--rsp-border);
+  border-radius: var(--rsp-radius-md);
+  background: var(--rsp-white);
+  box-shadow: var(--rsp-shadow-sm);
+  transition: transform var(--rsp-transition), box-shadow var(--rsp-transition);
+}
+
+.rsp-concept-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--rsp-shadow-md);
+}
+
+.rsp-concept-media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #dbe4ee;
+}
+
+.rsp-concept-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .45s ease;
+}
+
+.rsp-concept-card:hover .rsp-concept-media img {
+  transform: scale(1.04);
+}
+
+.rsp-level-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 5px 8px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, .88);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .35px;
+}
+
+.rsp-concept-content {
+  padding: 22px;
+  flex: 1;
+}
+
+.rsp-concept-content h3 {
+  margin-bottom: 9px !important;
+  color: var(--rsp-dark);
+  font-size: 1.25rem;
+  text-transform: uppercase;
+}
+
+.rsp-concept-content p {
+  margin-bottom: 0;
+  color: var(--rsp-muted);
+  font-size: 0.91rem;
+}
+
+.rsp-hidden {
+  display: none !important;
+}
+
+/* Build phases */
+.rsp-phase-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.rsp-phase-card {
+  position: relative;
+  overflow: hidden;
+  padding: 30px 28px;
+  border-radius: var(--rsp-radius-md);
+  border: 1px solid var(--rsp-border);
+  background: var(--rsp-white);
+  box-shadow: var(--rsp-shadow-sm);
+}
+
+.rsp-phase-number {
+  display: inline-grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  margin-bottom: 18px;
+  border-radius: 50%;
+  background: var(--rsp-secondary-blue);
+  color: #fff;
+  font-family: var(--rsp-heading);
+  font-weight: 800;
+}
+
+.rsp-phase-card:first-child {
+  border-top: 4px solid var(--rsp-primary-red);
+}
+
+.rsp-phase-card:first-child .rsp-phase-number {
+  background: var(--rsp-primary-red);
+}
+
+.rsp-phase-card h3 {
+  margin-bottom: 10px !important;
+  color: var(--rsp-dark);
+  font-size: 1.35rem;
+  text-transform: uppercase;
+}
+
+.rsp-phase-card p {
+  margin-bottom: 12px;
+  color: var(--rsp-muted);
+  font-size: 0.93rem;
+}
+
+.rsp-phase-card ul {
+  margin-bottom: 0;
+  padding-left: 20px;
+  color: #475569;
+  font-size: 0.9rem;
+}
+
+.rsp-phase-card li + li {
+  margin-top: 5px;
+}
+
+/* Timeline */
+.rsp-timeline {
+  position: relative;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 8px 0;
+}
+
+.rsp-timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 25px;
+  width: 4px;
+  border-radius: 99px;
+  background: #dbe4ee;
+}
+
+.rsp-timeline-item {
+  position: relative;
+  padding-left: 70px;
+  margin-bottom: 34px;
+}
+
+.rsp-timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.rsp-timeline-badge {
+  position: absolute;
+  top: 3px;
+  left: 6px;
+  z-index: 2;
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #cbd5e1;
+  color: #475569;
+  font-family: var(--rsp-heading);
+  font-weight: 800;
+}
+
+.rsp-timeline-content {
+  padding: 22px 24px;
+  border: 1px solid var(--rsp-border);
+  border-radius: var(--rsp-radius-md);
+  background: rgba(255,255,255,.72);
+}
+
+.rsp-timeline-content h3 {
+  margin-bottom: 7px !important;
+  color: var(--rsp-dark);
+  font-size: 1.24rem;
+}
+
+.rsp-timeline-content p,
+.rsp-timeline-content ul {
+  margin-bottom: 0;
+  color: var(--rsp-muted);
+  font-size: 0.93rem;
+}
+
+.rsp-timeline-content ul {
+  margin-top: 10px;
+  padding-left: 20px;
+}
+
+.rsp-timeline-done .rsp-timeline-badge {
+  background: var(--rsp-forest);
+  color: var(--rsp-white);
+}
+
+.rsp-timeline-active .rsp-timeline-badge {
+  background: var(--rsp-primary-red);
+  color: var(--rsp-white);
+  box-shadow: 0 0 0 6px rgba(239,67,47,.14);
+}
+
+.rsp-timeline-active .rsp-timeline-content {
+  border: 2px solid rgba(239,67,47,.72);
+  background: var(--rsp-white);
+  box-shadow: var(--rsp-shadow-md);
+}
+
+.rsp-active-label {
+  display: inline-block;
+  margin-left: 7px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: #fee2e2;
+  color: #b91c1c;
+  font-family: var(--rsp-body);
+  font-size: 0.67rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+
+.rsp-timeline-future {
+  opacity: .78;
+}
+
+/* Finance */
+.rsp-finance-layout {
+  display: grid;
+  grid-template-columns: .9fr 1.35fr;
+  gap: 28px;
+  align-items: stretch;
+}
+
+.rsp-finance-highlight {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 38px 32px;
+  border-radius: var(--rsp-radius-lg);
+  background: linear-gradient(145deg, #0f5132, var(--rsp-forest));
+  color: var(--rsp-white);
+  box-shadow: var(--rsp-shadow-md);
+}
+
+.rsp-finance-highlight .rsp-finance-label {
+  color: rgba(255,255,255,.76);
+  font-size: .78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .7px;
+}
+
+.rsp-finance-highlight .rsp-finance-value {
+  margin: 7px 0 10px;
+  font-family: var(--rsp-heading);
+  font-size: clamp(3rem, 6vw, 4.6rem);
+  font-weight: 800;
+  line-height: 1;
+}
+
+.rsp-finance-highlight p {
+  margin-bottom: 0;
+  color: rgba(255,255,255,.9);
+  font-size: .96rem;
+}
+
+.rsp-finance-branding {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.rsp-finance-logo {
+  width: min(280px, 100%);
+  min-height: 105px;
+  margin: 0 auto 12px;
+  padding: 12px 18px;
+  border-radius: 12px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 5px 18px rgba(15, 23, 42, .16);
+}
+
+.rsp-finance-logo img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  max-height: 80px;
+  object-fit: contain;
+}
+
+.rsp-finance-source-logos {
+  width: min(430px, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.rsp-finance-source-logo {
+  min-width: 0;
+  height: 88px;
+  padding: 8px 10px;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, .13);
+}
+
+.rsp-finance-source-logo img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  max-height: 70px;
+  object-fit: contain;
+}
+
+/* Skjermdumpen av Sparebankstiftelsen har ekstra hvit luft rundt logoen. */
+.rsp-finance-source-logo--stiftelsen img {
+  width: 100%;
+  max-width: none;
+  max-height: none;
+}
+
+.rsp-finance-panel {
+  padding: 30px;
+  border: 1px solid var(--rsp-border);
+  border-radius: var(--rsp-radius-lg);
+  background: var(--rsp-white);
+  box-shadow: var(--rsp-shadow-sm);
+}
+
+.rsp-finance-panel h3 {
+  margin-bottom: 16px !important;
+  color: var(--rsp-dark);
+  font-size: 1.45rem;
+  text-transform: uppercase;
+}
+
+.rsp-finance-panel p {
+  color: #475569;
+}
+
+.rsp-finance-panel p:last-child {
+  margin-bottom: 0;
+}
+
+.rsp-finance-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.rsp-finance-item {
+  padding: 14px 15px;
+  border-radius: 9px;
+  background: var(--rsp-light);
+  border: 1px solid var(--rsp-border);
+  color: #475569;
+  font-size: .88rem;
+}
+
+.rsp-finance-item strong {
+  display: block;
+  margin-bottom: 2px;
+  color: var(--rsp-dark);
+}
+
+.rsp-finance-note {
+  padding: 14px 16px;
+  border-left: 4px solid var(--rsp-secondary-blue);
+  background: #eef6ff;
+  color: #23415f !important;
+  font-size: .9rem;
+}
+
+
+/* Finansieringsoversikt fase 1 */
+.rsp-funding-overview {
+  margin-bottom: 28px;
+  padding: 28px;
+  border: 1px solid var(--rsp-border);
+  border-radius: var(--rsp-radius-lg);
+  background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+  box-shadow: var(--rsp-shadow-sm);
+}
+
+.rsp-funding-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.rsp-funding-stat {
+  padding: 20px 18px;
+  border: 1px solid var(--rsp-border);
+  border-radius: 12px;
+  background: var(--rsp-white);
+}
+
+.rsp-funding-stat-label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--rsp-muted);
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.rsp-funding-stat-value {
+  display: block;
+  font-family: var(--rsp-heading);
+  font-size: clamp(1.8rem, 4vw, 2.65rem);
+  font-weight: 800;
+  line-height: 1;
+  color: var(--rsp-dark);
+}
+
+.rsp-funding-stat.is-secured .rsp-funding-stat-value {
+  color: var(--rsp-forest);
+}
+
+.rsp-funding-stat.is-remaining .rsp-funding-stat-value {
+  color: var(--rsp-secondary-blue);
+}
+
+.rsp-funding-progress-wrap {
+  margin-top: 20px;
+}
+
+.rsp-funding-progress-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 8px;
+  color: #475569;
+  font-size: .84rem;
+  font-weight: 700;
+}
+
+.rsp-funding-progress {
+  height: 13px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #e2e8f0;
+}
+
+.rsp-funding-progress > span {
+  display: block;
+  width: 44.7%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #15803d, #22c55e);
+}
+
+.rsp-funding-explainer {
+  margin: 18px 0 0;
+  padding: 15px 17px;
+  border-radius: 10px;
+  background: #f1f5f9;
+  color: #475569;
+  font-size: .9rem;
+}
+
+.rsp-funding-explainer strong {
+  color: var(--rsp-dark);
+}
+
+/* Forprosjektstøtte */
+.rsp-preproject-support {
+  margin-bottom: 58px;
+  padding: 34px;
+  border: 1px solid var(--rsp-border);
+  border-radius: var(--rsp-radius-lg);
+  background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+  box-shadow: var(--rsp-shadow-sm);
+}
+
+.rsp-preproject-head {
+  max-width: 780px;
+  margin: 0 auto 28px;
+  text-align: center;
+}
+
+.rsp-preproject-head .rsp-eyebrow {
+  margin-bottom: 10px;
+}
+
+.rsp-preproject-head h3 {
+  margin: 0 0 10px !important;
+  color: var(--rsp-dark);
+  font-size: clamp(1.65rem, 3vw, 2.15rem);
+  text-transform: uppercase;
+}
+
+.rsp-preproject-head p {
+  margin: 0;
+  color: var(--rsp-muted);
+}
+
+.rsp-preproject-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.rsp-preproject-card {
+  min-height: 150px;
+  padding: 22px 18px;
+  border: 1px solid var(--rsp-border);
+  border-radius: 12px;
+  background: var(--rsp-white);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.rsp-preproject-logo {
+  width: 100%;
+  height: 70px;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rsp-preproject-logo img {
+  display: block;
+  width: auto;
+  max-width: 175px;
+  max-height: 64px;
+  object-fit: contain;
+}
+
+.rsp-preproject-mark {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 12px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #eef6ff;
+  color: var(--rsp-secondary-blue);
+  font-family: var(--rsp-heading);
+  font-size: .95rem;
+  font-weight: 800;
+  letter-spacing: .02em;
+}
+
+.rsp-preproject-card h4 {
+  margin: 0 0 6px !important;
+  color: var(--rsp-dark);
+  font-size: 1.05rem;
+  text-transform: uppercase;
+}
+
+.rsp-preproject-card p {
+  margin: 0;
+  color: var(--rsp-muted);
+  font-size: .82rem;
+  line-height: 1.45;
+}
+
+.rsp-preproject-spleis {
+  margin-top: 18px;
+  padding: 22px 24px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--rsp-dark), #1e293b);
+  color: var(--rsp-white);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 20px;
+  align-items: center;
+}
+
+.rsp-preproject-spleis-number {
+  min-width: 112px;
+  font-family: var(--rsp-heading);
+  font-size: 2.45rem;
+  font-weight: 800;
+  line-height: 1;
+  color: #fbbf24;
+  text-align: center;
+}
+
+.rsp-preproject-spleis strong {
+  display: block;
+  margin-bottom: 3px;
+  color: var(--rsp-white);
+  font-size: 1rem;
+}
+
+.rsp-preproject-spleis p {
+  margin: 0;
+  color: #cbd5e1;
+  font-size: .88rem;
+}
+
+.rsp-preproject-thanks {
+  margin: 22px auto 0;
+  max-width: 760px;
+  color: #475569;
+  text-align: center;
+  font-size: .92rem;
+}
+
+/* Samarbeid og tilrettelegging - ikke økonomisk støtte */
+.rsp-public-collaboration {
+  margin-bottom: 58px;
+  padding: 32px;
+  border: 1px solid #bfdbfe;
+  border-radius: var(--rsp-radius-lg);
+  background: linear-gradient(145deg, #ffffff 0%, #eff6ff 100%);
+  box-shadow: var(--rsp-shadow-sm);
+}
+
+.rsp-public-collaboration-inner {
+  max-width: 930px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(210px, .42fr) minmax(0, 1fr);
+  gap: 30px;
+  align-items: center;
+}
+
+.rsp-public-logo {
+  min-height: 135px;
+  padding: 18px;
+  border: 1px solid var(--rsp-border);
+  border-radius: 14px;
+  background: var(--rsp-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rsp-public-logo img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  max-height: 100px;
+  object-fit: contain;
+}
+
+.rsp-public-copy .rsp-eyebrow {
+  margin-bottom: 8px;
+}
+
+.rsp-public-copy h3 {
+  margin: 0 0 10px !important;
+  color: var(--rsp-dark);
+  font-size: clamp(1.55rem, 3vw, 2rem);
+  text-transform: uppercase;
+}
+
+.rsp-public-copy p {
+  margin: 0;
+  color: #475569;
+  font-size: .95rem;
+}
+
+.rsp-public-note {
+  margin-top: 14px !important;
+  padding: 11px 13px;
+  border-left: 4px solid var(--rsp-secondary-blue);
+  border-radius: 0 8px 8px 0;
+  background: rgba(255, 255, 255, .78);
+  color: var(--rsp-muted) !important;
+  font-size: .82rem !important;
+}
+
+/* Støttespillere i realiseringsfasen */
+.rsp-realisation-support {
+  margin-bottom: 18px;
+  padding: 30px;
+  border: 1px solid var(--rsp-border);
+  border-radius: var(--rsp-radius-lg);
+  background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+  box-shadow: var(--rsp-shadow-sm);
+}
+
+.rsp-realisation-head {
+  max-width: 720px;
+  margin: 0 auto 22px;
+  text-align: center;
+}
+
+.rsp-realisation-head .rsp-eyebrow {
+  margin-bottom: 8px;
+}
+
+.rsp-realisation-head h3 {
+  margin: 0 0 8px !important;
+  color: var(--rsp-dark);
+  font-size: clamp(1.55rem, 3vw, 2rem);
+  text-transform: uppercase;
+}
+
+.rsp-realisation-head p {
+  margin: 0;
+  color: var(--rsp-muted);
+  font-size: .94rem;
+}
+
+.rsp-realisation-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+}
+
+.rsp-realisation-card {
+  flex: 1 1 280px;
+  max-width: 420px;
+  min-height: 205px;
+  padding: 22px 20px;
+  border: 1px solid var(--rsp-border);
+  border-radius: 12px;
+  background: var(--rsp-white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.rsp-realisation-logo {
+  width: 100%;
+  height: 98px;
+  margin-bottom: 13px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rsp-realisation-logo img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  max-height: 92px;
+  object-fit: contain;
+}
+
+/* Kunnskapsparken-filen har mye hvit luft rundt selve logoen. */
+.rsp-realisation-logo--kph img {
+  width: 122%;
+  max-width: none;
+  max-height: none;
+  transform: scale(1.08);
+  transform-origin: center;
+}
+
+.rsp-realisation-card h4 {
+  margin: 0 0 6px !important;
+  color: var(--rsp-dark);
+  font-size: 1.12rem;
+  text-transform: uppercase;
+}
+
+.rsp-realisation-card p {
+  margin: 0;
+  color: var(--rsp-muted);
+  font-size: .86rem;
+  line-height: 1.5;
+}
+
+/* Samarbeid med næringslivet */
+.rsp-collaboration-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
+  gap: 26px;
+  align-items: center;
+  margin-bottom: 18px;
+  padding: 30px;
+  border-radius: var(--rsp-radius-md);
+  background: var(--rsp-white);
+  border: 1px solid var(--rsp-border);
+  box-shadow: var(--rsp-shadow-sm);
+}
+
+.rsp-collaboration-panel h3 {
+  margin-bottom: 9px !important;
+  color: var(--rsp-dark);
+  font-size: 1.45rem;
+  text-transform: uppercase;
+}
+
+.rsp-collaboration-panel p {
+  margin-bottom: 0;
+  color: var(--rsp-muted);
+  font-size: .94rem;
+}
+
+.rsp-collaboration-types {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.rsp-collaboration-types span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 8px 13px;
+  border-radius: 999px;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  color: var(--rsp-secondary-blue-dark);
+  font-family: var(--rsp-heading);
+  font-size: .82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .25px;
+}
+
+.rsp-sponsor-cta {
+  padding: 42px 34px;
+  border-radius: var(--rsp-radius-lg);
+  background: linear-gradient(135deg, var(--rsp-secondary-blue), var(--rsp-secondary-blue-dark));
+  color: var(--rsp-white);
+  text-align: center;
+  box-shadow: var(--rsp-shadow-md);
+}
+
+.rsp-sponsor-cta h3 {
+  margin-bottom: 10px !important;
+  color: var(--rsp-white) !important;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+}
+
+.rsp-sponsor-cta p {
+  max-width: 690px;
+  margin: 0 auto 22px;
+  color: rgba(255,255,255,.88);
+}
+
+/* Team */
+.rsp-team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+
+.rsp-team-card {
+  overflow: hidden;
+  border-radius: var(--rsp-radius-md);
+  border: 1px solid var(--rsp-border);
+  background: var(--rsp-white);
+  box-shadow: var(--rsp-shadow-sm);
+  transition: transform var(--rsp-transition), box-shadow var(--rsp-transition);
+}
+
+.rsp-team-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--rsp-shadow-md);
+}
+
+.rsp-team-photo {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: #e2e8f0;
+}
+
+.rsp-team-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 30%;
+  display: block;
+}
+
+/* Individuell bildefokus slik at ansiktene sitter godt i utsnittet */
+.rsp-team-photo--georg img {
+  object-position: 50% 34%;
+}
+
+.rsp-team-photo--andreas img {
+  object-position: 50% 24%;
+}
+
+.rsp-team-photo--simon img {
+  object-position: 50% 48%;
+  transform: scale(1.16);
+}
+
+.rsp-team-photo--knut img {
+  object-position: 50% 28%;
+}
+
+.rsp-team-info {
+  padding: 18px 16px 20px;
+  text-align: center;
+  border-top: 4px solid var(--rsp-secondary-blue);
+}
+
+.rsp-team-card:first-child .rsp-team-info {
+  border-top-color: var(--rsp-primary-red);
+}
+
+.rsp-team-info h3 {
+  margin-bottom: 4px !important;
+  color: var(--rsp-dark);
+  font-size: 1.18rem;
+}
+
+.rsp-team-info p {
+  margin-bottom: 0;
+  color: var(--rsp-muted);
+  font-size: .86rem;
+}
+
+.rsp-contact-box {
+  max-width: 760px;
+  margin: 44px auto 0;
+  padding: 32px;
+  border-radius: var(--rsp-radius-lg);
+  background: var(--rsp-dark);
+  color: var(--rsp-white);
+  text-align: center;
+}
+
+.rsp-contact-box h3 {
+  margin-bottom: 8px !important;
+  color: var(--rsp-white) !important;
+  font-size: 1.55rem;
+  text-transform: uppercase;
+}
+
+.rsp-contact-box p {
+  margin-bottom: 18px;
+  color: #cbd5e1;
+}
+
+.rsp-contact-email {
+  color: #fff !important;
+  font-family: var(--rsp-heading);
+  font-size: clamp(1.25rem, 3vw, 1.65rem);
+  font-weight: 800;
+}
+
+/* Safe animations: visible by default, animated only when JS is available */
+.rsp-fade-item {
+  opacity: 1;
+  transform: none;
+}
+
+.rsp-wrapper.rsp-js .rsp-fade-item {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .55s cubic-bezier(.16,1,.3,1), transform .55s cubic-bezier(.16,1,.3,1);
+}
+
+.rsp-wrapper.rsp-js .rsp-fade-item.rsp-animated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 1050px) {
+  .rsp-nav-links {
+    gap: 14px;
+  }
+
+  .rsp-nav-links a:not(.rsp-nav-sponsor) {
+    display: none;
+  }
+
+  .rsp-concept-grid,
+  .rsp-team-grid,
+  .rsp-preproject-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .rsp-metrics {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .rsp-metric:nth-child(3) {
+    border-left: 0;
+    border-top: 1px solid var(--rsp-border);
+  }
+
+  .rsp-metric:nth-child(4) {
+    border-top: 1px solid var(--rsp-border);
+  }
+}
+
+@media (max-width: 780px) {
+  .rsp-container {
+    width: min(100% - 30px, 1200px);
+  }
+
+  .rsp-section {
+    padding: 62px 0;
+    scroll-margin-top: 78px;
+  }
+
+  .rsp-nav-inner {
+    min-height: 60px;
+    flex-wrap: wrap;
+    padding: 9px 0;
+  }
+
+  .rsp-brand-text {
+    font-size: 1.16rem;
+  }
+
+  .rsp-nav-toggle {
+    display: inline-flex;
+    margin-left: auto;
+  }
+
+  .rsp-nav-links {
+    display: none;
+    width: 100%;
+    padding: 6px 0 12px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 5px;
+  }
+
+  .rsp-nav-links.is-open {
+    display: flex;
+  }
+
+  .rsp-nav-links a,
+  .rsp-nav-links a:not(.rsp-nav-sponsor) {
+    display: block;
+    padding: 9px 10px;
+    border-radius: 6px;
+  }
+
+  .rsp-nav-sponsor {
+    text-align: center;
+  }
+
+  .rsp-hero {
+    min-height: 540px;
+    background-position: 58% center;
+  }
+
+  .rsp-hero-content {
+    padding: 76px 0 104px;
+  }
+
+  .rsp-metrics-wrap {
+    margin-top: -45px;
+  }
+
+  .rsp-value-grid,
+  .rsp-phase-grid,
+  .rsp-finance-layout,
+  .rsp-collaboration-panel,
+  .rsp-public-collaboration-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .rsp-finance-list {
+    grid-template-columns: 1fr;
+  }
+
+  .rsp-timeline::before {
+    left: 19px;
+  }
+
+  .rsp-timeline-item {
+    padding-left: 56px;
+  }
+
+  .rsp-timeline-badge {
+    left: 0;
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 520px) {
+  .rsp-wrapper {
+    font-size: 16px;
+  }
+
+  .rsp-btn-row {
+    flex-direction: column;
+  }
+
+  .rsp-btn {
+    width: 100%;
+  }
+
+  .rsp-metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .rsp-metric + .rsp-metric,
+  .rsp-metric:nth-child(3) {
+    border-left: 0;
+    border-top: 1px solid var(--rsp-border);
+  }
+
+  .rsp-concept-grid,
+  .rsp-team-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .rsp-filter-row {
+    justify-content: flex-start;
+  }
+
+  .rsp-sponsor-cta,
+  .rsp-collaboration-panel,
+  .rsp-contact-box,
+  .rsp-finance-highlight,
+  .rsp-finance-panel {
+    padding: 27px 21px;
+  }
+
+  .rsp-team-grid {
+    gap: 18px;
+  }
+
+  .rsp-team-card {
+    width: 100%;
+    max-width: 430px;
+    margin-inline: auto;
+  }
+
+  .rsp-team-photo {
+    aspect-ratio: 1 / 1;
+  }
+
+  .rsp-team-info {
+    padding: 16px 14px 18px;
+  }
+
+  .rsp-land-status {
+    grid-template-columns: 1fr;
+    padding: 22px 18px;
+  }
+
+  .rsp-land-status-icon {
+    width: 44px;
+    height: 44px;
+    font-size: 1.35rem;
+  }
+
+  .rsp-finance-source-logos {
+    grid-template-columns: 1fr;
+  }
+
+  .rsp-finance-source-logo {
+    height: 96px;
+  }
+
+  .rsp-public-collaboration {
+    padding: 26px 18px;
+  }
+
+  .rsp-public-logo {
+    min-height: 112px;
+    padding: 14px;
+  }
+
+  .rsp-public-logo img {
+    max-height: 82px;
+  }
+
+  .rsp-realisation-support {
+    padding: 26px 18px;
+  }
+
+  .rsp-realisation-card {
+    width: 100%;
+    max-width: 430px;
+  }
+
+  .rsp-realisation-logo {
+    height: 92px;
+  }
+
+  .rsp-realisation-logo--kph img {
+    width: 122%;
+    transform: scale(1.08);
+  }
+
+  .rsp-collaboration-types {
+    justify-content: flex-start;
+  }
+
+  .rsp-collaboration-types span {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rsp-wrapper *,
+  .rsp-wrapper *::before,
+  .rsp-wrapper *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
+  .rsp-wrapper.rsp-js .rsp-fade-item {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 620px) {
+  .rsp-funding-overview {
+    padding: 22px 18px;
+  }
+
+  .rsp-funding-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .rsp-funding-progress-head {
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .rsp-preproject-support {
+    padding: 26px 18px;
+  }
+
+  .rsp-preproject-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .rsp-preproject-spleis {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .rsp-preproject-spleis-number {
+    min-width: 0;
+  }
+}
+
+</style>
+
+<div class="rsp-wrapper" id="rana-bike-park">
+
+  <!-- INTERN MENY -->
+  <nav class="rsp-nav" aria-label="Navigasjon for Rana Bike Park">
+    <div class="rsp-container rsp-nav-inner">
+      <a class="rsp-brand js-rsp-scroll" href="#rsp-topp" aria-label="Rana Bike Park - til toppen">
+        <span class="rsp-brand-mark" aria-hidden="true"></span>
+        <span class="rsp-brand-text">Rana Bike Park</span>
+      </a>
+
+      <button class="rsp-nav-toggle" type="button" aria-expanded="false" aria-controls="rsp-nav-links" aria-label="Åpne meny">
+        <span aria-hidden="true">☰</span>
+      </button>
+
+      <div class="rsp-nav-links" id="rsp-nav-links">
+        <a class="js-rsp-scroll" href="#rsp-hvorfor">Hvorfor</a>
+        <a class="js-rsp-scroll" href="#rsp-kart">Areal</a>
+        <a class="js-rsp-scroll" href="#rsp-konsept">Parken</a>
+        <a class="js-rsp-scroll" href="#rsp-faser">Faser</a>
+        <a class="js-rsp-scroll" href="#rsp-finansiering">Finansiering</a>
+        <a class="js-rsp-scroll" href="#rsp-prosjektgruppe">Prosjektgruppe</a>
+        <a class="rsp-nav-sponsor js-rsp-scroll" href="#rsp-sponsing">Bli sponsor</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="rsp-hero" id="rsp-topp">
+    <div class="rsp-container">
+      <div class="rsp-hero-content">
+        <span class="rsp-status-pill"><span class="rsp-status-dot" aria-hidden="true"></span> Aktiv finansierings- og søknadsfase</span>
+        <h1>Rana Bike Park</h1>
+        <p class="rsp-hero-lead">En ny arena for mestring, bevegelsesglede og fellesskap på Skillevollen. Målet er et gratis og inkluderende sykkeltilbud for barn, unge, familier og syklister på alle nivåer.</p>
+
+        <div class="rsp-btn-row">
+          <a href="#rsp-sponsing" class="rsp-btn rsp-btn-primary js-rsp-scroll">Bli med på laget</a>
+          <a href="#rsp-konsept" class="rsp-btn rsp-btn-light js-rsp-scroll">Se hva parken skal inneholde</a>
+          <a href="https://ranasykkelklubb.no/wp-content/uploads/2026/01/Komprimert-presentasjon-Rana-Bike-Park.pdf" class="rsp-btn rsp-btn-light" target="_blank" rel="noopener">Åpne prosjektpresentasjon</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- NØKKELTALL -->
+  <div class="rsp-metrics-wrap">
+    <div class="rsp-container">
+      <div class="rsp-metrics rsp-fade-item" aria-label="Nøkkeltall for prosjektet">
+        <div class="rsp-metric">
+          <span class="rsp-metric-label">Sikret finansiering</span>
+          <span class="rsp-metric-value">8,75 MNOK</span>
+          <span class="rsp-metric-note">Gjennom Anleggsløftet</span>
+        </div>
+        <div class="rsp-metric">
+          <span class="rsp-metric-label">Neste hovedfrist</span>
+          <span class="rsp-metric-value">1. sept. 2026</span>
+          <span class="rsp-metric-note">Spillemiddelsøknader til Rana kommune</span>
+        </div>
+        <div class="rsp-metric">
+          <span class="rsp-metric-label">Første utbygging</span>
+          <span class="rsp-metric-value">Fase 1</span>
+          <span class="rsp-metric-note">Munklia og Mailandet</span>
+        </div>
+        <div class="rsp-metric">
+          <span class="rsp-metric-label">Planlagt byggestart</span>
+          <span class="rsp-metric-value">2027</span>
+          <span class="rsp-metric-note">Avhengig av finansiering og tillatelser</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HVORFOR -->
+  <section id="rsp-hvorfor" class="rsp-section rsp-section-white">
+    <div class="rsp-container">
+      <div class="rsp-section-head">
+        <span class="rsp-eyebrow">Mer enn et idrettsanlegg</span>
+        <h2 class="rsp-section-title">Hvorfor Rana Bike Park?</h2>
+        <p class="rsp-section-subtitle">Rana mangler i dag en helhetlig og tilrettelagt sykkelarena der nye og erfarne syklister kan møtes, lære og utvikle seg. Parken skal være et lavterskeltilbud som inviterer til både organisert og egenorganisert aktivitet.</p>
+      </div>
+
+      <div class="rsp-value-grid">
+        <article class="rsp-value-card rsp-fade-item">
+          <div class="rsp-value-icon" aria-hidden="true">👥</div>
+          <h3>Fellesskap og inkludering</h3>
+          <p>Et gratis og sosialt møtested for barn, ungdom, familier og voksne – uavhengig av ferdighetsnivå og medlemskap i sykkelklubben.</p>
+        </article>
+
+        <article class="rsp-value-card rsp-fade-item">
+          <div class="rsp-value-icon" aria-hidden="true">❤️</div>
+          <h3>Folkehelse og mestring</h3>
+          <p>Et attraktivt lavterskeltilbud som gjør fysisk aktivitet morsomt og gir naturlig progresjon i balanse, teknikk og sykkelferdigheter.</p>
+        </article>
+
+        <article class="rsp-value-card rsp-fade-item">
+          <div class="rsp-value-icon" aria-hidden="true">🏔️</div>
+          <h3>Bolyst og attraktivitet</h3>
+          <p>Et moderne sykkelanlegg styrker Skillevollen som aktivitetsområde og kan bidra til å gjøre Rana mer attraktiv for både innbyggere og besøkende.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- KART -->
+  <section id="rsp-kart" class="rsp-section">
+    <div class="rsp-container">
+      <div class="rsp-section-head">
+        <span class="rsp-eyebrow">Området</span>
+        <h2 class="rsp-section-title">Konseptskisse</h2>
+        <p class="rsp-section-subtitle">Prosjektet utvikles trinnvis på Skillevollen, med Munklia og Mailandet som første prioriterte områder og videre utvikling mot Båsmofjellet.</p>
+      </div>
+
+      <figure class="rsp-map-card rsp-fade-item">
+        <a class="rsp-map-link" href="https://ranasykkelklubb.no/wp-content/uploads/2026/01/Komprimert-presentasjon-Rana-Bike-Park.pdf" target="_blank" rel="noopener" aria-label="Åpne full prosjektpresentasjon som PDF">
+          <img src="https://ranasykkelklubb.no/wp-content/uploads/2025/11/Skjermbilde-2025-11-25-kl.-18.53.05.png" alt="Konseptskisse over Rana Bike Park" loading="lazy">
+        </a>
+        <figcaption class="rsp-map-caption">Klikk på konseptskissen for å åpne prosjektpresentasjonen.</figcaption>
+      </figure>
+
+
+      <aside class="rsp-land-status rsp-fade-item" aria-labelledby="rsp-land-status-title">
+        <div class="rsp-land-status-icon" aria-hidden="true">✓</div>
+        <div>
+          <span class="rsp-land-status-kicker">Grunneier og areal</span>
+          <h3 id="rsp-land-status-title">Bruksretten er avklart for fase 1</h3>
+          <p>Rana kommune er grunneier. Nødvendig bruksrett for å gjennomføre fase 1 i Munklia og Mailandet er avklart, og prosjektet utvikles i samarbeid med Bossmo &amp; Ytteren IL, som drifter Skillevollen-området.</p>
+          <p>For senere byggetrinn, blant annet videre utvikling i Munklia og mot Båsmofjellet, vil nødvendige areal-, plan- og tillatelsesavklaringer gjennomføres i takt med detaljprosjekteringen.</p>
+          <div class="rsp-land-status-chips" aria-label="Status for arealavklaringer">
+            <span class="rsp-land-status-chip">Fase 1: avklart</span>
+            <span class="rsp-land-status-chip">Senere faser: avklares trinnvis</span>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- KONSEPT -->
+  <section id="rsp-konsept" class="rsp-section rsp-section-white">
+    <div class="rsp-container">
+      <div class="rsp-section-head">
+        <span class="rsp-eyebrow">Progresjon for alle</span>
+        <h2 class="rsp-section-title">Hva skal parken inneholde?</h2>
+        <p class="rsp-section-subtitle">Parken planlegges med elementer som gjør det mulig å starte enkelt og utvikle ferdigheter steg for steg. Bruk filtrene for å se hvilke elementer som passer ulike nivåer.</p>
+      </div>
+
+      <div class="rsp-filter-row" role="group" aria-label="Filtrer elementer etter nivå">
+        <button class="rsp-filter-btn is-active" type="button" data-filter="all" aria-pressed="true">Alle</button>
+        <button class="rsp-filter-btn" type="button" data-filter="nybegynner" aria-pressed="false">Nybegynner</button>
+        <button class="rsp-filter-btn" type="button" data-filter="viderekommen" aria-pressed="false">Viderekommen</button>
+        <button class="rsp-filter-btn" type="button" data-filter="avansert" aria-pressed="false">Avansert</button>
+      </div>
+
+      <div class="rsp-concept-grid">
+        <article class="rsp-concept-card rsp-fade-item" data-levels="nybegynner viderekommen avansert">
+          <div class="rsp-concept-media">
+            <img src="https://ranasykkelklubb.no/wp-content/uploads/2025/07/1.png" alt="Skisse av pumptrack" loading="lazy">
+            <span class="rsp-level-badge">Alle nivåer</span>
+          </div>
+          <div class="rsp-concept-content">
+            <h3>Asfaltert pumptrack</h3>
+            <p>En kompakt bane med kuler og doserte svinger der fart skapes ved å pumpe med kroppen. Egner seg fra de yngste på balansesykkel til erfarne syklister.</p>
+          </div>
+        </article>
+
+        <article class="rsp-concept-card rsp-fade-item" data-levels="nybegynner viderekommen">
+          <div class="rsp-concept-media">
+            <img src="https://ranasykkelklubb.no/wp-content/uploads/2025/07/3.png" alt="Skisse av ferdighetsbane" loading="lazy">
+            <span class="rsp-level-badge">Grønn / blå</span>
+          </div>
+          <div class="rsp-concept-content">
+            <h3>Ferdighetsbane</h3>
+            <p>Et kontrollert område for å øve på balanse, svingteknikk og ulike hindringer før ferdighetene tas med videre ut i stiene.</p>
+          </div>
+        </article>
+
+        <article class="rsp-concept-card rsp-fade-item" data-levels="viderekommen avansert">
+          <div class="rsp-concept-media">
+            <img src="https://ranasykkelklubb.no/wp-content/uploads/2025/07/6.png" alt="Skisse av hopplinjer" loading="lazy">
+            <span class="rsp-level-badge">Blå / rød / sort</span>
+          </div>
+          <div class="rsp-concept-content">
+            <h3>Hopplinjer</h3>
+            <p>Progressive hoppelinjer med ulik vanskelighetsgrad, slik at rytterne kan bygge trygghet og utvikle hoppteknikk over tid.</p>
+          </div>
+        </article>
+
+        <article class="rsp-concept-card rsp-fade-item" data-levels="nybegynner viderekommen avansert">
+          <div class="rsp-concept-media">
+            <img src="https://ranasykkelklubb.no/wp-content/uploads/2025/07/last-ned-825x1030.jpeg" alt="Syklist på flytsti i skogen" loading="lazy">
+            <span class="rsp-level-badge">Grønn til avansert</span>
+          </div>
+          <div class="rsp-concept-content">
+            <h3>Flyt- og terrengstier</h3>
+            <p>Stier med ulik karakter og vanskelighetsgrad – fra enkle, familievennlige traseer til raskere flytstier og mer tekniske utfordringer.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FASER -->
+  <section id="rsp-faser" class="rsp-section">
+    <div class="rsp-container">
+      <div class="rsp-section-head">
+        <span class="rsp-eyebrow">Trinnvis utvikling</span>
+        <h2 class="rsp-section-title">Tre byggefaser</h2>
+        <p class="rsp-section-subtitle">Utbyggingen deles opp slik at prosjektet kan realiseres kontrollert, skape aktivitet tidlig og utvikles videre etter hvert som finansiering og nødvendige avklaringer kommer på plass.</p>
+      </div>
+
+      <div class="rsp-phase-grid">
+        <article class="rsp-phase-card rsp-fade-item">
+          <span class="rsp-phase-number">1</span>
+          <h3>Munklia og Mailandet</h3>
+          <p>Første prioriterte byggetrinn skal etablere hjertet i parken og tilbudene som favner bredest.</p>
+          <ul>
+            <li>Pumptrack</li>
+            <li>Ferdighetsbane</li>
+            <li>Hopplinjer</li>
+            <li>Enkle flytstier og adkomst</li>
+          </ul>
+        </article>
+
+        <article class="rsp-phase-card rsp-fade-item">
+          <span class="rsp-phase-number">2</span>
+          <h3>Munklia utvidet</h3>
+          <p>Neste trinn bygger videre på basen i fase 1 og gir mer fart, lengre nedfarter og tydeligere progresjon.</p>
+          <ul>
+            <li>Flere flytstier</li>
+            <li>Større utfordringer</li>
+            <li>Videre utvikling av forbindelser og startområder</li>
+          </ul>
+        </article>
+
+        <article class="rsp-phase-card rsp-fade-item">
+          <span class="rsp-phase-number">3</span>
+          <h3>Båsmofjellet</h3>
+          <p>Den langsiktige utviklingen utnytter høyden og terrenget på Båsmofjellet og kompletterer anlegget for erfarne stisyklister.</p>
+          <ul>
+            <li>Lengre terrengstier</li>
+            <li>Tekniske linjer</li>
+            <li>Forbindelse mot toppen</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIDSLINJE -->
+  <section id="rsp-tidslinje" class="rsp-section rsp-section-white">
+    <div class="rsp-container">
+      <div class="rsp-section-head">
+        <span class="rsp-eyebrow">Status</span>
+        <h2 class="rsp-section-title">Veien mot byggestart</h2>
+        <p class="rsp-section-subtitle">Prosjektet har gått fra idé og konsept til en konkret realiseringsfase. Nå er hovedoppgaven å sikre dokumentert finansiering og ferdigstille søknadsgrunnlaget.</p>
+      </div>
+
+      <div class="rsp-timeline">
+        <div class="rsp-timeline-item rsp-timeline-done rsp-fade-item">
+          <div class="rsp-timeline-badge" aria-hidden="true">✓</div>
+          <div class="rsp-timeline-content">
+            <h3>1. Initiativ, samarbeid, bruksrett og forankring</h3>
+            <p>Rana Sykkelklubb har etablert prosjektet og samarbeidet rundt utviklingen av sykkelpark på Skillevollen. Bruksretten for fase 1 er avklart med Rana kommune.</p>
+          </div>
+        </div>
+
+        <div class="rsp-timeline-item rsp-timeline-done rsp-fade-item">
+          <div class="rsp-timeline-badge" aria-hidden="true">✓</div>
+          <div class="rsp-timeline-content">
+            <h3>2. Forprosjekt, konsept og kostnadsgrunnlag</h3>
+            <p>Forprosjektet har gitt et tydeligere konsept, faseinndeling og kostnadsgrunnlag for den videre realiseringen.</p>
+          </div>
+        </div>
+
+        <div class="rsp-timeline-item rsp-timeline-active rsp-fade-item">
+          <div class="rsp-timeline-badge" aria-hidden="true">3</div>
+          <div class="rsp-timeline-content">
+            <h3>3. Spillemidler og fullfinansiering <span class="rsp-active-label">Aktiv nå</span></h3>
+            <p>Rana Sykkelklubb arbeider nå med spillemiddelsøknader for delanleggene i fase 1 og med dokumentasjon av resterende finansiering.</p>
+            <ul>
+              <li>Spillemiddelsøknader</li>
+              <li>Merverdiavgiftskompensasjon</li>
+              <li>Sponsor- og næringslivsbidrag</li>
+              <li>Dugnad og øvrig prosjektfinansiering</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="rsp-timeline-item rsp-timeline-future rsp-fade-item">
+          <div class="rsp-timeline-badge" aria-hidden="true">4</div>
+          <div class="rsp-timeline-content">
+            <h3>4. Planlagt byggestart i 2027</h3>
+            <p>Byggestart forutsetter at finansiering, nødvendige tillatelser og øvrige prosjektavklaringer er på plass.</p>
+          </div>
+        </div>
+
+        <div class="rsp-timeline-item rsp-timeline-future rsp-fade-item">
+          <div class="rsp-timeline-badge" aria-hidden="true">5</div>
+          <div class="rsp-timeline-content">
+            <h3>5. Åpning og videre utbygging</h3>
+            <p>Etter første byggetrinn skal parken utvikles videre trinnvis, med nye stier og tilbud etter hvert som prosjektet går framover.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINANSIERING -->
+  <section id="rsp-finansiering" class="rsp-section">
+    <div class="rsp-container">
+      <div class="rsp-section-head">
+        <span class="rsp-eyebrow">Fra plan til realisering</span>
+        <h2 class="rsp-section-title">Finansieringsstatus</h2>
+        <p class="rsp-section-subtitle">Prosjektet har allerede fått et svært viktig økonomisk fundament. Arbeidet nå handler om å sette sammen og dokumentere den resterende finansieringen for fase 1.</p>
+      </div>
+
+      <div class="rsp-funding-overview rsp-fade-item" aria-label="Foreløpig finansieringsoversikt for fase 1">
+        <div class="rsp-funding-stats">
+          <div class="rsp-funding-stat">
+            <span class="rsp-funding-stat-label">Investeringsramme fase 1</span>
+            <span class="rsp-funding-stat-value">ca. 19,6 MNOK</span>
+          </div>
+          <div class="rsp-funding-stat is-secured">
+            <span class="rsp-funding-stat-label">Allerede sikret</span>
+            <span class="rsp-funding-stat-value">8,75 MNOK</span>
+          </div>
+          <div class="rsp-funding-stat is-remaining">
+            <span class="rsp-funding-stat-label">Øvrig finansiering som skal på plass</span>
+            <span class="rsp-funding-stat-value">ca. 10,8 MNOK</span>
+          </div>
+        </div>
+
+        <div class="rsp-funding-progress-wrap">
+          <div class="rsp-funding-progress-head">
+            <span>Omtrent 45 % av fase 1-rammen er allerede sikret</span>
+            <span>8,75 av ca. 19,6 mill. kr</span>
+          </div>
+          <div class="rsp-funding-progress" role="progressbar" aria-label="Sikret andel av foreløpig finansieringsramme for fase 1" aria-valuemin="0" aria-valuemax="100" aria-valuenow="45">
+            <span></span>
+          </div>
+        </div>
+
+        <p class="rsp-funding-explainer"><strong>Dette betyr ikke at Rana Sykkelklubb må hente inn 10,8 millioner kroner fra nye sponsorer.</strong> Den resterende finansieringen skal settes sammen av flere kilder, blant annet spillemidler, mva-kompensasjon, dugnad og egeninnsats, sponsorbidrag og nødvendig finansierings-/likviditetsløsning. Tallene er foreløpige og kan bli justert når søknader, kostnader og endelige tilsagn er avklart.</p>
+      </div>
+
+      <div class="rsp-finance-layout">
+        <div class="rsp-finance-highlight rsp-fade-item">
+          <div class="rsp-finance-branding" aria-label="Anleggsløftet og bidragsyterne bak tildelingen">
+            <div class="rsp-finance-logo">
+              <img src="https://ranasykkelklubb.no/wp-content/uploads/2026/08/anleggsloftet.png" alt="Anleggsløftet" loading="lazy">
+            </div>
+            <div class="rsp-finance-source-logos">
+              <div class="rsp-finance-source-logo">
+                <img src="https://ranasykkelklubb.no/wp-content/uploads/2026/08/saprebank1.png" alt="SpareBank 1 Helgeland" loading="lazy">
+              </div>
+              <div class="rsp-finance-source-logo rsp-finance-source-logo--stiftelsen">
+                <img src="https://ranasykkelklubb.no/wp-content/uploads/2026/08/Skjermbilde-2026-08-17-kl.-13.41.51-scaled.png" alt="Sparebankstiftelsen Helgeland" loading="lazy">
+              </div>
+            </div>
+          </div>
+          <span class="rsp-finance-label">Sikret gjennom Anleggsløftet</span>
+          <span class="rsp-finance-value">8,75 MNOK</span>
+          <p>Sparebankstiftelsen Helgeland og SpareBank 1 Helgelands Gavestiftelse har gitt prosjektet et betydelig løft og et solid fundament for videre realisering.</p>
+        </div>
+
+        <div class="rsp-finance-panel rsp-fade-item">
+          <h3>Slik arbeider vi med resten</h3>
+          <p>Finansieringen av fase 1 settes sammen av flere kilder. Spillemiddelsøknadene krever at prosjektet kan dokumentere fullfinansiering, og derfor arbeides det parallelt med flere finansieringsspor.</p>
+
+          <div class="rsp-finance-list">
+            <div class="rsp-finance-item"><strong>Spillemidler</strong>Søknader for de aktuelle delanleggene i fase 1.</div>
+            <div class="rsp-finance-item"><strong>Mva-kompensasjon</strong>En viktig del av den samlede finansieringsplanen etter gjeldende ordning.</div>
+            <div class="rsp-finance-item"><strong>Næringsliv og sponsorer</strong>Lokale samarbeidspartnere kan bidra både økonomisk og med varer/tjenester.</div>
+            <div class="rsp-finance-item"><strong>Forskuttering av spillemidler</strong>Rana Sykkelklubb har søkt Rana kommune om forskuttering av 5 millioner kroner i framtidige spillemidler. Dette er en likviditetsløsning, ikke et ekstra tilskudd.</div>
+            <div class="rsp-finance-item"><strong>Dugnad og øvrig finansiering</strong>Frivillig innsats og nødvendig finansierings-/likviditetsløsning inngår i helheten.</div>
+          </div>
+
+          <p class="rsp-finance-note"><strong>Viktig:</strong> De 8,75 millionene er sikret. Øvrige poster er del av finansieringsarbeidet og må ikke leses som endelige tilsagn før de faktisk er innvilget.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPONSING -->
+  <section id="rsp-sponsing" class="rsp-section rsp-section-white">
+    <div class="rsp-container">
+
+      <div class="rsp-preproject-support rsp-fade-item">
+        <div class="rsp-preproject-head">
+          <span class="rsp-eyebrow">De som fikk forprosjektet i gang</span>
+          <h3>Forprosjektet ble mulig gjennom støtte</h3>
+          <p>Før Rana Bike Park kunne gå fra idé til et konkret prosjekt, måtte vi finansiere faglig planlegging, konseptutvikling og nødvendige avklaringer. Flere lokale og regionale støttespillere gjorde dette arbeidet mulig.</p>
+        </div>
+
+        <div class="rsp-preproject-grid">
+          <article class="rsp-preproject-card">
+            <div class="rsp-preproject-logo">
+              <img src="https://ranasykkelklubb.no/wp-content/uploads/2026/08/meyergull.jpeg" alt="Meyergull" loading="lazy">
+            </div>
+            <h4>Meyergull</h4>
+            <p>Bidro til å gjøre den tidlige planleggings- og utviklingsfasen mulig.</p>
+          </article>
+
+          <article class="rsp-preproject-card">
+            <div class="rsp-preproject-logo">
+              <img src="https://ranasykkelklubb.no/wp-content/uploads/2026/08/rana_gruber_logo-1.jpg" alt="Rana Gruber" loading="lazy">
+            </div>
+            <h4>Rana Gruber</h4>
+            <p>Lokalt næringslivsbidrag til arbeidet med å utvikle og konkretisere prosjektet.</p>
+          </article>
+
+          <article class="rsp-preproject-card">
+            <div class="rsp-preproject-logo">
+              <img src="https://ranasykkelklubb.no/wp-content/uploads/2026/08/logo-akva-group.jpg" alt="AKVA group" loading="lazy">
+            </div>
+            <h4>AKVA group</h4>
+            <p>Bidro til forprosjektet og utviklingen av grunnlaget for Rana Bike Park.</p>
+          </article>
+
+          <article class="rsp-preproject-card">
+            <div class="rsp-preproject-logo">
+              <img src="https://ranasykkelklubb.no/wp-content/uploads/2026/08/logo-nordland-idrettskrets.jpeg" alt="Nordland Idrettskrets" loading="lazy">
+            </div>
+            <h4>Nordland Idrettskrets</h4>
+            <p>100 000 kr fra Anleggsfondet til plan- og prosjekteringsfasen av prosjektet.</p>
+          </article>
+        </div>
+
+        <div class="rsp-preproject-spleis">
+          <div class="rsp-preproject-spleis-number">80+</div>
+          <div>
+            <strong>personer bidro gjennom Spleis</strong>
+            <p>Det sterke private engasjementet ga både økonomisk støtte og et tydelig signal om at mange ønsker å se Rana Bike Park bli realisert.</p>
+          </div>
+        </div>
+
+        <p class="rsp-preproject-thanks"><strong>Tusen takk til alle som bidro.</strong> Støtten til forprosjektet gjorde det mulig å løfte Rana Bike Park videre til dagens planleggings- og finansieringsfase.</p>
+      </div>
+
+      <div class="rsp-public-collaboration rsp-fade-item">
+        <div class="rsp-public-collaboration-inner">
+          <div class="rsp-public-logo">
+            <img src="https://ranasykkelklubb.no/wp-content/uploads/2026/08/Rana_kommune_logo_original-3.png" alt="Rana kommune" loading="lazy">
+          </div>
+          <div class="rsp-public-copy">
+            <span class="rsp-eyebrow">Samarbeid og tilrettelegging</span>
+            <h3>Rana kommune</h3>
+            <p>Rana kommune er grunneier og en viktig samarbeidspartner i utviklingen av Rana Bike Park. Kommunen har bidratt med faglige avklaringer, dialog om planene og tilrettelegging knyttet til bruksrett for arealene som omfattes av fase 1.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="rsp-section-head">
+        <span class="rsp-eyebrow">Lokalt næringsliv</span>
+        <h2 class="rsp-section-title">Bli med på laget</h2>
+        <p class="rsp-section-subtitle">Rana Bike Park skal bli en synlig møteplass for aktivitet, mestring og fellesskap. Vi ønsker flere bedrifter med på reisen og tilpasser samarbeidet etter bedriftens ønsker, prosjektets behov og ønsket synlighet.</p>
+      </div>
+
+      <div class="rsp-realisation-support rsp-fade-item">
+        <div class="rsp-realisation-head">
+          <span class="rsp-eyebrow">Støttespillere i realiseringsfasen</span>
+          <h3>Allerede med på laget</h3>
+        </div>
+
+        <div class="rsp-realisation-grid">
+          <article class="rsp-realisation-card">
+            <div class="rsp-realisation-logo rsp-realisation-logo--kph">
+              <img src="https://ranasykkelklubb.no/wp-content/uploads/2026/08/oogo-kunnskapsparken.png" alt="Kunnskapsparken Helgeland" loading="lazy">
+            </div>
+            <h4>Kunnskapsparken Helgeland</h4>
+            <p>Støtter arbeidet med å realisere fase 1 av Rana Bike Park.</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="rsp-collaboration-panel rsp-fade-item">
+        <div>
+          <h3>Flere måter å bidra på</h3>
+          <p>Bidrag kan være økonomisk støtte, varer og tjenester, materiell, maskinressurser, fagkompetanse eller andre former for samarbeid. Konkrete muligheter, profilering og eventuelle motytelser avklares direkte med den enkelte bedrift.</p>
+        </div>
+        <div class="rsp-collaboration-types" aria-label="Eksempler på bidragsformer">
+          <span>Økonomisk støtte</span>
+          <span>Varer og tjenester</span>
+          <span>Materiell og maskiner</span>
+          <span>Kompetanse</span>
+        </div>
+      </div>
+
+      <div class="rsp-sponsor-cta rsp-fade-item">
+        <h3>Vil din bedrift bidra til Rana Bike Park?</h3>
+        <p>Ta kontakt, så sender vi mer informasjon og finner en samarbeidsform som passer bedriften. Nye bidrag kan redusere behovet for lånefinansiering og gjøre det mulig å realisere mer av fase 1 tidligere.</p>
+        <a href="mailto:post@ranasykkelklubb.no?subject=Samarbeid%20om%20Rana%20Bike%20Park" class="rsp-btn rsp-btn-primary">Kontakt oss om samarbeid</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROSJEKTGRUPPE -->
+  <section id="rsp-prosjektgruppe" class="rsp-section">
+    <div class="rsp-container">
+      <div class="rsp-section-head">
+        <span class="rsp-eyebrow">Menneskene bak prosjektet</span>
+        <h2 class="rsp-section-title">Prosjektgruppen</h2>
+        <p class="rsp-section-subtitle">Prosjektet drives fram av Rana Sykkelklubb med faglig bistand fra Trailhead Nesbyen.</p>
+      </div>
+
+      <div class="rsp-team-grid">
+        <article class="rsp-team-card rsp-fade-item">
+          <div class="rsp-team-photo rsp-team-photo--georg">
+            <img src="https://ranasykkelklubb.no/wp-content/uploads/2026/08/georg.jpg" alt="Georg Enga" loading="lazy" decoding="async">
+          </div>
+          <div class="rsp-team-info">
+            <h3>Georg Enga</h3>
+            <p>Prosjektgruppe · Rana Sykkelklubb</p>
+          </div>
+        </article>
+
+        <article class="rsp-team-card rsp-fade-item">
+          <div class="rsp-team-photo rsp-team-photo--andreas">
+            <img src="https://ranasykkelklubb.no/wp-content/uploads/2026/08/andreas.jpg" alt="Andreas Bjørnådal" loading="lazy" decoding="async">
+          </div>
+          <div class="rsp-team-info">
+            <h3>Andreas Bjørnådal</h3>
+            <p>Prosjektgruppe · Rana Sykkelklubb</p>
+          </div>
+        </article>
+
+        <article class="rsp-team-card rsp-fade-item">
+          <div class="rsp-team-photo rsp-team-photo--simon">
+            <img src="https://ranasykkelklubb.no/wp-content/uploads/2026/08/simon.jpg" alt="Simon Fossheim" loading="lazy" decoding="async">
+          </div>
+          <div class="rsp-team-info">
+            <h3>Simon Fossheim</h3>
+            <p>Prosjektgruppe · Rana Sykkelklubb</p>
+          </div>
+        </article>
+
+        <article class="rsp-team-card rsp-fade-item">
+          <div class="rsp-team-photo rsp-team-photo--knut">
+            <img src="https://ranasykkelklubb.no/wp-content/uploads/2026/08/knut.jpg" alt="Knut Lønnqvist" loading="lazy" decoding="async">
+          </div>
+          <div class="rsp-team-info">
+            <h3>Knut Lønnqvist</h3>
+            <p>Sti- og parkutvikler · Trailhead Nesbyen</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="rsp-contact-box rsp-fade-item">
+        <h3>Spørsmål, innspill eller støtte?</h3>
+        <p>Vi hører gjerne fra innbyggere, bedrifter og andre som ønsker å bidra eller vite mer om prosjektet.</p>
+        <a class="rsp-contact-email" href="mailto:post@ranasykkelklubb.no">post@ranasykkelklubb.no</a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+(function () {
+  function initRanaBikePark() {
+    const wrapper = document.querySelector('#rana-bike-park');
+    if (!wrapper || wrapper.dataset.rspInitialized === 'true') return;
+
+    wrapper.dataset.rspInitialized = 'true';
+    wrapper.classList.add('rsp-js');
+
+    // Safe reveal animations.
+    const fadeItems = wrapper.querySelectorAll('.rsp-fade-item');
+    if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('rsp-animated');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, {
+        rootMargin: '0px 0px -45px 0px',
+        threshold: 0.12
+      });
+
+      fadeItems.forEach(item => observer.observe(item));
+    } else {
+      fadeItems.forEach(item => item.classList.add('rsp-animated'));
+    }
+
+    // Smooth internal scrolling.
+    wrapper.querySelectorAll('.js-rsp-scroll').forEach(link => {
+      link.addEventListener('click', event => {
+        const targetSelector = link.getAttribute('href');
+        if (!targetSelector || !targetSelector.startsWith('#')) return;
+
+        const target = wrapper.querySelector(targetSelector);
+        if (!target) return;
+
+        event.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+        const navLinks = wrapper.querySelector('#rsp-nav-links');
+        const navToggle = wrapper.querySelector('.rsp-nav-toggle');
+        if (navLinks && navLinks.classList.contains('is-open')) {
+          navLinks.classList.remove('is-open');
+          if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+
+    // Mobile menu.
+    const navToggle = wrapper.querySelector('.rsp-nav-toggle');
+    const navLinks = wrapper.querySelector('#rsp-nav-links');
+    if (navToggle && navLinks) {
+      navToggle.addEventListener('click', () => {
+        const isOpen = navLinks.classList.toggle('is-open');
+        navToggle.setAttribute('aria-expanded', String(isOpen));
+      });
+    }
+
+    // Park element filters.
+    const filterButtons = wrapper.querySelectorAll('.rsp-filter-btn');
+    const conceptCards = wrapper.querySelectorAll('.rsp-concept-card[data-levels]');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const filter = button.dataset.filter || 'all';
+
+        filterButtons.forEach(btn => {
+          const active = btn === button;
+          btn.classList.toggle('is-active', active);
+          btn.setAttribute('aria-pressed', String(active));
+        });
+
+        conceptCards.forEach(card => {
+          const levels = (card.dataset.levels || '').split(/\s+/);
+          const visible = filter === 'all' || levels.includes(filter);
+          card.classList.toggle('rsp-hidden', !visible);
+        });
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initRanaBikePark, { once: true });
+  } else {
+    initRanaBikePark();
+  }
+})();
+</script>

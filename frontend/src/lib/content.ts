@@ -130,23 +130,98 @@ export async function fetchEvents(): Promise<EventItem[]> {
   }
 }
 
-export async function fetchEventBySlug(slug: string) {
+export interface RouteItem {
+  id: string;
+  slug: string;
+  title: string;
+  excerpt: string;
+  discipline: "Landevei" | "Terreng / Sti" | "Grus / Gravel" | "Enduro";
+  difficulty: "Enkel" | "Middels" | "Krevende" | "Ekspert";
+  distanceKm: number;
+  elevationM: number;
+  estimatedTime: string;
+  surface: string;
+  startingPoint: string;
+  gpxFile?: string;
+  stravaUrl?: string;
+  komootUrl?: string;
+  trailforksUrl?: string;
+  trailguideUrl?: string;
+  utNoUrl?: string;
+  highlights: string[];
+  featured: boolean;
+  image?: string;
+  order?: number;
+  body?: string;
+}
+
+export async function fetchRoutes(): Promise<RouteItem[]> {
   try {
-    const entry = await getEntry("arrangement", slug);
+    const entries = await getCollection("ruter");
+    return entries
+      .sort((a, b) => (a.data.order ?? 0) - (b.data.order ?? 0))
+      .map((entry) => ({
+        id: entry.id,
+        slug: entry.id.replace(/\.[^/.]+$/, ""),
+        title: entry.data.title,
+        excerpt: entry.data.excerpt,
+        discipline: entry.data.discipline,
+        difficulty: entry.data.difficulty,
+        distanceKm: entry.data.distanceKm,
+        elevationM: entry.data.elevationM,
+        estimatedTime: entry.data.estimatedTime,
+        surface: entry.data.surface,
+        startingPoint: entry.data.startingPoint,
+        gpxFile: entry.data.gpxFile ?? undefined,
+        stravaUrl: entry.data.stravaUrl ?? undefined,
+        komootUrl: entry.data.komootUrl ?? undefined,
+        trailforksUrl: entry.data.trailforksUrl ?? undefined,
+        trailguideUrl: entry.data.trailguideUrl ?? undefined,
+        utNoUrl: entry.data.utNoUrl ?? undefined,
+        highlights: entry.data.highlights || [],
+        featured: entry.data.featured ?? false,
+        image: entry.data.image ?? undefined,
+        order: entry.data.order ?? 0,
+        body: entry.body,
+      }));
+  } catch (err) {
+    console.warn("Could not load ruter collection:", err);
+    return [];
+  }
+}
+
+export async function fetchRouteBySlug(slug: string) {
+  try {
+    const entry = await getEntry("ruter", slug);
     if (!entry) return null;
     return {
       id: entry.id,
       slug: entry.id.replace(/\.[^/.]+$/, ""),
       title: entry.data.title,
-      excerpt: entry.data.excerpt ?? undefined,
-      date: entry.data.date ? entry.data.date.toISOString() : undefined,
-      location: entry.data.location ?? undefined,
+      excerpt: entry.data.excerpt,
+      discipline: entry.data.discipline,
+      difficulty: entry.data.difficulty,
+      distanceKm: entry.data.distanceKm,
+      elevationM: entry.data.elevationM,
+      estimatedTime: entry.data.estimatedTime,
+      surface: entry.data.surface,
+      startingPoint: entry.data.startingPoint,
+      gpxFile: entry.data.gpxFile ?? undefined,
+      stravaUrl: entry.data.stravaUrl ?? undefined,
+      komootUrl: entry.data.komootUrl ?? undefined,
+      trailforksUrl: entry.data.trailforksUrl ?? undefined,
+      trailguideUrl: entry.data.trailguideUrl ?? undefined,
+      utNoUrl: entry.data.utNoUrl ?? undefined,
+      highlights: entry.data.highlights || [],
+      featured: entry.data.featured ?? false,
       image: entry.data.image ?? undefined,
+      order: entry.data.order ?? 0,
       body: entry.body,
       entry,
     };
   } catch (err) {
-    console.warn(`Could not load arrangement/${slug}:`, err);
+    console.warn(`Could not load ruter/${slug}:`, err);
     return null;
   }
 }
+

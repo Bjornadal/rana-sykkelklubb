@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="Rana Sykkelklubb - https://ranasykkelklubb.no" xmlns="http://www.topografix.com/GPX/1/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+  <metadata>
+    <name>Svartisdalen Gravel Epic</name>
+    <desc>Storslått grustur fra Røssvoll inn langs Svartisvatnet med utsikt mot isbreen og ville fjell.</desc>
+    <author>
+      <name>Rana Sykkelklubb</name>
+    </author>
+  </metadata>
+  <wpt lat="66.3550" lon="14.3200">
+    <name>Start: Røssvoll</name>
+    <ele>45</ele>
+  </wpt>
+  <wpt lat="66.5120" lon="14.0150">
+    <name>Svartisvatnet Båtanløp</name>
+    <ele>78</ele>
+  </wpt>
+  <trk>
+    <name>Svartisdalen Gravel</name>
+    <type>Cycling - Gravel</type>
+    <trkseg>
+      <trkpt lat="66.3550" lon="14.3200"><ele>45</ele></trkpt>
+      <trkpt lat="66.3920" lon="14.2100"><ele>95</ele></trkpt>
+      <trkpt lat="66.4450" lon="14.1200"><ele>160</ele></trkpt>
+      <trkpt lat="66.4950" lon="14.0500"><ele>110</ele></trkpt>
+      <trkpt lat="66.5120" lon="14.0150"><ele>78</ele></trkpt>
+      <trkpt lat="66.4950" lon="14.0500"><ele>110</ele></trkpt>
+      <trkpt lat="66.4450" lon="14.1200"><ele>160</ele></trkpt>
+      <trkpt lat="66.3920" lon="14.2100"><ele>95</ele></trkpt>
+      <trkpt lat="66.3550" lon="14.3200"><ele>45</ele></trkpt>
+    </trkseg>
+  </trk>
+</gpx>

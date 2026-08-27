@@ -1,0 +1,170 @@
+---
+import { elevationProfiles } from "../lib/elevationProfiles";
+
+interface Props {
+  slug: string;
+  title: string;
+  distanceKm: number;
+  elevationM: number;
+}
+
+const { slug, title, distanceKm, elevationM } = Astro.props;
+const profile = elevationProfiles[slug];
+
+const minEle = profile ? profile.minEle : 0;
+const maxEle = profile ? profile.maxEle : elevationM;
+const startEle = profile ? profile.startEle : 0;
+const endEle = profile ? profile.endEle : 0;
+const peakEle = profile && profile.peak ? profile.peak.ele : maxEle;
+const peakDist = profile && profile.peak ? profile.peak.distKm : (distanceKm / 2);
+const peakSvgX = profile && profile.peak ? profile.peak.svgX : 300;
+const peakSvgY = profile && profile.peak ? profile.peak.svgY : 30;
+
+const linePath = profile ? profile.linePath : `M 10,135 L 300,30 L 590,135`;
+const areaPath = profile ? profile.areaPath : `M 10,135 L 300,30 L 590,135 L 590,135 L 10,135 Z`;
+
+const gain = profile ? profile.gainM : elevationM;
+const loss = profile ? profile.lossM : elevationM;
+const totalDist = profile ? profile.totalDistKm : distanceKm;
+
+// Compute intermediate elevation guides
+const midEle = Math.round((minEle + maxEle) / 2);
+---
+
+<div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-xs">
+  <!-- Header -->
+  <div class="flex flex-wrap items-center justify-between gap-3 border-b border-gray-100 pb-4 mb-6">
+    <div class="flex items-center gap-2.5">
+      <span class="flex h-8 w-8 items-center justify-center rounded-xl bg-primary-50 text-primary-600">
+        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+        </svg>
+      </span>
+      <div>
+        <h3 class="text-sm font-extrabold uppercase tracking-wider text-dark">
+          Høydeprofil &amp; terrengdata
+        </h3>
+      </div>
+    </div>
+
+    <!-- Quick Stats Pill -->
+    <div class="flex items-center gap-4 text-xs font-bold text-gray-700">
+      <span class="inline-flex items-center gap-1.5 rounded-lg bg-gray-50 border border-gray-200 px-2.5 py-1">
+        <span class="text-gray-400">Spenn:</span>
+        <span>{minEle} – {maxEle} moh</span>
+      </span>
+      {gain > 15 && (
+        <span class="inline-flex items-center gap-1 text-emerald-600">
+          <span>↑</span>
+          <span>+{gain} hm</span>
+        </span>
+      )}
+      {loss > 15 && (
+        <span class="inline-flex items-center gap-1 text-rose-600">
+          <span>↓</span>
+          <span>-{loss} hm</span>
+        </span>
+      )}
+    </div>
+  </div>
+
+  <!-- SVG Chart Container -->
+  <div class="relative w-full overflow-hidden rounded-xl bg-gray-50/70 p-4 border border-gray-100">
+    
+    <!-- Y-axis Elevation Labels on Left -->
+    <div class="absolute left-2 top-2 bottom-6 flex flex-col justify-between text-[10px] font-bold text-gray-400 pointer-events-none z-10">
+      <span>{maxEle} moh</span>
+      <span>{midEle} moh</span>
+      <span>{minEle} moh</span>
+    </div>
+
+    <svg
+      class="w-full h-44 sm:h-52 overflow-visible"
+      viewBox="0 0 600 160"
+      preserveAspectRatio="none"
+    >
+      <defs>
+        <!-- Gradient fill -->
+        <linearGradient id={`grad-${slug}`} x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#10b981" stop-opacity="0.45" />
+          <stop offset="60%" stop-color="#059669" stop-opacity="0.15" />
+          <stop offset="100%" stop-color="#047857" stop-opacity="0.02" />
+        </linearGradient>
+
+        <!-- Horizontal grid line pattern -->
+        <pattern id="grid" width="600" height="40" patternUnits="userSpaceOnUse">
+          <line x1="0" y1="0" x2="600" y2="0" stroke="#e5e7eb" stroke-dasharray="3,3" stroke-width="1" />
+        </pattern>
+      </defs>
+
+      <!-- Background Grid -->
+      <rect x="10" y="25" width="580" height="110" fill="url(#grid)" />
+
+      <!-- Area Fill -->
+      <path
+        d={areaPath}
+        fill={`url(#grad-${slug})`}
+      />
+
+      <!-- Crisp Line Stroke -->
+      <path
+        d={linePath}
+        fill="none"
+        stroke="#059669"
+        stroke-width="3"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+
+      <!-- Peak Dot & Label -->
+      {profile && (
+        <g>
+          <circle cx={peakSvgX} cy={peakSvgY} r="4.5" fill="#e11d48" stroke="#ffffff" stroke-width="2" />
+          <text
+            x={Math.min(520, Math.max(80, peakSvgX))}
+            y={Math.max(16, peakSvgY - 8)}
+            text-anchor="middle"
+            class="text-[11px] font-black fill-dark"
+          >
+            Toppunkt: {peakEle} moh ({peakDist} km)
+          </text>
+        </g>
+      )}
+
+      <!-- Start Point Dot -->
+      <circle cx="10" cy="135" r="3.5" fill="#10b981" stroke="#ffffff" stroke-width="1.5" />
+
+      <!-- End Point Dot -->
+      <circle cx="590" cy="135" r="3.5" fill="#047857" stroke="#ffffff" stroke-width="1.5" />
+    </svg>
+
+    <!-- X-axis Distance Labels at Bottom -->
+    <div class="flex items-center justify-between text-[11px] font-bold text-gray-500 pt-2 border-t border-gray-200 mt-1">
+      <span>Start (0 km) · {startEle} moh</span>
+      {profile && (
+        <span class="text-gray-400 font-medium">Midtveis ({(totalDist / 2).toFixed(1)} km)</span>
+      )}
+      <span>Mål ({totalDist} km) · {endEle} moh</span>
+    </div>
+  </div>
+
+  <!-- Key Terrain Facts Grid -->
+  <div class="mt-5 grid grid-cols-2 sm:grid-cols-4 gap-3 text-center text-xs">
+    <div class="rounded-xl bg-gray-50 p-3 border border-gray-100">
+      <span class="block text-[10px] font-bold uppercase tracking-wider text-gray-400">Høyeste punkt</span>
+      <span class="mt-0.5 block text-sm font-extrabold text-dark">{maxEle} moh</span>
+    </div>
+    <div class="rounded-xl bg-gray-50 p-3 border border-gray-100">
+      <span class="block text-[10px] font-bold uppercase tracking-wider text-gray-400">Laveste punkt</span>
+      <span class="mt-0.5 block text-sm font-extrabold text-dark">{minEle} moh</span>
+    </div>
+    <div class="rounded-xl bg-gray-50 p-3 border border-gray-100">
+      <span class="block text-[10px] font-bold uppercase tracking-wider text-gray-400">Stigning</span>
+      <span class="mt-0.5 block text-sm font-extrabold text-emerald-700">+{gain} hm</span>
+    </div>
+    <div class="rounded-xl bg-gray-50 p-3 border border-gray-100">
+      <span class="block text-[10px] font-bold uppercase tracking-wider text-gray-400">Fall / Utfor</span>
+      <span class="mt-0.5 block text-sm font-extrabold text-rose-700">-{loss} hm</span>
+    </div>
+  </div>
+</div>

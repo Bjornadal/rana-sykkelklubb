@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="Rana Sykkelklubb - https://ranasykkelklubb.no" xmlns="http://www.topografix.com/GPX/1/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+  <metadata>
+    <name>Klokkerhagen &amp; Revelen Elvelangs</name>
+    <desc>Lett og familievennlig stitur langs Ranelva med fine grus- og skogsstier.</desc>
+    <author>
+      <name>Rana Sykkelklubb</name>
+    </author>
+  </metadata>
+  <wpt lat="66.3190" lon="14.1550">
+    <name>Start: Klokkerhagen Friluftsområde</name>
+    <ele>18</ele>
+  </wpt>
+  <trk>
+    <name>Klokkerhagen og Revelen Rundt</name>
+    <type>Cycling - Trail</type>
+    <trkseg>
+      <trkpt lat="66.3190" lon="14.1550"><ele>18</ele></trkpt>
+      <trkpt lat="66.3240" lon="14.1720"><ele>22</ele></trkpt>
+      <trkpt lat="66.3310" lon="14.1890"><ele>28</ele></trkpt>
+      <trkpt lat="66.3360" lon="14.2050"><ele>35</ele></trkpt>
+      <trkpt lat="66.3290" lon="14.1920"><ele>26</ele></trkpt>
+      <trkpt lat="66.3210" lon="14.1680"><ele>20</ele></trkpt>
+      <trkpt lat="66.3190" lon="14.1550"><ele>18</ele></trkpt>
+    </trkseg>
+  </trk>
+</gpx>

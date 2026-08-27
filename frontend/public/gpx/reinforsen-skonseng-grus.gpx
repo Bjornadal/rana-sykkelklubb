@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="Rana Sykkelklubb - https://ranasykkelklubb.no" xmlns="http://www.topografix.com/GPX/1/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+  <metadata>
+    <name>Reinforsen og Skonseng Grusrunde</name>
+    <desc>Herlig gravel- og grustur langs Ranelva opp mot spektakulære Reinforsen og tilbake via Skonseng.</desc>
+    <author>
+      <name>Rana Sykkelklubb</name>
+    </author>
+  </metadata>
+  <wpt lat="66.3125" lon="14.1428">
+    <name>Start: Mo i Rana</name>
+    <ele>12</ele>
+  </wpt>
+  <wpt lat="66.3580" lon="14.3350">
+    <name>Reinforsen Fossefall</name>
+    <ele>65</ele>
+  </wpt>
+  <trk>
+    <name>Reinforsen Skonseng Grus</name>
+    <type>Cycling - Gravel</type>
+    <trkseg>
+      <trkpt lat="66.3125" lon="14.1428"><ele>12</ele></trkpt>
+      <trkpt lat="66.3290" lon="14.2100"><ele>28</ele></trkpt>
+      <trkpt lat="66.3450" lon="14.2800"><ele>45</ele></trkpt>
+      <trkpt lat="66.3580" lon="14.3350"><ele>65</ele></trkpt>
+      <trkpt lat="66.3680" lon="14.3100"><ele>90</ele></trkpt>
+      <trkpt lat="66.3510" lon="14.2500"><ele>50</ele></trkpt>
+      <trkpt lat="66.3320" lon="14.1900"><ele>30</ele></trkpt>
+      <trkpt lat="66.3125" lon="14.1428"><ele>12</ele></trkpt>
+    </trkseg>
+  </trk>
+</gpx>

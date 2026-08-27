@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="Rana Sykkelklubb - https://ranasykkelklubb.no" xmlns="http://www.topografix.com/GPX/1/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+  <metadata>
+    <name>Plurdalen og Langvatnet</name>
+    <desc>Populær landeveistur opp naturskjønne Plurdalen og rundt vakre Langvatnet.</desc>
+    <author>
+      <name>Rana Sykkelklubb</name>
+    </author>
+  </metadata>
+  <wpt lat="66.3125" lon="14.1428">
+    <name>Start: Mo i Rana</name>
+    <ele>12</ele>
+  </wpt>
+  <trk>
+    <name>Plurdalen og Langvatnet</name>
+    <type>Cycling - Road</type>
+    <trkseg>
+      <trkpt lat="66.3125" lon="14.1428"><ele>12</ele></trkpt>
+      <trkpt lat="66.3350" lon="14.2100"><ele>35</ele></trkpt>
+      <trkpt lat="66.3580" lon="14.3400"><ele>85</ele></trkpt>
+      <trkpt lat="66.3720" lon="14.5100"><ele>190</ele></trkpt>
+      <trkpt lat="66.3810" lon="14.6200"><ele>260</ele></trkpt>
+      <trkpt lat="66.3650" lon="14.5500"><ele>210</ele></trkpt>
+      <trkpt lat="66.3450" lon="14.3800"><ele>110</ele></trkpt>
+      <trkpt lat="66.3125" lon="14.1428"><ele>12</ele></trkpt>
+    </trkseg>
+  </trk>
+</gpx>

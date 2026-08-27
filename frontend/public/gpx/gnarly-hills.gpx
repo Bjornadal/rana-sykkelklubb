@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<gpx version="1.1" creator="Trailguide" xmlns="http://www.topografix.com/GPX/1/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gpxtpx="http://www.garmin.com/xmlschemas/TrackPointExtension/v1" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd http://www.cluetrust.com/XML/GPXDATA/1/0 http://www.cluetrust.com/Schemas/gpxdata10.xsd http://www.garmin.com/xmlschemas/TrackPointExtension/v1 http://www.garmin.com/xmlschemas/TrackPointExtensionv1.xsd" xmlns:gpxdata="http://www.cluetrust.com/XML/GPXDATA/1/0">
+<metadata>
+<name>Gnarly%20Hills</name>
+<author><name>Georg Enga</name></author>
+<copyright author="Trailguide"><year>2023</year></copyright>
+<keywords>trail,blue</keywords>
+</metadata>
+<trk>
+<name>Gnarly%20Hills</name>
+<trkseg><trkpt lat="66.341372" lon="14.190734"><ele>396</ele></trkpt>
+<trkpt lat="66.341323" lon="14.190511"><ele>396</ele></trkpt>
+<trkpt lat="66.34125" lon="14.189937"><ele>394</ele></trkpt>
+<trkpt lat="66.341257" lon="14.189293"><ele>392</ele></trkpt>
+<trkpt lat="66.341197" lon="14.18874"><ele>391</ele></trkpt>
+<trkpt lat="66.341205" lon="14.188227"><ele>390</ele></trkpt>
+<trkpt lat="66.341144" lon="14.187369"><ele>387</ele></trkpt>
+<trkpt lat="66.341014" lon="14.186343"><ele>384</ele></trkpt>
+<trkpt lat="66.34088" lon="14.185605"><ele>381</ele></trkpt>
+<trkpt lat="66.340795" lon="14.185037"><ele>377</ele></trkpt>
+<trkpt lat="66.340782" lon="14.184822"><ele>376</ele></trkpt>
+<trkpt lat="66.340811" lon="14.184239"><ele>374</ele></trkpt>
+<trkpt lat="66.340773" lon="14.183756"><ele>372</ele></trkpt>
+<trkpt lat="66.340826" lon="14.182773"><ele>368</ele></trkpt>
+<trkpt lat="66.340858" lon="14.182608"><ele>366</ele></trkpt>
+<trkpt lat="66.340898" lon="14.1825"><ele>365</ele></trkpt>
+<trkpt lat="66.341123" lon="14.182177"><ele>360</ele></trkpt>
+<trkpt lat="66.341193" lon="14.18204"><ele>358</ele></trkpt>
+<trkpt lat="66.34127" lon="14.181598"><ele>354</ele></trkpt>
+<trkpt lat="66.341272" lon="14.181268"><ele>351</ele></trkpt>
+<trkpt lat="66.341183" lon="14.180827"><ele>347</ele></trkpt>
+<trkpt lat="66.341182" lon="14.180325"><ele>345</ele></trkpt>
+<trkpt lat="66.341144" lon="14.18011"><ele>344</ele></trkpt>
+<trkpt lat="66.341012" lon="14.179649"><ele>342</ele></trkpt>
+<trkpt lat="66.340901" lon="14.17898"><ele>337</ele></trkpt>
+<trkpt lat="66.340779" lon="14.178479"><ele>333</ele></trkpt>
+<trkpt lat="66.340692" lon="14.177942"><ele>328</ele></trkpt>
+<trkpt lat="66.340578" lon="14.177518"><ele>325</ele></trkpt>
+<trkpt lat="66.340405" lon="14.176725"><ele>320</ele></trkpt>
+<trkpt lat="66.340318" lon="14.176433"><ele>318</ele></trkpt>
+<trkpt lat="66.340245" lon="14.1761"><ele>316</ele></trkpt>
+<trkpt lat="66.34023" lon="14.175993"><ele>316</ele></trkpt>
+<trkpt lat="66.340221" lon="14.175503"><ele>313</ele></trkpt>
+<trkpt lat="66.340163" lon="14.174833"><ele>310</ele></trkpt>
+<trkpt lat="66.340089" lon="14.174598"><ele>308</ele></trkpt>
+<trkpt lat="66.339962" lon="14.174449"><ele>307</ele></trkpt>
+<trkpt lat="66.339817" lon="14.174156"><ele>306</ele></trkpt>
+<trkpt lat="66.339679" lon="14.173727"><ele>305</ele></trkpt>
+<trkpt lat="66.339626" lon="14.173366"><ele>304</ele></trkpt>
+<trkpt lat="66.339643" lon="14.172931"><ele>303</ele></trkpt>
+</trkseg>
+</trk>
+</gpx>

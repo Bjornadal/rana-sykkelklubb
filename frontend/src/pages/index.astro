@@ -49,60 +49,48 @@ const latestNews = (await fetchNews()).slice(0, 3);
     ctaSecondary={{ label: "Se aktiviteter", href: "/aktiviteter" }}
   />
 
-  <!-- Disipliner -->
-  <section class="py-20 sm:py-28">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <SectionHeading
-        title="Våre disipliner"
-        subtitle="Enten du foretrekker glatt asfalt eller tekniske stier – vi har noe for deg."
-      />
-      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        {disciplines.map((d) => (
-          <DisciplineCard
-            title={d.title}
-            description={d.description}
-            icon={d.icon}
-            color={d.color}
-          />
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Sykkelpark -->
-  <section class="bg-gray-50 py-20 sm:py-28">
+  <!-- Rana Bike Park (Fremhevet høyt oppe) -->
+  <section class="bg-gray-50 py-16 sm:py-24 border-b border-gray-100">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="grid items-center gap-12 lg:grid-cols-2">
         <div>
-          <span class="inline-block rounded-full bg-primary-100 px-4 py-1 text-sm font-semibold text-primary-700">
-            Nytt prosjekt
+          <span class="inline-block rounded-full bg-primary-100 px-4 py-1 text-xs font-bold uppercase tracking-wider text-primary-700">
+            Nytt storsatsingsprosjekt
           </span>
           <h2 class="mt-4 text-3xl font-extrabold tracking-tight text-dark sm:text-4xl">
             Rana Bike Park – Fremtidens møteplass
           </h2>
-          <p class="mt-6 text-lg leading-relaxed text-gray-600">
+          <p class="mt-4 text-base sm:text-lg leading-relaxed text-gray-600">
             Vi jobber for å skape en inkluderende sykkelpark med pumptrack, hoppanlegg og
             flytstier. Parken skal gi glede, mestring og aktivitet for barn, ungdom og voksne.
           </p>
-          <ul class="mt-8 space-y-3">
-            {["Pumptrack for alle nivåer", "Hoppanlegg med ulike vanskelighetsgrader", "Flytstier i naturskjønne omgivelser", "Fase 1 sikret med 8,75 MNOK gjennom Anleggsløftet"].map((item) => (
-              <li class="flex items-start gap-3">
+          <ul class="mt-6 space-y-3">
+            {["Pumptrack for alle nivåer og aldre", "Hoppanlegg med ulike vanskelighetsgrader", "Flytstier i naturskjønne omgivelser i Båsmofjellet / Munklia", "Fase 1 sikret med 8,75 MNOK gjennom Anleggsløftet"].map((item) => (
+              <li class="flex items-start gap-3 text-sm font-medium text-gray-700">
                 <svg class="mt-0.5 h-5 w-5 shrink-0 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                 </svg>
-                <span class="text-gray-700">{item}</span>
+                <span>{item}</span>
               </li>
             ))}
           </ul>
-          <a
-            href={url("/sykkelpark")}
-            class="mt-8 inline-flex items-center rounded-lg bg-primary-600 px-6 py-3 text-base font-semibold text-white shadow transition-all hover:bg-primary-500"
-          >
-            Les mer om Rana Bike Park
-          </a>
+          <div class="mt-8 flex flex-wrap gap-4">
+            <a
+              href={url("/sykkelpark")}
+              class="inline-flex items-center rounded-xl bg-primary-600 px-6 py-3 text-sm font-bold uppercase tracking-wider text-white shadow-md transition-all hover:bg-primary-500 hover:-translate-y-0.5"
+            >
+              Les mer om Rana Bike Park &rarr;
+            </a>
+            <a
+              href={url("/nyheter/875-millioner-kroner-til-rana-bike-park")}
+              class="inline-flex items-center rounded-xl border border-gray-300 bg-white px-5 py-3 text-sm font-bold text-gray-700 shadow-2xs transition-all hover:bg-gray-50"
+            >
+              Les pressemeldingen
+            </a>
+          </div>
         </div>
         <div class="relative">
-          <a href={url("/rana-bike-park-map.jpg")} target="_blank" rel="noopener noreferrer" class="group block overflow-hidden rounded-2xl shadow-lg transition-shadow hover:shadow-xl">
+          <a href={url("/rana-bike-park-map.jpg")} target="_blank" rel="noopener noreferrer" class="group block overflow-hidden rounded-2xl shadow-xl border border-gray-200 transition-shadow hover:shadow-2xl">
             <img
               src={url("/rana-bike-park-map.jpg")}
               alt="Illustrasjon av Rana Bike Park – oversiktskart over anlegget i Munklia og Båsmofjellet"
@@ -121,8 +109,74 @@ const latestNews = (await fetchNews()).slice(0, 3);
     </div>
   </section>
 
+  <!-- Disipliner -->
+  <section class="py-16 sm:py-24 bg-white">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <SectionHeading
+        title="Våre disipliner"
+        subtitle="Enten du foretrekker glatt asfalt eller tekniske stier – vi har noe for deg."
+      />
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {disciplines.map((d) => (
+          <DisciplineCard
+            title={d.title}
+            description={d.description}
+            icon={d.icon}
+            color={d.color}
+          />
+        ))}
+      </div>
+      <div class="mt-10 text-center">
+        <a
+          href={url("/ruter")}
+          class="inline-flex items-center gap-2 rounded-xl border border-gray-300 bg-white px-6 py-3 text-sm font-bold uppercase tracking-wider text-dark shadow-2xs transition-all hover:border-primary-400 hover:bg-primary-50 hover:text-primary-700"
+        >
+          <span>Utforsk stier og turforslag</span>
+          <svg class="h-4 w-4 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rute- & Stibibliotek Feature Card -->
+  <section class="border-t border-gray-100 bg-gray-50 py-12 sm:py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-dark via-dark-light to-primary-950 px-6 py-12 text-white shadow-2xl sm:px-12 sm:py-16">
+        <div class="relative z-10 grid items-center gap-8 lg:grid-cols-12">
+          <div class="lg:col-span-8">
+            <span class="inline-block rounded-full bg-primary-500/80 px-4 py-1 text-xs font-bold uppercase tracking-wider text-white">
+              Nyhet: Stibibliotek
+            </span>
+            <h2 class="mt-4 text-3xl font-extrabold uppercase tracking-tight sm:text-4xl">
+              Oppdag de beste stiene i Mo i Rana
+            </h2>
+            <p class="mt-4 max-w-2xl text-base sm:text-lg text-gray-200">
+              Vi har samlet og kartlagt de 16 råeste singletracks og stiturene i Rana. Last ned gratis GPX-spor rett til din sykkelcomputer eller mobil.
+            </p>
+            <div class="mt-6 flex flex-wrap gap-4 text-xs font-bold uppercase tracking-wider text-gray-300">
+              <span class="flex items-center gap-1.5"><span class="text-primary-400">✓</span> Idavollen Flytsti</span>
+              <span class="flex items-center gap-1.5"><span class="text-primary-400">✓</span> Hauknestinden Topptur</span>
+              <span class="flex items-center gap-1.5"><span class="text-primary-400">✓</span> Ytternmarka Roundtrip</span>
+              <span class="flex items-center gap-1.5"><span class="text-primary-400">✓</span> Tindan i Dalsgrenda</span>
+            </div>
+          </div>
+          <div class="flex lg:col-span-4 lg:justify-end">
+            <a
+              href={url("/ruter")}
+              class="inline-flex items-center justify-center rounded-xl bg-primary-500 px-7 py-4 text-sm font-bold uppercase tracking-wider text-white shadow-lg transition-all hover:bg-primary-600 hover:-translate-y-0.5 hover:shadow-primary-500/40"
+            >
+              Utforsk alle stier &rarr;
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Nyheter -->
-  <section class="py-20 sm:py-28">
+  <section class="py-16 sm:py-24 bg-white border-t border-gray-100">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <SectionHeading
         title="Siste nyheter"
