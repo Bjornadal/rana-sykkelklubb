@@ -9,7 +9,7 @@ const trailguideDifficulties = {
   'idavollen': 'Middels',             // Trailguide: blue
   'yttraskaret-flyt': 'Middels',      // Trailguide: blue
   'lappfjelltjonna': 'Middels',       // Trailguide: blue
-  'hauknestinden': 'Middels',         // Trailguide: blue
+  'hauknestinden': 'Krevende',        // Trailguide / User: red / Krevende
   'yttrafjellet-deluxe': 'Krevende',  // Trailguide: red
   'isbilen': 'Krevende',              // Trailguide: red
   'rausandhaugen': 'Krevende',        // Trailguide: red

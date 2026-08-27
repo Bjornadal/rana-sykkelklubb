@@ -2,7 +2,7 @@
 title: "Hauknestinden"
 excerpt: "Fin flytsti i bunnen, singletrack og teknisk snaufjell opp mot 798 moh med 360 graders fjordutsikt."
 discipline: "Terreng / Sti"
-difficulty: "Middels"
+difficulty: "Krevende"
 distanceKm: 3.5
 elevationM: 562
 estimatedTime: "1.5 – 2.5 timer"
