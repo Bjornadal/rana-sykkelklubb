@@ -23,19 +23,18 @@ const allTracks = Object.values(routeTracks)
       </h3>
     </div>
 
-    <!-- Map Controls -->
     <div class="flex flex-wrap items-center gap-2">
       <button
         type="button"
         id="overview-topo-btn"
-        class="rounded-xl border border-gray-200 bg-white px-3 py-1.5 text-xs font-bold text-gray-700 shadow-2xs hover:bg-gray-50 transition-colors"
+        class="rounded-xl border border-primary-300 bg-primary-50 px-3 py-1.5 text-xs font-bold text-primary-700 shadow-2xs hover:bg-primary-100 transition-colors"
       >
         Topografisk kart
       </button>
       <button
         type="button"
         id="overview-osm-btn"
-        class="rounded-xl border border-primary-300 bg-primary-50 px-3 py-1.5 text-xs font-bold text-primary-700 shadow-2xs hover:bg-primary-100 transition-colors"
+        class="rounded-xl border border-gray-200 bg-white px-3 py-1.5 text-xs font-bold text-gray-700 shadow-2xs hover:bg-gray-50 transition-colors"
       >
         Standard kart
       </button>
@@ -105,17 +104,17 @@ const allTracks = Object.values(routeTracks)
     });
 
     // Tile Layers
-    const osmLayer = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      maxZoom: 18,
-      attribution: "&copy; OpenStreetMap",
-    }).addTo(map);
-
     const topoLayer = L.tileLayer("https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png", {
       maxZoom: 17,
       attribution: "&copy; OpenTopoMap",
+    }).addTo(map);
+
+    const osmLayer = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 18,
+      attribution: "&copy; OpenStreetMap",
     });
 
-    let currentLayer = osmLayer;
+    let currentLayer = topoLayer;
 
     document.getElementById("overview-topo-btn")?.addEventListener("click", (e) => {
       if (currentLayer !== topoLayer) {
@@ -123,7 +122,9 @@ const allTracks = Object.values(routeTracks)
         topoLayer.addTo(map);
         currentLayer = topoLayer;
         (e.target as HTMLElement).classList.add("bg-primary-50", "text-primary-700", "border-primary-300");
+        (e.target as HTMLElement).classList.remove("bg-white", "text-gray-700", "border-gray-200");
         document.getElementById("overview-osm-btn")?.classList.remove("bg-primary-50", "text-primary-700", "border-primary-300");
+        document.getElementById("overview-osm-btn")?.classList.add("bg-white", "text-gray-700", "border-gray-200");
       }
     });
 
@@ -133,7 +134,9 @@ const allTracks = Object.values(routeTracks)
         osmLayer.addTo(map);
         currentLayer = osmLayer;
         (e.target as HTMLElement).classList.add("bg-primary-50", "text-primary-700", "border-primary-300");
+        (e.target as HTMLElement).classList.remove("bg-white", "text-gray-700", "border-gray-200");
         document.getElementById("overview-topo-btn")?.classList.remove("bg-primary-50", "text-primary-700", "border-primary-300");
+        document.getElementById("overview-topo-btn")?.classList.add("bg-white", "text-gray-700", "border-gray-200");
       }
     });
 

@@ -22,14 +22,14 @@ const { track } = Astro.props;
       <button
         type="button"
         id="btn-layer-topo"
-        class="rounded-lg border border-gray-200 bg-gray-50 px-2.5 py-1 text-[11px] font-bold text-gray-700 hover:bg-gray-100 transition-colors"
+        class="rounded-lg border border-primary-300 bg-primary-50 px-2.5 py-1 text-[11px] font-bold text-primary-700 hover:bg-primary-100 transition-colors"
       >
         Topografisk kart
       </button>
       <button
         type="button"
         id="btn-layer-osm"
-        class="rounded-lg border border-primary-300 bg-primary-50 px-2.5 py-1 text-[11px] font-bold text-primary-700 hover:bg-primary-100 transition-colors"
+        class="rounded-lg border border-gray-200 bg-gray-50 px-2.5 py-1 text-[11px] font-bold text-gray-700 hover:bg-gray-100 transition-colors"
       >
         Standard kart
       </button>
@@ -110,17 +110,17 @@ const { track } = Astro.props;
     });
 
     // Base layers
-    const osmLayer = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      maxZoom: 18,
-      attribution: "&copy; OpenStreetMap",
-    }).addTo(map);
-
     const topoLayer = L.tileLayer("https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png", {
       maxZoom: 17,
       attribution: "&copy; OpenTopoMap",
+    }).addTo(map);
+
+    const osmLayer = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 18,
+      attribution: "&copy; OpenStreetMap",
     });
 
-    let currentLayer = osmLayer;
+    let currentLayer = topoLayer;
 
     // Layer buttons
     document.getElementById("btn-layer-topo")?.addEventListener("click", (e) => {
@@ -129,9 +129,9 @@ const { track } = Astro.props;
         topoLayer.addTo(map);
         currentLayer = topoLayer;
         (e.target as HTMLElement).classList.add("bg-primary-50", "text-primary-700", "border-primary-300");
-        (e.target as HTMLElement).classList.remove("bg-gray-50", "text-gray-700");
+        (e.target as HTMLElement).classList.remove("bg-gray-50", "text-gray-700", "border-gray-200");
         document.getElementById("btn-layer-osm")?.classList.remove("bg-primary-50", "text-primary-700", "border-primary-300");
-        document.getElementById("btn-layer-osm")?.classList.add("bg-gray-50", "text-gray-700");
+        document.getElementById("btn-layer-osm")?.classList.add("bg-gray-50", "text-gray-700", "border-gray-200");
       }
     });
 
@@ -141,9 +141,9 @@ const { track } = Astro.props;
         osmLayer.addTo(map);
         currentLayer = osmLayer;
         (e.target as HTMLElement).classList.add("bg-primary-50", "text-primary-700", "border-primary-300");
-        (e.target as HTMLElement).classList.remove("bg-gray-50", "text-gray-700");
+        (e.target as HTMLElement).classList.remove("bg-gray-50", "text-gray-700", "border-gray-200");
         document.getElementById("btn-layer-topo")?.classList.remove("bg-primary-50", "text-primary-700", "border-primary-300");
-        document.getElementById("btn-layer-topo")?.classList.add("bg-gray-50", "text-gray-700");
+        document.getElementById("btn-layer-topo")?.classList.add("bg-gray-50", "text-gray-700", "border-gray-200");
       }
     });
 
