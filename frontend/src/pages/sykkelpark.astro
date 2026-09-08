@@ -10,12 +10,6 @@ const metrics = [
     color: "border-green-500 text-green-700 bg-green-50/50",
   },
   {
-    label: "Neste hovedfrist",
-    value: "1. sept. 2026",
-    note: "Spillemiddelsøknader til Rana kommune",
-    color: "border-primary-500 text-primary-700 bg-primary-50/50",
-  },
-  {
     label: "Første utbygging",
     value: "Fase 1",
     note: "Munklia og Mailandet",
@@ -309,7 +303,7 @@ const teamMembers = [
   <!-- Key Metrics (Nøkkeltall) -->
   <section class="relative z-10 -mt-10 sm:-mt-14 px-4 sm:px-6 lg:px-8">
     <div class="mx-auto max-w-7xl">
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-xl">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-xl">
         {metrics.map((metric) => (
           <div class={`relative border-t-4 p-6 ${metric.color} sm:border-t-0 sm:border-l first:border-l-0`}>
             <span class="block text-xs font-bold uppercase tracking-wider text-gray-500">
