@@ -4,10 +4,10 @@ import { url } from "../lib/url";
 
 const metrics = [
   {
-    label: "Sikret finansiering",
-    value: "8,75 MNOK",
-    note: "Gjennom Anleggsløftet",
-    color: "border-green-500 text-green-700 bg-green-50/50",
+    label: "Finansiering av fase 1",
+    value: "Bli med på laget",
+    note: "Vi trenger flere bidragsytere for å realisere parken",
+    color: "border-primary-500 text-primary-700 bg-primary-50/50",
   },
   {
     label: "Første utbygging",
@@ -239,12 +239,12 @@ const teamMembers = [
         <a href="#tidslinje" class="subnav-link whitespace-nowrap rounded-lg px-3 py-1.5 hover:bg-white/10 hover:text-white transition-all">Tidslinje</a>
         <a href="#finansiering" class="subnav-link whitespace-nowrap rounded-lg px-3 py-1.5 hover:bg-white/10 hover:text-white transition-all">Finansiering</a>
         <a href="#prosjektgruppe" class="subnav-link whitespace-nowrap rounded-lg px-3 py-1.5 hover:bg-white/10 hover:text-white transition-all">Prosjektgruppe</a>
-        <a href="#sponsing" class="lg:hidden whitespace-nowrap rounded-lg bg-primary-500 px-3.5 py-1.5 text-xs font-bold text-white shadow-sm hover:bg-primary-600 transition-all ml-1">Bli sponsor</a>
+        <a href="#sponsing" class="lg:hidden whitespace-nowrap rounded-lg bg-primary-500 px-3.5 py-1.5 text-xs font-bold text-white shadow-sm hover:bg-primary-600 transition-all ml-1">Bli partner</a>
       </nav>
 
       <!-- Right Sponsor CTA (balances the left brand on desktop) -->
       <div class="hidden lg:flex items-center justify-end shrink-0 w-44">
-        <a href="#sponsing" class="whitespace-nowrap rounded-lg bg-primary-500 px-3.5 py-1.5 text-xs font-bold text-white shadow-sm hover:bg-primary-600 transition-all hover:scale-105">Bli sponsor</a>
+        <a href="#sponsing" class="whitespace-nowrap rounded-lg bg-primary-500 px-3.5 py-1.5 text-xs font-bold text-white shadow-sm hover:bg-primary-600 transition-all hover:scale-105">Bli partner</a>
       </div>
     </div>
   </div>
@@ -270,13 +270,16 @@ const teamMembers = [
         <p class="mt-6 text-lg leading-relaxed text-gray-200 sm:text-xl font-normal max-w-2xl">
           En ny arena for mestring, bevegelsesglede og fellesskap på Skillevollen. Målet er et gratis og inkluderende sykkeltilbud for barn, unge, familier og syklister på alle nivåer.
         </p>
+        <p class="mt-4 text-base sm:text-lg leading-relaxed text-blue-100 max-w-2xl">
+          <strong class="text-white">Et stort løft er på plass – nå trenger vi flere med på laget.</strong> For å realisere første byggetrinn inviterer vi bedrifter og andre støttespillere til å bidra til den videre finansieringen.
+        </p>
 
         <div class="mt-8 flex flex-wrap gap-4">
           <a
             href="#sponsing"
             class="inline-flex items-center justify-center rounded-xl bg-primary-500 px-6 py-3 text-base font-bold text-white uppercase tracking-wider shadow-lg transition-all hover:-translate-y-0.5 hover:bg-primary-600 hover:shadow-primary-500/30"
           >
-            Bli med på laget
+            Bli partner
           </a>
           <a
             href="#konsept"
@@ -631,7 +634,7 @@ const teamMembers = [
         </h2>
         <div class="mx-auto mt-4 h-1 w-16 rounded-full bg-primary-500"></div>
         <p class="mt-6 text-lg leading-relaxed text-gray-600">
-          Prosjektet har allerede fått et svært viktig økonomisk fundament. Arbeidet nå handler om å sette sammen og dokumentere den resterende finansieringen for fase 1.
+          Tildelingen gjennom Anleggsløftet gir Rana Bike Park et viktig økonomisk fundament, men dekker ikke hele første byggetrinn. Nå arbeider vi videre med spillemidler, dugnad, øvrige finansieringskilder og nye bidrag fra næringslivet.
         </p>
       </div>
 
@@ -643,11 +646,11 @@ const teamMembers = [
             <span class="mt-1 block text-2xl font-extrabold text-dark">ca. 19,6 MNOK</span>
           </div>
           <div class="p-4 rounded-xl bg-green-50 border border-green-200">
-            <span class="text-xs font-bold uppercase tracking-wider text-green-700">Allerede sikret</span>
+            <span class="text-xs font-bold uppercase tracking-wider text-green-700">Tildelt gjennom Anleggsløftet</span>
             <span class="mt-1 block text-2xl font-extrabold text-green-800">8,75 MNOK</span>
           </div>
           <div class="p-4 rounded-xl bg-amber-50 border border-amber-200">
-            <span class="text-xs font-bold uppercase tracking-wider text-amber-700">Øvrig finansiering</span>
+            <span class="text-xs font-bold uppercase tracking-wider text-amber-700">Skal finansieres videre</span>
             <span class="mt-1 block text-2xl font-extrabold text-amber-800">ca. 10,8 MNOK</span>
           </div>
         </div>
@@ -655,7 +658,7 @@ const teamMembers = [
         <!-- Progress Bar -->
         <div class="mt-8">
           <div class="flex items-center justify-between text-xs sm:text-sm font-bold text-gray-700 mb-2">
-            <span>Omtrent 45 % av fase 1-rammen er sikret</span>
+            <span>Anleggsløftet utgjør omtrent 45 % av investeringsrammen</span>
             <span class="text-green-700">8,75 av 19,6 mill. kr</span>
           </div>
           <div class="h-4 w-full overflow-hidden rounded-full bg-gray-100 p-0.5 border border-gray-200">
@@ -664,7 +667,7 @@ const teamMembers = [
         </div>
 
         <p class="mt-6 text-xs sm:text-sm leading-relaxed text-gray-600 bg-gray-50 p-4 rounded-xl border border-gray-200/60">
-          <strong>Dette betyr ikke at Rana Sykkelklubb må hente inn 10,8 millioner kroner fra nye sponsorer.</strong> Den resterende finansieringen skal settes sammen av flere kilder, blant annet spillemidler, mva-kompensasjon, dugnad og egeninnsats, sponsorbidrag og nødvendig likviditets-/låneløsning.
+          <strong>De 10,8 millionene er ikke et sponsorbeløp.</strong> Den videre finansieringen skal settes sammen av flere kilder, blant annet spillemidler, mva-kompensasjon, dugnad og egeninnsats, sponsor- og næringslivsbidrag samt nødvendig likviditets-/låneløsning. Nye partnerbidrag er likevel viktige fordi de styrker totalfinansieringen og kan redusere behovet for lånefinansiering.
         </p>
       </div>
 
@@ -675,10 +678,13 @@ const teamMembers = [
             <div class="flex flex-wrap items-center gap-4 mb-4">
               <img src={url("/images/bike-park/anleggsloftet.png")} alt="Anleggsløftet logo" class="h-10 w-auto object-contain" loading="lazy" />
             </div>
-            <span class="text-xs font-extrabold uppercase tracking-widest text-blue-600">Sikret gjennom Anleggsløftet</span>
+            <span class="text-xs font-extrabold uppercase tracking-widest text-blue-600">Tildelt støtte gjennom Anleggsløftet</span>
             <h3 class="mt-1 text-3xl font-black text-dark tracking-tight">8,75 MNOK</h3>
             <p class="mt-3 text-sm leading-relaxed text-gray-700">
               Tildelingen er et likeverdig spleiselag mellom <strong>Sparebankstiftelsen Helgeland</strong> (4,375 mill. kr) og <strong>SpareBank 1 Helgelands Gavestiftelse</strong> (4,375 mill. kr).
+            </p>
+            <p class="mt-3 text-sm leading-relaxed text-gray-700">
+              Støtten gir prosjektet et svært viktig fundament, men dekker ikke hele fase 1. Flere bidrag fra næringslivet og andre støttespillere er derfor viktige for å få den samlede finansieringen på plass.
             </p>
           </div>
           <div class="grid grid-cols-2 gap-4">
@@ -709,8 +715,8 @@ const teamMembers = [
             <span class="mt-1 block text-xs text-gray-600">En viktig del av den samlede finansieringsplanen etter gjeldende ordning.</span>
           </div>
           <div class="p-4 rounded-xl border border-gray-100 bg-gray-50/50">
-            <strong class="block text-sm font-bold text-dark">Næringsliv og sponsorer</strong>
-            <span class="mt-1 block text-xs text-gray-600">Lokale samarbeidspartnere kan bidra både økonomisk og med varer/tjenester.</span>
+            <strong class="block text-sm font-bold text-dark">Næringsliv og partnere</strong>
+            <span class="mt-1 block text-xs text-gray-600">Lokale og regionale partnere kan bidra økonomisk, med varer og tjenester eller annen relevant støtte.</span>
           </div>
           <div class="p-4 rounded-xl border border-gray-100 bg-gray-50/50">
             <strong class="block text-sm font-bold text-dark">Forskuttering av spillemidler</strong>
