@@ -4,26 +4,26 @@ import { url } from "../lib/url";
 
 const metrics = [
   {
-    label: "Sikret finansiering",
+    label: "Tildelt støtte",
     value: "8,75 MNOK",
     note: "Gjennom Anleggsløftet",
     color: "border-green-500 text-green-700 bg-green-50/50",
   },
   {
-    label: "Neste hovedfrist",
-    value: "1. sept. 2026",
-    note: "Spillemiddelsøknader til Rana kommune",
+    label: "Spillemiddelsøknader",
+    value: "4 sendt inn",
+    note: "Sendt 7. september 2026 – til behandling",
     color: "border-primary-500 text-primary-700 bg-primary-50/50",
   },
   {
-    label: "Første utbygging",
-    value: "Fase 1",
-    note: "Munklia og Mailandet",
+    label: "Partnerløftet",
+    value: "1,3 mill. kr",
+    note: "Mål for nye sponsor- og gavebidrag",
     color: "border-blue-500 text-blue-700 bg-blue-50/50",
   },
   {
     label: "Planlagt byggestart",
-    value: "2027",
+    value: "Mai 2027",
     note: "Avhengig av finansiering og tillatelser",
     color: "border-amber-500 text-amber-700 bg-amber-50/50",
   },
@@ -53,12 +53,12 @@ const values = [
 const conceptItems = [
   {
     id: "pumptrack",
-    title: "Asfaltert pumptrack",
+    title: "To asfalterte pumptracks",
     badge: "Alle nivåer",
     levels: "nybegynner viderekommen avansert",
     image: url("/images/bike-park/pumptrack.png"),
     description:
-      "En kompakt bane med kuler og doserte svinger der fart skapes ved å pumpe med kroppen. Egner seg fra de yngste på balansesykkel til erfarne syklister.",
+      "Stor pumptrack / BMX-bane i Munklia og en egen pumptrack på Mailandet. Hovedsporene er planlagt til henholdsvis 271 og 140 meter, med tilbud for ulike aldre og nivåer.",
   },
   {
     id: "ferdighet",
@@ -67,25 +67,25 @@ const conceptItems = [
     levels: "nybegynner viderekommen",
     image: url("/images/bike-park/ferdighetsomrade.png"),
     description:
-      "Et kontrollert område for å øve på balanse, svingteknikk og ulike hindringer før ferdighetene tas med videre ut i stiene.",
+      "En 350 meter lang ferdighetsløype for å øve på balanse, svingteknikk og hindringer før ferdighetene tas med videre ut i stiene.",
   },
   {
     id: "hopp",
     title: "Hopplinjer",
-    badge: "Blå / rød / sort",
+    badge: "Progressive hopp",
     levels: "viderekommen avansert",
     image: url("/images/bike-park/hopplinjer.png"),
     description:
-      "Progressive hoppelinjer med ulik vanskelighetsgrad, slik at rytterne kan bygge trygghet og utvikle hoppteknikk over tid.",
+      "614 meter hopplinjer med progresjon, slik at rytterne kan bygge trygghet og utvikle hoppteknikk over tid.",
   },
   {
     id: "flytstier",
     title: "Flyt- og terrengstier",
-    badge: "Grønn til avansert",
+    badge: "Grønn / blå",
     levels: "nybegynner viderekommen avansert",
     image: url("/images/bike-park/flytstier.jpg"),
     description:
-      "Stier med ulik karakter og vanskelighetsgrad – fra enkle, familievennlige traseer til raskere flytstier og mer tekniske utfordringer.",
+      "2 557 meter sykkelløyper med grønn/blå progresjon, fra familievennlige traseer til nye utfordringer. I tillegg planlegges 1 525 meter turvei for adkomst og flerbruk.",
   },
 ];
 
@@ -95,10 +95,10 @@ const phases = [
     title: "Munklia og Mailandet",
     description: "Første prioriterte byggetrinn skal etablere hjertet i parken og tilbudene som favner bredest.",
     items: [
-      "Asfaltert pumptrack",
-      "Ferdighetsbane (skills area)",
-      "Hopplinjer (dirt lines)",
-      "Enkle flytstier og adkomst",
+      "Stor pumptrack / BMX-bane og pumptrack Mailandet",
+      "350 m ferdighetsløype og 614 m hopplinjer",
+      "2 557 m sykkelløyper med grønn/blå progresjon",
+      "1 525 m turvei for adkomst og flerbruk",
     ],
     highlight: true,
   },
@@ -130,7 +130,7 @@ const timelineSteps = [
   {
     number: "1",
     title: "1. Initiativ, samarbeid, bruksrett og forankring",
-    description: "Rana Sykkelklubb har etablert prosjektet og samarbeidet rundt utviklingen av sykkelpark på Skillevollen. Bruksretten for fase 1 er avklart med Rana kommune.",
+    description: "Rana Sykkelklubb har etablert prosjektet og samarbeidet rundt utviklingen av sykkelpark på Skillevollen. Bruksavtale for fase 1 er signert med Rana kommune. Tinglysing og bankens krav til sikkerhet følges opp videre.",
     status: "completed",
   },
   {
@@ -141,26 +141,26 @@ const timelineSteps = [
   },
   {
     number: "3",
-    title: "3. Spillemidler og fullfinansiering",
-    description: "Rana Sykkelklubb arbeider nå med spillemiddelsøknader for delanleggene i fase 1 og med dokumentasjon av resterende finansiering.",
+    title: "3. Søknader sendt – Partnerløftet pågår",
+    description: "Fire spillemiddelsøknader ble sendt 7. september 2026. Banken har gitt finansieringsbekreftelse inntil 4,6 mill. kr med vilkår. Nå arbeider vi med Partnerløftet og avklaringene før byggestart.",
     status: "active",
     subItems: [
-      "Spillemiddelsøknader til Rana kommune",
+      "Kommunal behandling av fire søknader",
       "Merverdiavgiftskompensasjon",
-      "Sponsor- og næringslivsbidrag",
+      "Partnerløftet: mål om 1,3 mill. kr",
       "Dugnad og øvrig prosjektfinansiering",
     ],
   },
   {
     number: "4",
-    title: "4. Planlagt byggestart i 2027",
+    title: "4. Planlagt byggestart mai 2027",
     description: "Byggestart forutsetter at finansiering, nødvendige tillatelser og øvrige prosjektavklaringer er på plass.",
     status: "upcoming",
   },
   {
     number: "5",
-    title: "5. Åpning og videre utbygging",
-    description: "Etter første byggetrinn skal parken utvikles videre trinnvis, med nye stier og tilbud etter hvert som prosjektet går framover.",
+    title: "5. Planlagt ferdigstillelse høsten 2027",
+    description: "Målet er å ferdigstille fase 1 høsten 2027. Senere faser er langsiktige planer som krever egne avklaringer og finansiering.",
     status: "upcoming",
   },
 ];
@@ -222,7 +222,7 @@ const teamMembers = [
 
 <Layout
   title="Rana Bike Park"
-  description="Rana Bike Park – En ny arena for mestring, bevegelsesglede og fellesskap på Skillevollen i Mo i Rana."
+  description="Rana Bike Park på Skillevollen: planlagt byggestart mai 2027, fire spillemiddelsøknader sendt og Partnerløftet med mål om 1,3 millioner kroner."
 >
   <!-- Sub Navigation Bar (Dark Glassmorphism Dock) -->
   <div class="sticky top-[73px] sm:top-[80px] z-40 border-b border-slate-800/80 bg-slate-950/90 backdrop-blur-md text-white shadow-lg transition-all">
@@ -245,12 +245,12 @@ const teamMembers = [
         <a href="#tidslinje" class="subnav-link whitespace-nowrap rounded-lg px-3 py-1.5 hover:bg-white/10 hover:text-white transition-all">Tidslinje</a>
         <a href="#finansiering" class="subnav-link whitespace-nowrap rounded-lg px-3 py-1.5 hover:bg-white/10 hover:text-white transition-all">Finansiering</a>
         <a href="#prosjektgruppe" class="subnav-link whitespace-nowrap rounded-lg px-3 py-1.5 hover:bg-white/10 hover:text-white transition-all">Prosjektgruppe</a>
-        <a href="#sponsing" class="lg:hidden whitespace-nowrap rounded-lg bg-primary-500 px-3.5 py-1.5 text-xs font-bold text-white shadow-sm hover:bg-primary-600 transition-all ml-1">Bli sponsor</a>
+        <a href="#partnerloftet" class="lg:hidden whitespace-nowrap rounded-lg bg-primary-500 px-3.5 py-1.5 text-xs font-bold text-white shadow-sm hover:bg-primary-600 transition-all ml-1">Partnerløftet</a>
       </nav>
 
       <!-- Right Sponsor CTA (balances the left brand on desktop) -->
       <div class="hidden lg:flex items-center justify-end shrink-0 w-44">
-        <a href="#sponsing" class="whitespace-nowrap rounded-lg bg-primary-500 px-3.5 py-1.5 text-xs font-bold text-white shadow-sm hover:bg-primary-600 transition-all hover:scale-105">Bli sponsor</a>
+        <a href="#partnerloftet" class="whitespace-nowrap rounded-lg bg-primary-500 px-3.5 py-1.5 text-xs font-bold text-white shadow-sm hover:bg-primary-600 transition-all hover:scale-105">Partnerløftet</a>
       </div>
     </div>
   </div>
@@ -266,7 +266,7 @@ const teamMembers = [
         <!-- Status pill -->
         <div class="inline-flex items-center gap-2 rounded-full bg-primary-500/90 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-white shadow-md mb-6">
           <span class="h-2 w-2 rounded-full bg-white animate-pulse"></span>
-          Aktiv finansierings- og søknadsfase
+          Søknader sendt – bli med på Partnerløftet
         </div>
 
         <h1 class="text-4xl font-extrabold tracking-tight text-white uppercase sm:text-5xl lg:text-6xl drop-shadow-md">
@@ -279,7 +279,7 @@ const teamMembers = [
 
         <div class="mt-8 flex flex-wrap gap-4">
           <a
-            href="#sponsing"
+            href="#partnerloftet"
             class="inline-flex items-center justify-center rounded-xl bg-primary-500 px-6 py-3 text-base font-bold text-white uppercase tracking-wider shadow-lg transition-all hover:-translate-y-0.5 hover:bg-primary-600 hover:shadow-primary-500/30"
           >
             Bli med på laget
@@ -299,7 +299,7 @@ const teamMembers = [
             <svg class="h-4 w-4 text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
             </svg>
-            Åpne prosjektpresentasjon (PDF)
+            Tidligere prosjektpresentasjon (PDF)
           </a>
         </div>
       </div>
@@ -376,7 +376,7 @@ const teamMembers = [
           target="_blank"
           rel="noopener noreferrer"
           class="group block relative overflow-hidden"
-          aria-label="Åpne prosjektpresentasjonen i full PDF"
+          aria-label="Åpne tidligere prosjektpresentasjon som PDF"
         >
           <img
             src={url("/images/bike-park/konseptskisse.jpg")}
@@ -389,19 +389,19 @@ const teamMembers = [
               <svg class="h-4 w-4 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
               </svg>
-              Klikk for å åpne prosjektpresentasjonen (PDF)
+              Tidligere prosjektpresentasjon (PDF)
             </span>
           </div>
         </a>
         <div class="p-4 bg-gray-50 border-t border-gray-100 flex flex-wrap items-center justify-between gap-2 text-xs text-gray-600">
-          <span>Oversiktskart og traséplaner utarbeidet i samarbeid med Trailhead Nesbyen.</span>
+          <span>Konseptillustrasjon av den langsiktige parken. Illustrasjonen og den tidligere presentasjonen kan avvike fra oppdatert fase 1; se nøkkeltallene på denne siden.</span>
           <a
             href={url("/Komprimert-presentasjon-Rana-Bike-Park.pdf")}
             target="_blank"
             rel="noopener noreferrer"
             class="font-bold text-primary-600 hover:text-primary-700 underline flex items-center gap-1"
           >
-            Åpne prosjektpresentasjon (PDF) &rarr;
+            Tidligere prosjektpresentasjon (PDF) &rarr;
           </a>
         </div>
       </div>
@@ -414,16 +414,16 @@ const teamMembers = [
           </div>
           <div>
             <span class="text-xs font-extrabold uppercase tracking-wider text-green-700">Grunneier og areal</span>
-            <h3 class="mt-1 text-xl font-bold text-dark uppercase tracking-tight">Bruksretten er avklart for fase 1</h3>
+            <h3 class="mt-1 text-xl font-bold text-dark uppercase tracking-tight">Bruksavtale signert for fase 1</h3>
             <p class="mt-2 text-sm leading-relaxed text-gray-700">
-              Rana kommune er grunneier. Nødvendig bruksrett for å gjennomføre fase 1 i Munklia og Mailandet er avklart, og prosjektet utvikles i samarbeid med Bossmo &amp; Ytteren IL, som drifter Skillevollen-området.
+              Rana kommune er grunneier. Bruksavtale for fase 1 i Munklia og Mailandet er signert. Tinglysing og bankens krav til sikkerhet følges opp videre, og prosjektet utvikles i samarbeid med Bossmo &amp; Ytteren IL, som drifter Skillevollen-området.
             </p>
             <p class="mt-2 text-sm leading-relaxed text-gray-700">
               For senere byggetrinn, blant annet videre utvikling i Munklia og mot Båsmofjellet, vil nødvendige areal-, plan- og tillatelsesavklaringer gjennomføres i takt med detaljprosjekteringen.
             </p>
             <div class="mt-4 flex flex-wrap gap-2">
               <span class="inline-flex items-center rounded-full border border-green-200 bg-white px-3 py-1 text-xs font-bold text-green-800">
-                Fase 1: Avklart
+                Fase 1: Bruksavtale signert
               </span>
               <span class="inline-flex items-center rounded-full border border-green-200 bg-white px-3 py-1 text-xs font-bold text-green-800">
                 Senere faser: Avklares trinnvis
@@ -445,7 +445,7 @@ const teamMembers = [
         </h2>
         <div class="mx-auto mt-4 h-1 w-16 rounded-full bg-primary-500"></div>
         <p class="mt-6 text-lg leading-relaxed text-gray-600">
-          Parken planlegges med elementer som gjør det mulig å starte enkelt og utvikle ferdigheter steg for steg. Bruk filtrene for å se hvilke elementer som passer ulike nivåer.
+          Fase 1 omfatter 3 521 meter stianlegg, 1 525 meter turvei og to asfalterte pumptracks. Tallene følger Trailheads fase 1-plan, versjon 1.6 datert 28. august 2026, slik den er oppsummert i partnerplanen. Bruk filtrene for å utforske tilbudet.
         </p>
       </div>
 
@@ -566,7 +566,7 @@ const teamMembers = [
         </h2>
         <div class="mx-auto mt-4 h-1 w-16 rounded-full bg-primary-500"></div>
         <p class="mt-6 text-lg leading-relaxed text-gray-600">
-          Prosjektet har gått fra idé og konsept til en konkret realiseringsfase. Nå er hovedoppgaven å sikre dokumentert finansiering og ferdigstille søknadsgrunnlaget.
+          Status per 8. september 2026: Søknadene er sendt og bankbekreftelsen er på plass. Nå følger vi opp behandlingen, Partnerløftet og vilkårene som må oppfylles før byggestart.
         </p>
       </div>
 
@@ -637,41 +637,37 @@ const teamMembers = [
         </h2>
         <div class="mx-auto mt-4 h-1 w-16 rounded-full bg-primary-500"></div>
         <p class="mt-6 text-lg leading-relaxed text-gray-600">
-          Prosjektet har allerede fått et svært viktig økonomisk fundament. Arbeidet nå handler om å sette sammen og dokumentere den resterende finansieringen for fase 1.
+          De fire spillemiddelsøknadene har en samlet kostnadsramme på 19 017 581 kr. Finansieringsplanen balanserer med bank som restpost. Partnerløftet skal redusere behovet for banktrekk og gi bedre økonomi til aktivitet, drift og vedlikehold.
         </p>
       </div>
 
-      <!-- Funding Overview & Progress Card -->
       <div class="mx-auto mt-14 max-w-4xl rounded-2xl border border-gray-200 bg-white p-6 sm:p-10 shadow-lg">
-        <div class="grid gap-6 sm:grid-cols-3">
-          <div class="p-4 rounded-xl bg-gray-50 border border-gray-100">
-            <span class="text-xs font-bold uppercase tracking-wider text-gray-500">Investeringsramme fase 1</span>
-            <span class="mt-1 block text-2xl font-extrabold text-dark">ca. 19,6 MNOK</span>
-          </div>
-          <div class="p-4 rounded-xl bg-green-50 border border-green-200">
-            <span class="text-xs font-bold uppercase tracking-wider text-green-700">Allerede sikret</span>
-            <span class="mt-1 block text-2xl font-extrabold text-green-800">8,75 MNOK</span>
-          </div>
-          <div class="p-4 rounded-xl bg-amber-50 border border-amber-200">
-            <span class="text-xs font-bold uppercase tracking-wider text-amber-700">Øvrig finansiering</span>
-            <span class="mt-1 block text-2xl font-extrabold text-amber-800">ca. 10,8 MNOK</span>
-          </div>
-        </div>
-
-        <!-- Progress Bar -->
-        <div class="mt-8">
-          <div class="flex items-center justify-between text-xs sm:text-sm font-bold text-gray-700 mb-2">
-            <span>Omtrent 45 % av fase 1-rammen er sikret</span>
-            <span class="text-green-700">8,75 av 19,6 mill. kr</span>
-          </div>
-          <div class="h-4 w-full overflow-hidden rounded-full bg-gray-100 p-0.5 border border-gray-200">
-            <div class="h-full rounded-full bg-gradient-to-r from-green-500 to-green-600 transition-all duration-1000" style="width: 45%;"></div>
-          </div>
-        </div>
-
-        <p class="mt-6 text-xs sm:text-sm leading-relaxed text-gray-600 bg-gray-50 p-4 rounded-xl border border-gray-200/60">
-          <strong>Dette betyr ikke at Rana Sykkelklubb må hente inn 10,8 millioner kroner fra nye sponsorer.</strong> Den resterende finansieringen skal settes sammen av flere kilder, blant annet spillemidler, mva-kompensasjon, dugnad og egeninnsats, sponsorbidrag og nødvendig likviditets-/låneløsning.
+        <dl class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {[
+            ["19,02 mill. kr", "Samlet kostnadsramme"],
+            ["8,76 mill. kr", "Dokumenterte pengegaver og tilskudd"],
+            ["4,819 mill. kr", "Omsøkte spillemidler – ikke innvilget"],
+            ["999 000 kr", "Dugnadsverdi i søknadsplanen"],
+            ["254 428 kr", "Egenkapital fra Rana Sykkelklubb"],
+            ["4,185 mill. kr", "Bankfinansiering i søknadsplanen"],
+          ].map(([amount, label]) => (
+            <div class="rounded-xl border border-gray-100 bg-gray-50 p-4">
+              <dt class="text-sm text-gray-600">{label}</dt>
+              <dd class="mt-2 text-2xl font-extrabold text-dark">{amount}</dd>
+            </div>
+          ))}
+        </dl>
+        <p class="mt-6 text-base leading-relaxed text-gray-700">
+          Banken har gitt en signert finansieringsbekreftelse på <strong>inntil 4,6 mill. kr</strong>.
+          Dette er ikke det samme som forventet banktrekk eller endelig byggekredittramme.
+          Utbetaling forutsetter at bankens vilkår er oppfylt.
         </p>
+        <p class="mt-4 text-base leading-relaxed text-gray-700">
+          De dokumenterte gavene og tilskuddene omfatter 8,75 mill. kr gjennom Anleggsløftet
+          og Kunnskapsparkens gavetilsagn på 10 000 kr. Tilsagn er ikke det samme som innbetaling.
+          Nye partnerbidrag reduserer bankbehovet; eventuell momskompensasjon kommer senere og er ikke en garanti om gjeldsfrihet.
+        </p>
+        <p class="mt-4 text-sm text-gray-500">Kilde: partnerplan 2026–2027, finansieringsoversikt 29.08.2026 og bankbekreftelse 07.09.2026. Millionbeløp er avrundet.</p>
       </div>
 
       <!-- Anleggsløftet & Stiftelsene Highlight Banner -->
@@ -698,29 +694,29 @@ const teamMembers = [
         </div>
       </div>
 
-      <!-- Slik arbeider vi med resten -->
+      <!-- Avklaringer før byggestart -->
       <div class="mx-auto mt-8 max-w-4xl rounded-2xl border border-gray-200 bg-white p-8 shadow-sm">
         <h3 class="text-xl font-bold text-dark uppercase tracking-tight">Slik arbeider vi med resten</h3>
         <p class="mt-2 text-sm text-gray-600">
-          Finansieringen av fase 1 settes sammen av flere kilder for å sikre fullfinansiering:
+          Planlagt byggestart forutsetter endelige offentlige godkjenninger, finansiering og øvrige vilkår:
         </p>
 
         <div class="mt-6 grid gap-4 sm:grid-cols-2">
           <div class="p-4 rounded-xl border border-gray-100 bg-gray-50/50">
             <strong class="block text-sm font-bold text-dark">Spillemidler</strong>
-            <span class="mt-1 block text-xs text-gray-600">Søknader for de aktuelle delanleggene i fase 1.</span>
+            <span class="mt-1 block text-xs text-gray-600">Fire søknader sendt: BMX/stor pumptrack, pumptrack Mailandet, flytsti/skills/hopp og turvei. Avventer behandling.</span>
           </div>
           <div class="p-4 rounded-xl border border-gray-100 bg-gray-50/50">
             <strong class="block text-sm font-bold text-dark">Mva-kompensasjon</strong>
-            <span class="mt-1 block text-xs text-gray-600">En viktig del av den samlede finansieringsplanen etter gjeldende ordning.</span>
+            <span class="mt-1 block text-xs text-gray-600">Forventet kompensasjon etter ferdigstillelse kan redusere gjelden. Beløp og utbetaling er ikke garantert.</span>
           </div>
           <div class="p-4 rounded-xl border border-gray-100 bg-gray-50/50">
             <strong class="block text-sm font-bold text-dark">Næringsliv og sponsorer</strong>
-            <span class="mt-1 block text-xs text-gray-600">Lokale samarbeidspartnere kan bidra både økonomisk og med varer/tjenester.</span>
+            <span class="mt-1 block text-xs text-gray-600">Partnerløftet har mål om 1,3 mill. kr i nye sponsor- og gavebidrag før byggestart.</span>
           </div>
           <div class="p-4 rounded-xl border border-gray-100 bg-gray-50/50">
             <strong class="block text-sm font-bold text-dark">Forskuttering av spillemidler</strong>
-            <span class="mt-1 block text-xs text-gray-600">Søkt Rana kommune om forskuttering av 5 mill. kr i spillemidler som likviditetsløsning.</span>
+            <span class="mt-1 block text-xs text-gray-600">Kommunal forskuttering følges opp som likviditetsløsning. Formelt vedtak og øvrige bankvilkår må være på plass.</span>
           </div>
         </div>
       </div>
@@ -794,26 +790,50 @@ const teamMembers = [
             <img src={url("/images/bike-park/kunnskapsparken.png")} alt="Kunnskapsparken Helgeland" class="max-h-16 max-w-full object-contain" loading="lazy" />
           </div>
           <h4 class="text-base font-bold text-dark">Kunnskapsparken Helgeland</h4>
-          <p class="mt-1 text-xs text-gray-500">Støtter arbeidet med å realisere fase 1 av Rana Bike Park.</p>
+          <p class="mt-1 text-xs text-gray-500">Har gitt signert gavetilsagn på 10 000 kr til fase 1. Takk for bidraget!</p>
         </div>
       </div>
 
       <!-- Lokalt Næringsliv CTA -->
-      <div class="mx-auto max-w-4xl text-center">
-        <span class="text-xs font-extrabold uppercase tracking-widest text-primary-500">Lokalt næringsliv</span>
+      <div id="partnerloftet" class="mx-auto max-w-4xl text-center scroll-mt-36">
+        <span class="text-sm font-extrabold uppercase tracking-widest text-primary-500">Partnerløftet 2026–2027</span>
         <h2 class="mt-2 text-3xl font-extrabold tracking-tight text-dark uppercase sm:text-4xl">
-          Bli med på laget
+          Bli med på det siste løftet
         </h2>
         <div class="mx-auto mt-4 h-1 w-16 rounded-full bg-primary-500"></div>
         <p class="mt-6 text-lg leading-relaxed text-gray-600">
-          Rana Bike Park skal bli en synlig møteplass for aktivitet, mestring og fellesskap. Vi ønsker flere bedrifter med på reisen og tilpasser samarbeidet etter bedriftens ønsker, prosjektets behov og ønsket synlighet.
+          Målet er 1,3 millioner kroner i nye sponsor- og gavebidrag frem mot byggestart. Hver nye krone reduserer bankbehovet og gir klubben større handlingsrom til aktivitet, drift og vedlikehold. Sammen med forventet momskompensasjon og øvrig finansiering er målet minst mulig varig gjeld etter fase 1.
+        </p>
+
+        <div class="mt-10 grid gap-4 sm:grid-cols-2 text-left">
+          {[
+            ["Hovedpartner", "fra 500 000 kr", "Fremtredende digital profilering, dedikert partnerinnhold og synlighet ved åpning. Mulighet for egen aktivitet for ansatte og familier."],
+            ["Prosjektpartner", "fra 250 000 kr", "Tydelig digital profilering, utvalgt omtale i sosiale kanaler og synlighet ved åpning eller relevante arrangementer."],
+            ["Partner", "fra 100 000 kr", "Logo i partneroversikten, omtale og partnermerke. Fysisk profilering der dette godkjennes."],
+            ["Støttespiller", "fra 25 000 kr", "Oppføring som støttespiller, digital takk, partnermerke og invitasjon til offisiell åpning."],
+          ].map(([name, amount, description]) => (
+            <article class="rounded-2xl border border-gray-200 border-t-4 border-t-primary-500 bg-gray-50 p-6">
+              <h3 class="text-xl font-bold text-dark">{name}</h3>
+              <p class="mt-2 text-2xl font-extrabold text-primary-600">{amount}</p>
+              <p class="mt-3 text-base leading-relaxed text-gray-600">{description}</p>
+            </article>
+          ))}
+        </div>
+        <p class="mt-5 text-sm leading-relaxed text-gray-600">
+          Nivåene er veiledende. Større samarbeid kan skreddersys. Alle motytelser, varighet og omfang avtales skriftlig.
+          Fysisk skilting og profilering må godkjennes og følge kommunale og spillemiddelrelaterte rammer.
+          Rene gaver avtales med gavebrev uten avtalte motytelser.
+        </p>
+        <p class="mt-4 text-base text-gray-700">
+          Ett mulig målbilde er én hovedpartner på 500 000 kr, to prosjektpartnere på 250 000 kr
+          og tre partnere på 100 000 kr. Det gir 1,3 mill. kr – dette er et mål, ikke inngåtte avtaler.
         </p>
 
         <!-- Forms of contribution -->
         <div class="mt-10 rounded-2xl border border-gray-200 bg-gray-50 p-6 sm:p-8 text-left">
           <h3 class="text-lg font-bold text-dark uppercase tracking-tight mb-2">Flere måter å bidra på</h3>
           <p class="text-sm text-gray-600 mb-6">
-            Bidrag kan være økonomisk støtte, varer og tjenester, materiell, maskinressurser, fagkompetanse eller andre former for samarbeid.
+            Kontante sponsor- og gavebidrag er hovedmålet. Varer, maskiner og tjenester kan også bidra når de erstatter planlagte prosjektkostnader. Fagkompetanse og andre bidrag avtales konkret.
           </p>
           <div class="flex flex-wrap gap-2.5">
             <span class="rounded-full border border-blue-200 bg-blue-50 px-4 py-2 text-xs font-bold uppercase tracking-wider text-blue-800">
@@ -837,11 +857,11 @@ const teamMembers = [
             Vil din bedrift bidra til Rana Bike Park?
           </h3>
           <p class="mx-auto mt-4 max-w-2xl text-sm sm:text-base leading-relaxed text-blue-100">
-            Ta kontakt, så sender vi mer informasjon og finner en samarbeidsform som passer bedriften. Nye bidrag kan redusere behovet for lånefinansiering og gjøre det mulig å realisere mer av fase 1 tidligere.
+            Ta kontakt med Georg Enga på 917 00 636 for et kort møte på 20–30 minutter. Vi avklarer bidrag og ønsket synlighet, lager sponsoravtale eller gavebrev og planlegger samarbeidet sammen.
           </p>
-          <div class="mt-8">
+          <div class="mt-8 flex flex-wrap justify-center gap-4">
             <a
-              href="mailto:post@ranasykkelklubb.no?subject=Samarbeid%20om%20Rana%20Bike%20Park"
+              href="mailto:post@ranasykkelklubb.no?subject=Partnerloftet%20Rana%20Bike%20Park"
               class="inline-flex items-center justify-center rounded-xl bg-primary-500 px-8 py-4 text-base font-bold uppercase tracking-wider text-white shadow-lg transition-all hover:-translate-y-0.5 hover:bg-primary-600 hover:shadow-primary-500/40"
             >
               Kontakt oss om samarbeid
