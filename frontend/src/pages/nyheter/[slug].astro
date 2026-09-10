@@ -21,7 +21,14 @@ const formattedDate = new Date(article.data.date).toLocaleDateString("nb-NO", {
 });
 ---
 
-<Layout title={article.data.title} description={article.data.excerpt}>
+<Layout
+  title={article.data.title}
+  description={article.data.excerpt}
+  image={article.data.image ?? undefined}
+  imageAlt={article.data.title}
+  type="article"
+  publishedTime={article.data.date}
+>
   <article>
     <header class="bg-gradient-to-br from-dark via-dark-light to-primary-900 py-20 sm:py-28">
       <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
