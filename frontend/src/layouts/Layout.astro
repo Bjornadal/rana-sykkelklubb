@@ -8,16 +8,24 @@ interface Props {
   title: string;
   description?: string;
   image?: string;
+  imageAlt?: string;
   type?: "website" | "article";
   noindex?: boolean;
+  publishedTime?: string | Date;
+  eventDate?: string | Date | null;
+  eventLocation?: string | null;
 }
 
 const {
   title,
   description = "Rana Sykkelklubb er sykkelklubben i Mo i Rana for barn, ungdom og voksne. Finn treninger, stier, turforslag, medlemskap og Rana Bike Park.",
-  image = "/logo.png",
+  image,
+  imageAlt,
   type,
   noindex = false,
+  publishedTime,
+  eventDate,
+  eventLocation,
 } = Astro.props;
 
 const site = Astro.site ?? new URL("https://ranasykkelklubb.no");
@@ -26,8 +34,34 @@ const normalizedPath =
     ? "/"
     : `${Astro.url.pathname.replace(/\/+$/, "")}/`;
 
+const descriptionOverrides: Record<string, string> = {
+  "/om-klubben/":
+    "Les om Rana Sykkelklubb i Mo i Rana, klubbens historie, organisasjon og arbeid for landevei, terrengsykling og sykkelglede på Helgeland.",
+  "/aktiviteter/":
+    "Se sykkeltreninger, treningstider, ritt og arrangement i Rana Sykkelklubb i Mo i Rana – for barn, ungdom og voksne på landevei og terreng.",
+  "/medlemskap/":
+    "Bli medlem i Rana Sykkelklubb i Mo i Rana. Se medlemspriser, fordeler og tilbud for voksne, ungdom og familier som vil sykle sammen.",
+  "/kontakt/":
+    "Kontakt Rana Sykkelklubb i Mo i Rana om medlemskap, treninger, terrengsykling, landevei, arrangement eller Rana Bike Park.",
+  "/nyheter/":
+    "Nyheter fra Rana Sykkelklubb i Mo i Rana om treninger, ritt, terrengsykling, landevei, klubbaktivitet og utviklingen av Rana Bike Park.",
+  "/sykkelpark/":
+    "Rana Bike Park i Mo i Rana – se prosjektstatus, fase 1, planlagte sykkeltilbud, finansiering og Partnerløftet. Byggestart er planlagt våren 2027.",
+};
+
+const effectiveDescription = descriptionOverrides[normalizedPath] ?? description;
 const canonicalUrl = new URL(normalizedPath, site).toString();
-const ogImageUrl = new URL(image, site).toString();
+
+const defaultImage = normalizedPath === "/sykkelpark/"
+  ? "/images/bike-park/hero-bg.jpg"
+  : "/images/ruter/yttrafjellet-deluxe-1.jpg";
+const ogImageUrl = new URL(image ?? defaultImage, site).toString();
+const effectiveImageAlt =
+  imageAlt ??
+  (normalizedPath === "/sykkelpark/"
+    ? "Rana Bike Park i Mo i Rana"
+    : "Sykling i Mo i Rana – Rana Sykkelklubb");
+
 const pageTitle =
   title === "Forside"
     ? "Rana Sykkelklubb | Sykling og sykkelmiljø i Mo i Rana"
@@ -38,6 +72,147 @@ const ogType = type ?? (normalizedPath.startsWith("/nyheter/") ? "article" : "we
 const robotsContent = noindex
   ? "noindex, nofollow"
   : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1";
+
+const organizationId = new URL("/#organization", site).toString();
+const websiteId = new URL("/#website", site).toString();
+const webpageId = `${canonicalUrl}#webpage`;
+
+const breadcrumbNames: Record<string, string> = {
+  "om-klubben": "Om klubben",
+  aktiviteter: "Aktiviteter",
+  medlemskap: "Medlemskap",
+  kontakt: "Kontakt",
+  nyheter: "Nyheter",
+  ruter: "Ruter og stier",
+  sykkelpark: "Rana Bike Park",
+  arrangement: "Arrangement",
+};
+
+const pathSegments = normalizedPath.split("/").filter(Boolean);
+const breadcrumbSchema = pathSegments.length > 0
+  ? {
+      "@type": "BreadcrumbList",
+      "@id": `${canonicalUrl}#breadcrumb`,
+      itemListElement: pathSegments.map((segment, index) => {
+        const isLast = index === pathSegments.length - 1;
+        const segmentPath = `/${pathSegments.slice(0, index + 1).join("/")}/`;
+        const fallbackName = segment
+          .replace(/-/g, " ")
+          .replace(/^./, (letter) => letter.toUpperCase());
+        return {
+          "@type": "ListItem",
+          position: index + 1,
+          name: isLast ? title : (breadcrumbNames[segment] ?? fallbackName),
+          item: new URL(segmentPath, site).toString(),
+        };
+      }),
+    }
+  : null;
+
+const toIsoString = (value?: string | Date | null) => {
+  if (!value) return undefined;
+  const date = value instanceof Date ? value : new Date(value);
+  return Number.isNaN(date.getTime()) ? undefined : date.toISOString();
+};
+
+const schemaGraph: Record<string, unknown>[] = [
+  {
+    "@type": "SportsOrganization",
+    "@id": organizationId,
+    name: "Rana Sykkelklubb",
+    url: new URL("/", site).toString(),
+    logo: new URL("/logo.png", site).toString(),
+    email: "post@ranasykkelklubb.no",
+    foundingDate: "1983",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Granhåjen 18",
+      postalCode: "8616",
+      addressLocality: "Mo i Rana",
+      addressCountry: "NO",
+    },
+    sameAs: [
+      "https://www.facebook.com/groups/170941269606870/",
+      "https://www.facebook.com/groups/1205541267871593/",
+      "https://www.facebook.com/profile.php?id=61583644916540",
+    ],
+  },
+  {
+    "@type": "WebSite",
+    "@id": websiteId,
+    url: new URL("/", site).toString(),
+    name: "Rana Sykkelklubb",
+    inLanguage: "nb-NO",
+    publisher: { "@id": organizationId },
+  },
+  {
+    "@type": "WebPage",
+    "@id": webpageId,
+    url: canonicalUrl,
+    name: pageTitle,
+    description: effectiveDescription,
+    inLanguage: "nb-NO",
+    isPartOf: { "@id": websiteId },
+    about: { "@id": organizationId },
+    primaryImageOfPage: {
+      "@type": "ImageObject",
+      url: ogImageUrl,
+    },
+    ...(breadcrumbSchema ? { breadcrumb: { "@id": `${canonicalUrl}#breadcrumb` } } : {}),
+  },
+];
+
+if (breadcrumbSchema) schemaGraph.push(breadcrumbSchema);
+
+const publishedIso = toIsoString(publishedTime);
+if (ogType === "article" && publishedIso) {
+  schemaGraph.push({
+    "@type": "NewsArticle",
+    "@id": `${canonicalUrl}#article`,
+    headline: title,
+    description: effectiveDescription,
+    datePublished: publishedIso,
+    mainEntityOfPage: { "@id": webpageId },
+    image: [ogImageUrl],
+    author: { "@id": organizationId },
+    publisher: { "@id": organizationId },
+    inLanguage: "nb-NO",
+  });
+}
+
+const eventIso = toIsoString(eventDate);
+if (eventIso) {
+  schemaGraph.push({
+    "@type": "Event",
+    "@id": `${canonicalUrl}#event`,
+    name: title,
+    description: effectiveDescription,
+    startDate: eventIso,
+    eventStatus: "https://schema.org/EventScheduled",
+    eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+    url: canonicalUrl,
+    image: [ogImageUrl],
+    organizer: { "@id": organizationId },
+    ...(eventLocation
+      ? {
+          location: {
+            "@type": "Place",
+            name: eventLocation,
+            address: {
+              "@type": "PostalAddress",
+              addressLocality: "Mo i Rana",
+              addressCountry: "NO",
+            },
+          },
+        }
+      : {}),
+  });
+}
+
+const structuredData = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": schemaGraph,
+}).replace(/</g, "\\u003c");
 ---
 
 <!doctype html>
@@ -55,7 +230,7 @@ const robotsContent = noindex
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content={description} />
+    <meta name="description" content={effectiveDescription} />
     <meta name="robots" content={robotsContent} />
     <meta name="author" content="Rana Sykkelklubb" />
 
@@ -68,16 +243,20 @@ const robotsContent = noindex
     <meta property="og:locale" content="nb_NO" />
     <meta property="og:type" content={ogType} />
     <meta property="og:title" content={pageTitle} />
-    <meta property="og:description" content={description} />
+    <meta property="og:description" content={effectiveDescription} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content={ogImageUrl} />
-    <meta property="og:image:alt" content="Rana Sykkelklubb" />
+    <meta property="og:image:alt" content={effectiveImageAlt} />
 
     <!-- X / Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />
-    <meta name="twitter:description" content={description} />
+    <meta name="twitter:description" content={effectiveDescription} />
     <meta name="twitter:image" content={ogImageUrl} />
+    <meta name="twitter:image:alt" content={effectiveImageAlt} />
+
+    <!-- Schema.org / JSON-LD -->
+    <script type="application/ld+json" set:html={structuredData}></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
