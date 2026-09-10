@@ -30,33 +30,30 @@ export const GET: APIRoute = async () => {
     getCollection("arrangement"),
   ]);
 
-  const entries = [
-    ...staticRoutes.map((path) => ({ loc: `${SITE}${path}` })),
-    ...news.map((item) => ({
-      loc: `${SITE}/nyheter/${item.id.replace(/\.[^/.]+$/, "")}/`,
-      lastmod: item.data.date?.toISOString(),
-    })),
-    ...routes.map((item) => ({
-      loc: `${SITE}/ruter/${item.id.replace(/\.[^/.]+$/, "")}/`,
-    })),
-    ...events.map((item) => ({
-      loc: `${SITE}/arrangement/${item.id.replace(/\.[^/.]+$/, "")}/`,
-      lastmod: item.data.date?.toISOString(),
-    })),
+  const urls = [
+    ...staticRoutes.map((path) => `${SITE}${path}`),
+    ...news.map(
+      (item) => `${SITE}/nyheter/${item.id.replace(/\.[^/.]+$/, "")}/`,
+    ),
+    ...routes.map(
+      (item) => `${SITE}/ruter/${item.id.replace(/\.[^/.]+$/, "")}/`,
+    ),
+    ...events.map(
+      (item) => `${SITE}/arrangement/${item.id.replace(/\.[^/.]+$/, "")}/`,
+    ),
   ];
 
-  const body = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${entries
+  const body = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls
     .map(
-      ({ loc, lastmod }) =>
-        `  <url>\n    <loc>${escapeXml(loc)}</loc>${
-          lastmod ? `\n    <lastmod>${escapeXml(lastmod)}</lastmod>` : ""
-        }\n  </url>`
+      (loc) =>
+        `  <url>\n    <loc>${escapeXml(loc)}</loc>\n  </url>`,
     )
     .join("\n")}\n</urlset>\n`;
 
   return new Response(body, {
     headers: {
       "Content-Type": "application/xml; charset=utf-8",
+      "Cache-Control": "public, max-age=3600",
     },
   });
 };
