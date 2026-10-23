@@ -136,17 +136,17 @@ const timelineSteps = [
     status: "completed",
   },
   {
-  number: "3",
-  title: "3. Spillemiddelsøknader og finansiering",
-  description: "Fire spillemiddelsøknader for fase 1 er sendt til Rana kommune, og signert finansieringsbekreftelse fra SpareBank 1 Helgeland er mottatt. Hovedarbeidet frem mot byggestart er nå Partnerløftet, avklaring av utbetalingsplan fra Anleggsløftet samt bruksrett, tinglysing og nødvendige byggelånsavklaringer.",
-  status: "active",
-  subItems: [
-    "4 spillemiddelsøknader sendt inn",
-    "Signert bankbekreftelse inntil 4,6 mill. kr",
-    "Partnerløftet: mål 1,3 mill. kr",
-    "Utbetalingsplan, tinglysing og byggelån følges opp",
-  ],
-},
+    number: "3",
+    title: "3. Spillemiddelsøknader og finansiering",
+    description: "Fire spillemiddelsøknader for fase 1 er sendt til Rana kommune, og signert finansieringsbekreftelse fra SpareBank 1 Helgeland er mottatt. Hovedarbeidet frem mot byggestart er nå Partnerløftet, avklaring av utbetalingsplan fra Anleggsløftet samt bruksrett, tinglysing og nødvendige byggelånsavklaringer.",
+    status: "active",
+    subItems: [
+      "4 spillemiddelsøknader sendt inn",
+      "Signert bankbekreftelse inntil 4,6 mill. kr",
+      "Partnerløftet: mål 1,3 mill. kr",
+      "Utbetalingsplan, tinglysing og byggelån følges opp",
+    ],
+  },
   {
     number: "4",
     title: "4. Planlagt byggestart våren 2027",
@@ -292,7 +292,7 @@ const teamMembers = [
         <a href="#partnerloftet" class="lg:hidden whitespace-nowrap rounded-lg bg-primary-500 px-3.5 py-1.5 text-xs font-bold text-white shadow-sm hover:bg-primary-600 transition-all ml-1">Partnerløftet</a>
       </nav>
 
-      <!-- Right Sponsor CTA (balances the left brand on desktop) -->
+      <!-- Right Sponsor CTA -->
       <div class="hidden lg:flex items-center justify-end shrink-0 w-44">
         <a href="#partnerloftet" class="whitespace-nowrap rounded-lg bg-primary-500 px-3.5 py-1.5 text-xs font-bold text-white shadow-sm hover:bg-primary-600 transition-all hover:scale-105">Partnerløftet</a>
       </div>
@@ -904,6 +904,14 @@ const teamMembers = [
             <h4 class="text-base font-bold text-dark">Kunnskapsparken Helgeland</h4>
             <p class="mt-1 text-xs text-gray-500">Støtter arbeidet med å realisere fase 1 av Rana Bike Park.</p>
           </div>
+
+          <div class="p-6 rounded-2xl bg-white border border-gray-200 text-center shadow-xs">
+            <div class="h-20 flex items-center justify-center p-2 mb-3">
+              <img src={url("/images/bike-park/Nordenfjelske-Bykreditt-Stiftelse.png")} alt="Nordenfjelske Bykreditt Stiftelse" class="max-h-16 max-w-full object-contain" loading="lazy" />
+            </div>
+            <h4 class="text-base font-bold text-dark">Nordenfjelske Bykreditt Stiftelse</h4>
+            <p class="mt-1 text-xs text-gray-500">Har gitt tilsagn om 500 000 kroner til Rana Bike Park. Takk for støtten til sykkelglede, mestring og aktivitet på Skillevollen.</p>
+          </div>
         </div>
       </div>
 
@@ -911,7 +919,7 @@ const teamMembers = [
       <div class="mt-16 rounded-3xl border border-gray-200 bg-gray-50 p-8 sm:p-12 shadow-xs">
         <div class="mx-auto max-w-3xl text-center mb-10">
           <span class="text-xs font-extrabold uppercase tracking-widest text-primary-500">De som fikk forprosjektet i gang</span>
-          <h3 class="mt-2 text-2xl sm:text-3xl font-extrabold text-dark uppercase tracking-tight">
+          <h3 class="mt-2 text-2xl sm:text-3xl font-extrabold tracking-tight text-dark uppercase">
             Forprosjektet ble mulig gjennom støtte
           </h3>
           <p class="mt-4 text-sm text-gray-600 leading-relaxed">
