@@ -18,7 +18,7 @@ const metrics = [
   {
     label: "Partnerløftet",
     value: "1,3 MNOK",
-    note: "Mål for nye sponsor- og gavebidrag",
+    note: "Mål (650 000 kr sikret · 650 000 kr gjenstår)",
     color: "border-primary-500 text-primary-700 bg-primary-50/50",
   },
 ];
@@ -138,12 +138,12 @@ const timelineSteps = [
   {
     number: "3",
     title: "3. Spillemiddelsøknader, tinglysing og finansiering",
-    description: "Fire spillemiddelsøknader for fase 1 er formelt registrert og kvittert i Anleggsregisteret, og bruksretten på gnr. 135 bnr. 1 er godkjent og tinglyst hos Kartverket. Med signert bankbekreftelse inntil 4,6 mill. kr og innvilget støtte fra Anleggsløftet og Nordenfjelske Bykreditts Stiftelse, er hovedfokuset nå Partnerløftet og byggesaksavklaringer frem mot planlagt byggestart våren 2027.",
+    description: "Fire spillemiddelsøknader for fase 1 er formelt registrert og kvittert i Anleggsregisteret, og bruksretten på gnr. 135 bnr. 1 er godkjent og tinglyst hos Kartverket. Med signert bankbekreftelse inntil 4,6 mill. kr, støtte fra Anleggsløftet og Nordenfjelske Bykreditts Stiftelse, samt avtale med Helgeland Kraft (150 000 kr), er hovedfokuset nå de siste 650 000 kr i Partnerløftet og byggesaksavklaringer frem mot planlagt byggestart våren 2027.",
     status: "active",
     subItems: [
       "4 spillemiddelsøknader kvittert i Anleggsregisteret",
       "Signert bankbekreftelse inntil 4,6 mill. kr",
-      "Partnerløftet: mål 1,3 mill. kr",
+      "Partnerløftet: 650 000 kr sikret (650 000 kr gjenstår)",
       "Tinglyst bruksrett godkjent hos Kartverket",
     ],
   },
@@ -321,7 +321,7 @@ const teamMembers = [
           En ny arena for mestring, bevegelsesglede og fellesskap på Skillevollen. Målet er et gratis og inkluderende sykkeltilbud for barn, unge, familier og syklister på alle nivåer.
         </p>
         <p class="mt-4 text-base sm:text-lg leading-relaxed text-blue-100 max-w-2xl">
-          <strong class="text-white">Et stort løft er på plass. Nå inviterer vi næringslivet med på det siste løftet mot realisering av fase 1.</strong> Målet for Partnerløftet er 1,3 mill. kr i nye sponsor- og gavebidrag frem mot byggestart.
+          <strong class="text-white">Et stort løft er på plass, og vi er nå halvveis i Partnerløftet.</strong> Målet er 1,3 mill. kr i nye sponsor- og gavebidrag frem mot byggestart – 650 000 kr er allerede sikret, og 650 000 kr gjenstår.
         </p>
         <p class="mt-3 text-sm leading-relaxed text-gray-300 max-w-2xl">
           Byggestart er planlagt våren 2027, forutsatt endelig finansiering, offentlige godkjenninger og øvrige nødvendige avklaringer.
@@ -710,7 +710,7 @@ const teamMembers = [
           <div class="p-5 rounded-xl bg-primary-50 border border-primary-200">
             <span class="text-xs font-bold uppercase tracking-wider text-primary-700">Partnerløftet</span>
             <span class="mt-1 block text-2xl font-extrabold text-dark">1,3 MNOK</span>
-            <span class="mt-1 block text-xs text-gray-600">Mål for nye sponsor- og gavebidrag</span>
+            <span class="mt-1 block text-xs text-gray-600">Mål: 650 000 kr sikret · 650 000 kr gjenstår</span>
           </div>
         </div>
 
@@ -765,7 +765,7 @@ const teamMembers = [
               Tildelingen er et likeverdig spleiselag mellom <strong>Sparebankstiftelsen Helgeland</strong> (4,375 mill. kr) og <strong>SpareBank 1 Helgelands Gavestiftelse</strong> (4,375 mill. kr).
             </p>
             <p class="mt-3 text-sm leading-relaxed text-gray-700">
-              Støtten gir fase 1 et svært viktig økonomisk fundament. I tillegg har <strong>Nordenfjelske Bykreditts Stiftelse</strong> innvilget 500 000 kr i stiftelsesstøtte til anlegget. Partnerløftet bygger videre på dette fundamentet for å redusere behovet for langsiktig lånefinansiering.
+              Støtten gir fase 1 et svært viktig økonomisk fundament. I tillegg har <strong>Nordenfjelske Bykreditts Stiftelse</strong> innvilget 500 000 kr og <strong>Helgeland Kraft</strong> bidratt med 150 000 kr til realiseringen. Partnerløftet bygger videre på dette fundamentet for å redusere behovet for langsiktig lånefinansiering.
             </p>
           </div>
           <div class="grid grid-cols-2 gap-4">
@@ -794,6 +794,25 @@ const teamMembers = [
           <div class="mx-auto mt-4 h-1 w-16 rounded-full bg-primary-500"></div>
           <p class="mt-6 text-lg leading-relaxed text-gray-600">
             Målet er 1,3 millioner kroner i nye sponsor- og gavebidrag frem mot byggestart. Bidragene kommer i tillegg til finansieringsplanen og kan redusere banktrekket direkte.
+          </p>
+        </div>
+
+        <!-- Partnerløftet Status / Fremdrift -->
+        <div class="mx-auto mt-10 max-w-4xl rounded-2xl border border-green-200 bg-gradient-to-br from-green-50/60 to-white p-6 sm:p-8 shadow-xs">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div>
+              <span class="text-xs font-extrabold uppercase tracking-widest text-green-700">Status Partnerløftet</span>
+              <h3 class="mt-1 text-xl sm:text-2xl font-black text-dark">650 000 kr sikret · 650 000 kr gjenstår</h3>
+            </div>
+            <span class="inline-flex items-center self-start sm:self-center rounded-full bg-green-100 px-3.5 py-1 text-xs font-extrabold uppercase tracking-wider text-green-800">
+              50 % av målet nådd
+            </span>
+          </div>
+          <div class="mt-4 h-3.5 w-full overflow-hidden rounded-full bg-gray-200">
+            <div class="h-full w-1/2 rounded-full bg-gradient-to-r from-green-500 to-green-600"></div>
+          </div>
+          <p class="mt-3 text-xs sm:text-sm leading-relaxed text-gray-600">
+            Med tilsagn fra <strong>Nordenfjelske Bykreditts Stiftelse</strong> (500 000 kr) og tilskudd fra <strong>Helgeland Kraft</strong> (150 000 kr) er vi halvveis til målet på 1,3 mill. kr. Nå gjenstår <strong>650 000 kr</strong> fra lokalt næringsliv før byggestart våren 2027.
           </p>
         </div>
 
@@ -896,8 +915,8 @@ const teamMembers = [
           <h3 class="mt-1 text-2xl font-bold text-dark uppercase tracking-tight">Med på laget</h3>
         </div>
 
-        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          <div class="p-6 rounded-2xl bg-white border border-gray-200 text-center shadow-xs flex flex-col justify-between">
+        <div class="flex flex-wrap justify-center gap-6">
+          <div class="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] p-6 rounded-2xl bg-white border border-gray-200 text-center shadow-xs flex flex-col justify-between">
             <div>
               <div class="h-20 flex items-center justify-center p-2 mb-3">
                 <img src={url("/images/bike-park/sparebank1.png")} alt="SpareBank 1 Helgeland" class="max-h-12 max-w-full object-contain" loading="lazy" />
@@ -907,7 +926,7 @@ const teamMembers = [
             </div>
           </div>
 
-          <div class="p-6 rounded-2xl bg-white border border-gray-200 text-center shadow-xs flex flex-col justify-between">
+          <div class="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] p-6 rounded-2xl bg-white border border-gray-200 text-center shadow-xs flex flex-col justify-between">
             <div>
               <div class="h-20 flex items-center justify-center p-2 mb-3">
                 <img src={url("/images/bike-park/sparebankstiftelsen.png")} alt="Sparebankstiftelsen Helgeland" class="max-h-14 max-w-full object-contain" loading="lazy" />
@@ -917,7 +936,7 @@ const teamMembers = [
             </div>
           </div>
 
-          <div class="p-6 rounded-2xl bg-white border border-gray-200 text-center shadow-xs flex flex-col justify-between">
+          <div class="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] p-6 rounded-2xl bg-white border border-gray-200 text-center shadow-xs flex flex-col justify-between">
             <div>
               <div class="h-20 flex items-center justify-center p-2 mb-3">
                 <img src={url("/images/bike-park/Nordenfjelske-Bykreditt-Stiftelse.png")} alt="Nordenfjelske Bykreditt Stiftelse" class="max-h-16 max-w-full object-contain" loading="lazy" />
@@ -927,7 +946,17 @@ const teamMembers = [
             </div>
           </div>
 
-          <div class="p-6 rounded-2xl bg-white border border-gray-200 text-center shadow-xs flex flex-col justify-between">
+          <div class="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] p-6 rounded-2xl bg-white border border-gray-200 text-center shadow-xs flex flex-col justify-between">
+            <div>
+              <div class="h-20 flex items-center justify-center p-2 mb-3">
+                <img src={url("/images/bike-park/helgeland-kraft.png")} alt="Helgeland Kraft" class="max-h-12 max-w-full object-contain" loading="lazy" />
+              </div>
+              <h4 class="text-base font-bold text-dark">Helgeland Kraft</h4>
+              <p class="mt-1 text-xs text-gray-500 leading-relaxed">Bidrar med 150 000 kroner til realiseringen av fase 1 av Rana Bike Park. Takk for støtten til sykkelglede og aktivitet på Helgeland.</p>
+            </div>
+          </div>
+
+          <div class="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] p-6 rounded-2xl bg-white border border-gray-200 text-center shadow-xs flex flex-col justify-between">
             <div>
               <div class="h-20 flex items-center justify-center p-2 mb-3">
                 <img src={url("/images/bike-park/kunnskapsparken.png")} alt="Kunnskapsparken Helgeland" class="max-h-16 max-w-full object-contain" loading="lazy" />
